@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate, type MotionValue } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Page() {
-  // sanfter, pendelnder Glow über dem Bild (performant)
+  // sanfter, pendelnder Glow über dem Bild (performant, typisiert)
   const x = useMotionValue(0);
-  const bgPos = useTransform(x, [0, 1], ["0% 50%", "100% 50%"]);
+  const bgPos: MotionValue<string> = useTransform(x, [0, 1], ["0% 50%", "100% 50%"]);
 
   useEffect(() => {
     const controls = animate(x, 1, {
@@ -34,7 +34,7 @@ export default function Page() {
 
         {/* Animierter Glow-Overlay */}
         <motion.div
-          style={{ backgroundPosition: bgPos as any }}
+          style={{ backgroundPosition: bgPos }}
           className="pointer-events-none absolute inset-0 opacity-70 mix-blend-overlay"
         >
           <div
@@ -84,6 +84,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Mobile: kein Bild */}
     </main>
   );
 }
