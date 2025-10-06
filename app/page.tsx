@@ -1,103 +1,115 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useEffect } from "react";
 
-export default function Home() {
+export default function Page() {
+  // sanfte horizontale Glow-Animation über dem Bild
+  const x = useMotionValue(0);
+  const bgPos = useTransform(x, [0, 1], ["0% 50%", "100% 50%"]);
+
+  useEffect(() => {
+    const controls = animate(x, 1, {
+      duration: 16,
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "easeInOut",
+    });
+    return () => controls.stop();
+  }, [x]);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="min-h-screen bg-white text-slate-900">
+      <section className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-0 px-6 sm:px-8 lg:grid-cols-2">
+        {/* LEFT: Copy */}
+        <div className="py-16 sm:py-24 lg:py-0 lg:pr-12">
+          <div className="mb-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="https://app.qnotes.net/images/logos/logo-black.svg"
+              alt="QNotes"
+              width={280}
+              height={64}
+              className="h-14 w-auto sm:h-16"
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[13px] text-slate-700">
+            <span className="inline-block h-2 w-2 rounded-full bg-slate-900" />
+            Wir polieren QNotes – Launch in Kürze.
+          </div>
+
+          <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+            QNotes – <span className="text-slate-600">Notizen, die bleiben.</span>
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+            Schreib weiter auf Papier. QNotes verknüpft jede Seite automatisch mit deinem digitalen
+            Workspace – damit Ideen nicht verloren gehen, sondern sofort gefunden, geteilt und
+            weiterbearbeitet werden.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* RIGHT: Full-height media (no box) */}
+        <div className="relative hidden h-[60vh] w-full overflow-hidden rounded-none border-0 lg:block lg:h-screen">
+          {/* Bild */}
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="https://app.qnotes.net/images/login-image.png"
+            alt="QNotes Vorschau"
+            fill
+            className="object-cover"
+            priority
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+          {/* Animierter Glow-Overlay */}
+          <motion.div
+            style={{
+              backgroundPosition: bgPos as any,
+            }}
+            className="pointer-events-none absolute inset-0 opacity-70 mix-blend-overlay"
+          >
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage:
+                  "radial-gradient(40rem 40rem at 0% 50%, rgba(2,6,23,0.18), transparent 60%), radial-gradient(40rem 40rem at 100% 50%, rgba(2,6,23,0.22), transparent 60%)",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+          </motion.div>
+
+          {/* Subtle vignette & gradient bottom */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80rem_60rem_at_50%_120%,rgba(0,0,0,0.35),transparent_60%)]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/20 to-transparent" />
+        </div>
+
+        {/* Mobile Bild (unter dem Text, ohne 50/50) */}
+        <div className="relative block h-[46vh] w-full overflow-hidden lg:hidden">
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            src="https://app.qnotes.net/images/login-image.png"
+            alt="QNotes Vorschau"
+            fill
+            className="object-cover"
+            priority
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <motion.div
+            style={{ backgroundPosition: bgPos as any }}
+            className="pointer-events-none absolute inset-0 opacity-70 mix-blend-overlay"
+          >
+            <div
+              className="h-full w-full"
+              style={{
+                backgroundImage:
+                  "radial-gradient(30rem 30rem at 0% 50%, rgba(2,6,23,0.18), transparent 60%), radial-gradient(30rem 30rem at 100% 50%, rgba(2,6,23,0.22), transparent 60%)",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+          </motion.div>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_40rem_at_50%_120%,rgba(0,0,0,0.35),transparent_60%)]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/20 to-transparent" />
+        </div>
+      </section>
+    </main>
   );
 }

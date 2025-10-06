@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Entweder kurz …
+    domains: ['app.qnotes.net'],
+
+    // … oder granular:
+    // remotePatterns: [
+    //   { protocol: 'https', hostname: 'app.qnotes.net', pathname: '/**' },
+    // ],
+  },
 };
 
 export default nextConfig;
