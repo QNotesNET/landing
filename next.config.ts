@@ -4,7 +4,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   images: {
     // Entweder kurz …
-    domains: ['app.qnotes.net'],
+    domains: ['app.powerbook.at'],
 
     // … oder granular:
     // remotePatterns: [

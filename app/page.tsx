@@ -59,7 +59,7 @@ export default function Page() {
             <div className="mb-8">
               <Image
                 src="https://app.qnotes.net/images/logos/logo-black.svg"
-                alt="QNotes"
+                alt="Powerbook"
                 width={280}
                 height={64}
                 className="h-14 w-auto sm:h-16"
@@ -69,15 +69,15 @@ export default function Page() {
 
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[13px] text-slate-700">
               <span className="inline-block h-2 w-2 rounded-full bg-slate-900" />
-              Wir polieren QNotes – Launch in Kürze.
+              Wir polieren Powerbook – Launch in Kürze.
             </div>
 
             <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-              QNotes – <span className="text-slate-600">Notizen, die bleiben.</span>
+              Powerbook – <span className="text-slate-600">Notizen, die bleiben.</span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl">
-              Schreib weiter auf Papier. QNotes verknüpft jede Seite automatisch mit deinem digitalen
+              Schreib weiter auf Papier. Powerbook verknüpft jede Seite automatisch mit deinem digitalen
               Workspace – damit Ideen nicht verloren gehen, sondern sofort gefunden, geteilt und
               weiterbearbeitet werden.
             </p>
