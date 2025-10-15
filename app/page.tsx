@@ -25,8 +25,8 @@ export default function Page() {
       <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
         {/* Bild füllt die rechte Hälfte bis zum Rand */}
         <Image
-          src="https://app.qnotes.net/images/login-image.png"
-          alt="QNotes Vorschau"
+          src="https://app.powerbook.at/images/login-image.png"
+          alt="Powerbook Vorschau"
           fill
           className="object-cover"
           priority
@@ -58,7 +58,7 @@ export default function Page() {
           <div className="py-16 sm:py-24">
             <div className="mb-8">
               <Image
-                src="https://app.qnotes.net/images/logos/logo-black.svg"
+                src="https://app.powerbook.at/images/logos/logo-black.svg"
                 alt="Powerbook"
                 width={280}
                 height={64}
