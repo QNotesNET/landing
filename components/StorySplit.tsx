@@ -21,9 +21,8 @@ return (
 </div>
 <div className="relative">
 <div className="relative mx-auto aspect-[4/3] w-full max-w-xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
-<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop" alt="Schreibtisch Setup" className="h-full w-full object-cover" />
+<img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1920&auto=format&fit=crop" alt="Schreibtisch Setup" className="h-full w-full object-cover" />
 </div>
-<p className="mt-2 text-xs text-white/60">* Beispielbild via Unsplash</p>
 </div>
 </div>
 </section>

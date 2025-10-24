@@ -3,8 +3,8 @@ import { cx, display } from "@/lib/ui";
 
 export default function FeatureDetails() {
 const blocks = [
-{ title: "Magische Scans", text: "Ränder, Perspektive, Kontrast – automatisch erkannt. Ein Tap reicht.", img: "https://images.unsplash.com/photo-1513185041617-8ab03f83d6c5?q=80&w=1600&auto=format&fit=crop" },
-{ title: "Sofort gefunden", text: "Seiten, Notizbücher und Tags blitzschnell filtern – auch offline.", img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop" },
+{ title: "Magische Scans", text: "Ränder, Perspektive, Kontrast – automatisch erkannt. Ein Tap reicht.", img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1920&auto=format&fit=crop" },
+{ title: "Sofort gefunden", text: "Seiten, Notizbücher und Tags blitzschnell filtern – auch offline.", img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1920&auto=format&fit=crop" },
 ];
 return (
 <section className="bg-gradient-to-b from-white to-[rgba(0,0,0,0.02)] py-20">

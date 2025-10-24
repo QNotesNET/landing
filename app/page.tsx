@@ -21,12 +21,9 @@ return (
 <main className={cx(inter.className, "bg-white text-gray-900")}>
 <Header />
 <Hero />
-<FeatureRow />
 <StorySplit />
-<Gallery />
 <FeatureDetails />
 <Comparison />
-<VideoSection />
 <Pricing />
 <FAQ />
 <Newsletter />

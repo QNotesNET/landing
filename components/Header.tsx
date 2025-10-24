@@ -80,11 +80,15 @@ export default function Header() {
           >
             Anmelden
           </Link>
+          {/* ⬇️ EINZIGE ÄNDERUNG: Farbe abhängig von `scrolled` */}
           <Link
             href="https://my.powerbook.at/register"
-            className="group inline-flex items-center gap-2 rounded-xl bg-black px-4 py-2 text-sm font-medium text-white shadow-lg shadow-black/10 hover:-translate-y-0.5 transition"
+            className={cx(
+              "group inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium shadow-lg shadow-black/10 hover:-translate-y-0.5 transition",
+              scrolled ? "bg-black text-white" : "bg-white text-black"
+            )}
           >
-            Jetzt starten <Rocket className="h-4 w-4 transition group-hover:translate-x-0.5" />
+            Jetzt starten 
           </Link>
         </div>
 
