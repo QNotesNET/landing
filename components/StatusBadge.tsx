@@ -7,7 +7,7 @@ type Overall = "up" | "degraded" | "down" | "unknown";
 
 const LABELS: Record<Overall, string> = {
   up: "Alle Systeme laufen normal",
-  degraded: "Teilweise Beeinträchtigung",
+  degraded: "Teilweise Beeinträchtigt",
   down: "Störung",
   unknown: "Status unbekannt",
 };
