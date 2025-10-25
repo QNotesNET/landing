@@ -28,10 +28,11 @@ export default function Header() {
   }, [mobileOpen]);
 
   const items = [
+    { label: "Home", href: "/" },
+    { label: "Entdecken", href: "/#features" },
+    { label: "Preise", href: "/#pricing" },
     { label: "Shop", href: "/shop" },
-    { label: "Entdecken", href: "#features" },
     { label: "Business", href: "/business" },
-    { label: "Support", href: "#faq" },
   ];
 
   return (
