@@ -13,7 +13,9 @@ display: "swap",
 
 // Brand Colors (aus deinen Screens): Creme & Dunkelbraun
 export const CREAM = "#F6F2EB"; // helles, warmes Weiß
-export const INK = "#2D2825"; // sehr dunkles Braun/Anthrazit
+export const INK = "#2D2825";
+export const WHITE = "#ffffff";
+export const BLACK = "#000000";  // sehr dunkles Braun/Anthrazit
 
 
 export function cx(...classes: Array<string | false | null | undefined>) {
