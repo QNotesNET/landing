@@ -325,7 +325,7 @@ export default function ShopPage() {
               <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
                 <Button
                   onClick={onCheckoutClick}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:-translate-y-0.5 transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:bg-white/80 transition"
                 >
                   Zur Kasse <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -530,7 +530,7 @@ export default function ShopPage() {
                     <div className="font-medium">Lieferadresse</div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <Label>Vorname</Label>
+                        <Label className="pb-2">Vorname</Label>
                         <Input
                           value={shipping.firstName}
                           onChange={(e) =>
@@ -540,7 +540,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div>
-                        <Label>Nachname</Label>
+                        <Label className="pb-2">Nachname</Label>
                         <Input
                           value={shipping.lastName}
                           onChange={(e) =>
@@ -550,7 +550,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <Label>Straße & Hausnummer</Label>
+                        <Label className="pb-2">Straße & Hausnummer</Label>
                         <Input
                           value={shipping.street}
                           onChange={(e) =>
@@ -560,7 +560,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div>
-                        <Label>PLZ</Label>
+                        <Label className="pb-2">PLZ</Label>
                         <Input
                           value={shipping.zip}
                           onChange={(e) =>
@@ -570,7 +570,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div>
-                        <Label>Ort</Label>
+                        <Label className="pb-2">Ort</Label>
                         <Input
                           value={shipping.city}
                           onChange={(e) =>
@@ -580,7 +580,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div>
-                        <Label>Land</Label>
+                        <Label className="pb-2">Land</Label>
                         <Input
                           value={shipping.country}
                           onChange={(e) =>
@@ -590,7 +590,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <Label>E-Mail (Bestellbestätigung)</Label>
+                        <Label className="pb-2">E-Mail (Bestellbestätigung)</Label>
                         <Input
                           type="email"
                           value={shipping.email}
@@ -607,7 +607,7 @@ export default function ShopPage() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="font-medium">Rechnungsdetails</div>
-                      <label className="inline-flex items-center gap-2 text-sm">
+                      <label className="inline-flex items-center gap-2 text-sm ">
                         <input
                           type="checkbox"
                           className="h-4 w-4"
@@ -619,7 +619,7 @@ export default function ShopPage() {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div className="sm:col-span-2">
-                        <Label>Firma (optional)</Label>
+                        <Label className="pb-2">Firma (optional)</Label>
                         <Input
                           value={billing.company}
                           onChange={(e) =>
@@ -629,7 +629,7 @@ export default function ShopPage() {
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <Label>UID (optional)</Label>
+                        <Label className="pb-2">UID (optional)</Label>
                         <Input
                           value={billing.vatId}
                           onChange={(e) =>
@@ -671,7 +671,6 @@ export default function ShopPage() {
                             <span className="font-semibold">PayPal</span>
                           </span>
                         </div>
-                        <span className="text-xs text-muted-foreground">Button unten</span>
                       </label>
 
                       <label className="flex items-center justify-between rounded-lg border p-3">
@@ -702,7 +701,7 @@ export default function ShopPage() {
                     <div className="space-y-3 rounded-xl border p-4">
                       <div className="grid grid-cols-1 gap-3">
                         <div>
-                          <Label>Kartennummer</Label>
+                          <Label className="pb-2">Kartennummer</Label>
                           <Input
                             inputMode="numeric"
                             placeholder="4242 4242 4242 4242"
@@ -713,7 +712,7 @@ export default function ShopPage() {
                           />
                         </div>
                         <div>
-                          <Label>Karteninhaber*in</Label>
+                          <Label className="pb-2">Karteninhaber*in</Label>
                           <Input
                             placeholder="Max Mustermann"
                             value={card.holder}
@@ -724,7 +723,7 @@ export default function ShopPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <Label>Ablauf (MM/YY)</Label>
+                            <Label className="pb-2">Ablauf (MM/YY)</Label>
                             <Input
                               placeholder="12/27"
                               value={card.expiry}
@@ -734,7 +733,7 @@ export default function ShopPage() {
                             />
                           </div>
                           <div>
-                            <Label>CVC</Label>
+                            <Label className="pb-2">CVC</Label>
                             <Input
                               placeholder="123"
                               value={card.cvc}
@@ -775,9 +774,6 @@ export default function ShopPage() {
                           Google Pay
                         </Button>
                       )}
-                      <p className="text-xs text-muted-foreground">
-                        (Buttons sind Platzhalter – hier später die echten SDK-Buttons einbinden)
-                      </p>
                     </div>
                   )}
                 </>
