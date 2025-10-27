@@ -5,10 +5,32 @@ import Footer from "@/components/Footer";
 import { display, inter, INK, CREAM, cx } from "@/lib/ui";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
-import { Truck, RotateCcw, ShieldCheck, ChevronRight, Check, X } from "lucide-react";
+import {
+  Truck,
+  RotateCcw,
+  ShieldCheck,
+  ChevronRight,
+  Check,
+  X,
+  CreditCard,
+  ArrowLeft,
+} from "lucide-react";
+
+// shadcn/ui
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 // Motion Presets
 const fade = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
@@ -36,10 +58,44 @@ export default function ShopPage() {
   const [qty, setQty] = useState(1);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [step, setStep] = useState<1 | 2>(1);
+
+  // Address state (sehr simpel – du kannst an dein Backend binden)
+  const [shipToBilling, setShipToBilling] = useState(true);
+  const [shipping, setShipping] = useState({
+    firstName: "",
+    lastName: "",
+    street: "",
+    zip: "",
+    city: "",
+    country: "Österreich",
+    email: "",
+  });
+  const [billing, setBilling] = useState({
+    company: "",
+    vatId: "",
+  });
+
+  // Payment state
+  const [payMethod, setPayMethod] = useState<
+    "card" | "paypal" | "klarna" | "apple" | "google"
+  >("card");
+  const [card, setCard] = useState({
+    number: "",
+    holder: "",
+    expiry: "",
+    cvc: "",
+  });
+
   const price = useMemo(() => BASE_PRICES[size][pages], [size, pages]);
   const was = useMemo(() => compareAt(price), [price]);
   const discountPct = useMemo(() => Math.round(((was - price) / was) * 100), [price, was]);
   const sku = useMemo(() => `PB-${size}-${pages}`, [size, pages]);
+
+  const subtotal = useMemo(() => price * qty, [price, qty]);
+  const shippingFee = 0; // z.B. 0 innerhalb AT/DE
+  const total = useMemo(() => subtotal + shippingFee, [subtotal, shippingFee]);
 
   // Simple, dragbares Carousel
   const images = [HERO_IMG, HERO_IMG, HERO_IMG];
@@ -47,11 +103,32 @@ export default function ShopPage() {
   const trackRef = useRef<HTMLDivElement>(null);
   const slideTo = (i: number) => setIndex((i + images.length) % images.length);
 
+  // Actions
+  const onCheckoutClick = () => {
+    setStep(1);
+    setSheetOpen(true);
+  };
+
+  const onNext = () => setStep(2);
+  const onBack = () => setStep(1);
+
+  const disabledNext =
+    !shipping.firstName ||
+    !shipping.lastName ||
+    !shipping.street ||
+    !shipping.zip ||
+    !shipping.city ||
+    !shipping.email;
+
+  const disabledPay =
+    payMethod === "card" &&
+    (!card.number || !card.holder || !card.expiry || !card.cvc);
+
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
       <Header />
 
-      {/* HERO (INK) – jetzt fullscreen */}
+      {/* HERO (INK) – fullscreen */}
       <section
         className="-mt-16 pt-44 pb-10 text-white min-h-[110vh] flex items-center"
         style={{ backgroundColor: INK }}
@@ -151,9 +228,7 @@ export default function ShopPage() {
                 </span>
               </div>
 
-              <h1 className={cx(display.className, "text-4xl leading-tight")}>
-                Powerbook
-              </h1>
+              <h1 className={cx(display.className, "text-4xl leading-tight")}>Powerbook</h1>
               <p className="mt-2 text-white/85">
                 Hard-Cover, Soft-Touch. Flacher Aufschlag. 120g Papier. Dezente Seiten-Markierung
                 für perfektes Scannen mit der App.
@@ -161,8 +236,12 @@ export default function ShopPage() {
 
               {/* Preis */}
               <div className="mt-4 flex items-end gap-3">
-                <div className="text-3xl font-semibold tracking-tight">€{BASE_PRICES[size][pages].toFixed(2)}</div>
-                <div className="text-lg text-white/60 line-through">€{compareAt(BASE_PRICES[size][pages]).toFixed(2)}</div>
+                <div className="text-3xl font-semibold tracking-tight">
+                  €{BASE_PRICES[size][pages].toFixed(2)}
+                </div>
+                <div className="text-lg text-white/60 line-through">
+                  €{compareAt(BASE_PRICES[size][pages]).toFixed(2)}
+                </div>
               </div>
 
               {/* Optionen */}
@@ -228,7 +307,9 @@ export default function ShopPage() {
                     >
                       −
                     </button>
-                    <div className="min-w-12 flex-1 select-none text-center py-2 text-white">{qty}</div>
+                    <div className="min-w-12 flex-1 select-none text-center py-2 text-white">
+                      {qty}
+                    </div>
                     <button
                       className="w-10 select-none px-2 py-2 text-lg text-white hover:bg-white/10"
                       onClick={() => setQty((q) => Math.min(99, q + 1))}
@@ -240,24 +321,31 @@ export default function ShopPage() {
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* CTA - Öffnet Drawer */}
               <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
-                <Link
-                  href={`/checkout?sku=${sku}&qty=${qty}`}
+                <Button
+                  onClick={onCheckoutClick}
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:-translate-y-0.5 transition"
                 >
                   Zur Kasse <ChevronRight className="h-4 w-4" />
-                </Link>
+                </Button>
                 <div className="text-sm text-white/85">
-                  Gesamt: <span className="font-semibold">€{(BASE_PRICES[size][pages] * qty).toFixed(2)}</span>
+                  Gesamt:{" "}
+                  <span className="font-semibold">€{total.toFixed(2)}</span>
                 </div>
               </div>
 
               {/* Trust */}
               <div className="mt-6 grid grid-cols-1 gap-3 text-sm text-white/85 sm:grid-cols-3">
-                <div className="flex items-center gap-2"><Truck className="h-4 w-4" /> 3–7 Tage Versand (AT/DE)</div>
-                <div className="flex items-center gap-2"><RotateCcw className="h-4 w-4" /> 30 Tage Rückgaberecht</div>
-                <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> 2 Jahre Garantie</div>
+                <div className="flex items-center gap-2">
+                  <Truck className="h-4 w-4" /> 3–7 Tage Versand (AT/DE)
+                </div>
+                <div className="flex items-center gap-2">
+                  <RotateCcw className="h-4 w-4" /> 30 Tage Rückgaberecht
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4" /> 2 Jahre Garantie
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -279,21 +367,37 @@ export default function ShopPage() {
               <img src={HERO_IMG} alt="" className="h-64 w-full object-cover sm:h-96" />
             </motion.div>
             <motion.div variants={fade} className="flex flex-col justify-center">
-              <h2 className={cx(display.className, "text-2xl leading-tight")}>Hard-Cover, Soft-Touch</h2>
+              <h2 className={cx(display.className, "text-2xl leading-tight")}>
+                Hard-Cover, Soft-Touch
+              </h2>
               <ul className="mt-3 space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> Flacher Aufschlag, Fadenbindung</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> 120g Papier, tintenfest</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> Dezente Seiten-Markierung fürs Scannen</li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> Flacher Aufschlag, Fadenbindung
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> 120g Papier, tintenfest
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> Dezente Seiten-Markierung fürs Scannen
+                </li>
               </ul>
             </motion.div>
 
             {/* R Bild / L Text */}
             <motion.div variants={fade} className="order-last flex flex-col justify-center lg:order-none">
-              <h2 className={cx(display.className, "text-2xl leading-tight")}>Optimiert für die App</h2>
+              <h2 className={cx(display.className, "text-2xl leading-tight")}>
+                Optimiert für die App
+              </h2>
               <ul className="mt-3 space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> „Scan & Go“ – Ränder & Perspektive automatisch</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> Keywords TODO / CAL / WA / CO (Einkreis-Erkennung)</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4" /> Offline-Scan, EU-Sync</li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> „Scan & Go“ – Ränder & Perspektive automatisch
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> Keywords TODO / CAL / WA / CO (Einkreis-Erkennung)
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-4 w-4" /> Offline-Scan, EU-Sync
+                </li>
               </ul>
             </motion.div>
             <motion.div variants={fade} className="overflow-hidden rounded-2xl border bg-white">
@@ -331,13 +435,14 @@ export default function ShopPage() {
         className="fixed inset-0 z-[70] m-0 h-full w-full bg-black/80 p-0 backdrop:backdrop-blur-sm"
         onClick={() => setLightboxSrc(null)}
       >
-        <button
+        <Button
           aria-label="Schließen"
           className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
           onClick={() => setLightboxSrc(null)}
+          variant="ghost"
         >
           <X className="h-5 w-5" />
-        </button>
+        </Button>
         {lightboxSrc && (
           <div className="grid h-full place-items-center p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -345,6 +450,367 @@ export default function ShopPage() {
           </div>
         )}
       </dialog>
+
+      {/* CHECKOUT SHEET (Drawer von rechts) */}
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+        <SheetContent side="right" className="w-full sm:max-w-xl p-0">
+          <div className="flex h-full flex-col">
+            <div className="p-6 border-b">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  {step === 2 ? (
+                    <>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="-ml-1"
+                        onClick={onBack}
+                        aria-label="Zurück"
+                      >
+                        <ArrowLeft className="h-5 w-5" />
+                      </Button>
+                      Zahlung
+                    </>
+                  ) : (
+                    "Bestellung"
+                  )}
+                </SheetTitle>
+                <SheetDescription>
+                  {step === 1
+                    ? "Prüfe Produkt & gib deine Adressen ein."
+                    : "Zahlungsart wählen & Daten eingeben."}
+                </SheetDescription>
+              </SheetHeader>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-6">
+              {/* Summary */}
+              <div className="rounded-xl border p-4">
+                <div className="flex items-center gap-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={HERO_IMG}
+                    alt=""
+                    className="h-16 w-16 rounded-lg object-cover"
+                  />
+                  <div className="flex-1">
+                    <div className="font-medium">
+                      Powerbook — {size}, {pages} Seiten
+                    </div>
+                    <div className="text-xs text-muted-foreground">SKU: {sku}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-semibold">€{price.toFixed(2)}</div>
+                    <div className="text-xs text-muted-foreground">x {qty}</div>
+                  </div>
+                </div>
+                <Separator className="my-4" />
+                <div className="space-y-1 text-sm">
+                  <div className="flex justify-between">
+                    <span>Zwischensumme</span>
+                    <span>€{subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Versand</span>
+                    <span>{shippingFee === 0 ? "Kostenlos" : `€${shippingFee.toFixed(2)}`}</span>
+                  </div>
+                  <div className="flex justify-between font-semibold text-base pt-1">
+                    <span>Gesamt</span>
+                    <span>€{total.toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {step === 1 ? (
+                <>
+                  {/* Versandadresse */}
+                  <div className="space-y-3">
+                    <div className="font-medium">Lieferadresse</div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <Label>Vorname</Label>
+                        <Input
+                          value={shipping.firstName}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, firstName: e.target.value }))
+                          }
+                          placeholder="Max"
+                        />
+                      </div>
+                      <div>
+                        <Label>Nachname</Label>
+                        <Input
+                          value={shipping.lastName}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, lastName: e.target.value }))
+                          }
+                          placeholder="Mustermann"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <Label>Straße & Hausnummer</Label>
+                        <Input
+                          value={shipping.street}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, street: e.target.value }))
+                          }
+                          placeholder="Musterstraße 1"
+                        />
+                      </div>
+                      <div>
+                        <Label>PLZ</Label>
+                        <Input
+                          value={shipping.zip}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, zip: e.target.value }))
+                          }
+                          placeholder="1010"
+                        />
+                      </div>
+                      <div>
+                        <Label>Ort</Label>
+                        <Input
+                          value={shipping.city}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, city: e.target.value }))
+                          }
+                          placeholder="Wien"
+                        />
+                      </div>
+                      <div>
+                        <Label>Land</Label>
+                        <Input
+                          value={shipping.country}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, country: e.target.value }))
+                          }
+                          placeholder="Österreich"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <Label>E-Mail (Bestellbestätigung)</Label>
+                        <Input
+                          type="email"
+                          value={shipping.email}
+                          onChange={(e) =>
+                            setShipping((s) => ({ ...s, email: e.target.value }))
+                          }
+                          placeholder="max@example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Rechnungsadresse */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="font-medium">Rechnungsdetails</div>
+                      <label className="inline-flex items-center gap-2 text-sm">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4"
+                          checked={shipToBilling}
+                          onChange={(e) => setShipToBilling(e.target.checked)}
+                        />
+                        Rechnungsadresse = Lieferadresse
+                      </label>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="sm:col-span-2">
+                        <Label>Firma (optional)</Label>
+                        <Input
+                          value={billing.company}
+                          onChange={(e) =>
+                            setBilling((b) => ({ ...b, company: e.target.value }))
+                          }
+                          placeholder="Muster GmbH"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <Label>UID (optional)</Label>
+                        <Input
+                          value={billing.vatId}
+                          onChange={(e) =>
+                            setBilling((b) => ({ ...b, vatId: e.target.value }))
+                          }
+                          placeholder="ATU12345678"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Zahlungsarten */}
+                  <div className="space-y-4">
+                    <div className="font-medium">Zahlungsmethode</div>
+                    <RadioGroup
+                      value={payMethod}
+                      onValueChange={(v) =>
+                        setPayMethod(v as typeof payMethod)
+                      }
+                      className="grid grid-cols-1 gap-2"
+                    >
+                      <label className="flex items-center justify-between rounded-lg border p-3">
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="card" id="pm-card" />
+                          <div className="flex items-center gap-2">
+                            <CreditCard className="h-4 w-4" />
+                            <span>Kredit-/Debitkarte</span>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label className="flex items-center justify-between rounded-lg border p-3">
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="paypal" id="pm-paypal" />
+                          <span className="inline-flex items-center gap-2">
+                            {/* PayPal Logo (einfaches Wortbild) */}
+                            <span className="font-semibold">PayPal</span>
+                          </span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">Button unten</span>
+                      </label>
+
+                      <label className="flex items-center justify-between rounded-lg border p-3">
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="klarna" id="pm-klarna" />
+                          <span>Klarna</span>
+                        </div>
+                      </label>
+
+                      <label className="flex items-center justify-between rounded-lg border p-3">
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="apple" id="pm-apple" />
+                          <span>Apple&nbsp;Pay</span>
+                        </div>
+                      </label>
+
+                      <label className="flex items-center justify-between rounded-lg border p-3">
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="google" id="pm-google" />
+                          <span>Google&nbsp;Pay</span>
+                        </div>
+                      </label>
+                    </RadioGroup>
+                  </div>
+
+                  {/* Kartenformular */}
+                  {payMethod === "card" && (
+                    <div className="space-y-3 rounded-xl border p-4">
+                      <div className="grid grid-cols-1 gap-3">
+                        <div>
+                          <Label>Kartennummer</Label>
+                          <Input
+                            inputMode="numeric"
+                            placeholder="4242 4242 4242 4242"
+                            value={card.number}
+                            onChange={(e) =>
+                              setCard((c) => ({ ...c, number: e.target.value }))
+                            }
+                          />
+                        </div>
+                        <div>
+                          <Label>Karteninhaber*in</Label>
+                          <Input
+                            placeholder="Max Mustermann"
+                            value={card.holder}
+                            onChange={(e) =>
+                              setCard((c) => ({ ...c, holder: e.target.value }))
+                            }
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <Label>Ablauf (MM/YY)</Label>
+                            <Input
+                              placeholder="12/27"
+                              value={card.expiry}
+                              onChange={(e) =>
+                                setCard((c) => ({ ...c, expiry: e.target.value }))
+                              }
+                            />
+                          </div>
+                          <div>
+                            <Label>CVC</Label>
+                            <Input
+                              placeholder="123"
+                              value={card.cvc}
+                              onChange={(e) =>
+                                setCard((c) => ({ ...c, cvc: e.target.value }))
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Alternative Buttons */}
+                  {payMethod !== "card" && (
+                    <div className="space-y-3">
+                      {payMethod === "paypal" && (
+                        <Button
+                          className="w-full h-11 rounded-lg font-semibold"
+                          variant="secondary"
+                        >
+                          {/* Placeholder Logo-Style */}
+                          Mit PayPal zahlen
+                        </Button>
+                      )}
+                      {payMethod === "klarna" && (
+                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                          Mit Klarna fortfahren
+                        </Button>
+                      )}
+                      {payMethod === "apple" && (
+                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                           Pay
+                        </Button>
+                      )}
+                      {payMethod === "google" && (
+                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                          Google Pay
+                        </Button>
+                      )}
+                      <p className="text-xs text-muted-foreground">
+                        (Buttons sind Platzhalter – hier später die echten SDK-Buttons einbinden)
+                      </p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="p-6 border-t">
+              {step === 1 ? (
+                <Button
+                  className="w-full h-11 rounded-xl"
+                  onClick={onNext}
+                  disabled={disabledNext}
+                >
+                  Weiter zur Zahlung <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+              ) : (
+                <Button
+                  className="w-full h-11 rounded-xl"
+                  disabled={disabledPay}
+                  onClick={() => {
+                    // Hier später tatsächliche Zahlungs-Integration triggern
+                    // z.B. Stripe confirm, oder zu PayPal/Klarna umleiten
+                    alert("Demo: Zahlung ausgelöst 🚀");
+                    setSheetOpen(false);
+                  }}
+                >
+                  Jetzt zahlen €{total.toFixed(2)}
+                </Button>
+              )}
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
     </main>
   );
 }
