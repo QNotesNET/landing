@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Header from "@/components/Header";
@@ -32,6 +33,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Hero from "@/components/shop/Hero";
+import Features from "@/components/shop/Features";
 
 // Motion Presets
 const fade = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
@@ -91,7 +93,10 @@ export default function ShopPage() {
 
   const price = useMemo(() => BASE_PRICES[size][pages], [size, pages]);
   const was = useMemo(() => compareAt(price), [price]);
-  const discountPct = useMemo(() => Math.round(((was - price) / was) * 100), [price, was]);
+  const discountPct = useMemo(
+    () => Math.round(((was - price) / was) * 100),
+    [price, was]
+  );
   const sku = useMemo(() => `PB-${size}-${pages}`, [size, pages]);
 
   const subtotal = useMemo(() => price * qty, [price, qty]);
@@ -130,7 +135,7 @@ export default function ShopPage() {
       <Header />
 
       {/* HERO (INK) – fullscreen */}
-      <Hero 
+      <Hero
         basePrices={BASE_PRICES}
         size={size}
         setSize={setSize}
@@ -138,8 +143,8 @@ export default function ShopPage() {
         setPages={setPages}
         qty={qty}
         setQty={setQty}
-        compareAt={compareAt} 
-        discountPct={discountPct}  
+        compareAt={compareAt}
+        discountPct={discountPct}
         fade={fade}
         stagger={stagger}
         images={images}
@@ -148,63 +153,34 @@ export default function ShopPage() {
         slideTo={slideTo}
         trackRef={trackRef}
         setLightboxSrc={setLightboxSrc}
-        total={total}     
+        total={total}
       />
 
       {/* DETAILS / FEATURES (weiß) */}
-      <section className="py-12">
-        <div className="mx-auto max-w-6xl px-4">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 gap-10 lg:grid-cols-2"
-          >
-            {/* L Bild / R Text */}
-            <motion.div variants={fade} className="overflow-hidden rounded-2xl border bg-white">
-              <img src={HERO_IMG} alt="" className="h-64 w-full object-cover sm:h-96" />
-            </motion.div>
-            <motion.div variants={fade} className="flex flex-col justify-center">
-              <h2 className={cx(display.className, "text-2xl leading-tight")}>
-                Hard-Cover, Soft-Touch
-              </h2>
-              <ul className="mt-3 space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> Flacher Aufschlag, Fadenbindung
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> 120g Papier, tintenfest
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> Dezente Seiten-Markierung fürs Scannen
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* R Bild / L Text */}
-            <motion.div variants={fade} className="order-last flex flex-col justify-center lg:order-none">
-              <h2 className={cx(display.className, "text-2xl leading-tight")}>
-                Optimiert für die App
-              </h2>
-              <ul className="mt-3 space-y-2 text-sm text-gray-700">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> „Scan & Go“ – Ränder & Perspektive automatisch
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> Keywords TODO / CAL / WA / CO (Einkreis-Erkennung)
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4" /> Offline-Scan, EU-Sync
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div variants={fade} className="overflow-hidden rounded-2xl border bg-white">
-              <img src={HERO_IMG} alt="" className="h-64 w-full object-cover sm:h-96" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <Features
+        stagger={stagger}
+        fade={fade}
+        HERO_IMG={HERO_IMG}
+        features={[
+          {
+            title: "Hard-Cover, Soft-Touch",
+            points: [
+              "Flacher Aufschlag, Fadenbindung",
+              "120g Papier, tintenfest",
+              "Dezente Seiten-Markierung fürs Scannen",
+            ],
+            left: true,
+          },
+          {
+            title: "Vielseitige Größen & Seitenanzahl",
+            points: [
+              "A5 & A4 Formate",
+              "100, 140 oder 200 Seiten",
+              "Ideal für Notizen, Skizzen & Pläne",
+            ],
+          },
+        ]}
+      />
 
       {/* INFO BAR (CREAM) */}
       <section className="py-12" style={{ backgroundColor: CREAM }}>
@@ -220,7 +196,8 @@ export default function ShopPage() {
               Analog schreiben. Digital arbeiten.
             </h3>
             <p className="mt-1 text-sm text-gray-700">
-              Powerbook funktioniert mit iOS, Android & Web. Datenhaltung in der EU, DSGVO-ready.
+              Powerbook funktioniert mit iOS, Android & Web. Datenhaltung in der
+              EU, DSGVO-ready.
             </p>
           </motion.div>
         </div>
@@ -245,7 +222,11 @@ export default function ShopPage() {
         {lightboxSrc && (
           <div className="grid h-full place-items-center p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightboxSrc} alt="" className="max-h-full max-w-full rounded-xl" />
+            <img
+              src={lightboxSrc}
+              alt=""
+              className="max-h-full max-w-full rounded-xl"
+            />
           </div>
         )}
       </dialog>
@@ -297,7 +278,9 @@ export default function ShopPage() {
                     <div className="font-medium">
                       Powerbook — {size}, {pages} Seiten
                     </div>
-                    <div className="text-xs text-muted-foreground">SKU: {sku}</div>
+                    <div className="text-xs text-muted-foreground">
+                      SKU: {sku}
+                    </div>
                   </div>
                   <div className="text-right">
                     <div className="font-semibold">€{price.toFixed(2)}</div>
@@ -312,8 +295,12 @@ export default function ShopPage() {
                   </div>
                   <div className="flex justify-between">
                     <span>Versand</span>
-                    {/* @ts-expect-error --- */}
-                    <span>{shippingFee === 0 ? "Kostenlos" : `€${shippingFee.toFixed(2)}`}</span>
+                    <span>
+                      {shippingFee === 0
+                        ? "Kostenlos"
+                        // @ts-expect-error ---
+                        : `€${shippingFee.toFixed(2)}`}
+                    </span>
                   </div>
                   <div className="flex justify-between font-semibold text-base pt-1">
                     <span>Gesamt</span>
@@ -333,7 +320,10 @@ export default function ShopPage() {
                         <Input
                           value={shipping.firstName}
                           onChange={(e) =>
-                            setShipping((s) => ({ ...s, firstName: e.target.value }))
+                            setShipping((s) => ({
+                              ...s,
+                              firstName: e.target.value,
+                            }))
                           }
                           placeholder="Max"
                         />
@@ -343,7 +333,10 @@ export default function ShopPage() {
                         <Input
                           value={shipping.lastName}
                           onChange={(e) =>
-                            setShipping((s) => ({ ...s, lastName: e.target.value }))
+                            setShipping((s) => ({
+                              ...s,
+                              lastName: e.target.value,
+                            }))
                           }
                           placeholder="Mustermann"
                         />
@@ -353,7 +346,10 @@ export default function ShopPage() {
                         <Input
                           value={shipping.street}
                           onChange={(e) =>
-                            setShipping((s) => ({ ...s, street: e.target.value }))
+                            setShipping((s) => ({
+                              ...s,
+                              street: e.target.value,
+                            }))
                           }
                           placeholder="Musterstraße 1"
                         />
@@ -383,18 +379,26 @@ export default function ShopPage() {
                         <Input
                           value={shipping.country}
                           onChange={(e) =>
-                            setShipping((s) => ({ ...s, country: e.target.value }))
+                            setShipping((s) => ({
+                              ...s,
+                              country: e.target.value,
+                            }))
                           }
                           placeholder="Österreich"
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <Label className="pb-2">E-Mail (Bestellbestätigung)</Label>
+                        <Label className="pb-2">
+                          E-Mail (Bestellbestätigung)
+                        </Label>
                         <Input
                           type="email"
                           value={shipping.email}
                           onChange={(e) =>
-                            setShipping((s) => ({ ...s, email: e.target.value }))
+                            setShipping((s) => ({
+                              ...s,
+                              email: e.target.value,
+                            }))
                           }
                           placeholder="max@example.com"
                         />
@@ -422,7 +426,10 @@ export default function ShopPage() {
                         <Input
                           value={billing.company}
                           onChange={(e) =>
-                            setBilling((b) => ({ ...b, company: e.target.value }))
+                            setBilling((b) => ({
+                              ...b,
+                              company: e.target.value,
+                            }))
                           }
                           placeholder="Muster GmbH"
                         />
@@ -447,9 +454,7 @@ export default function ShopPage() {
                     <div className="font-medium">Zahlungsmethode</div>
                     <RadioGroup
                       value={payMethod}
-                      onValueChange={(v) =>
-                        setPayMethod(v as typeof payMethod)
-                      }
+                      onValueChange={(v) => setPayMethod(v as typeof payMethod)}
                       className="grid grid-cols-1 gap-2"
                     >
                       <label className="flex items-center justify-between rounded-lg border p-3">
@@ -527,7 +532,10 @@ export default function ShopPage() {
                               placeholder="12/27"
                               value={card.expiry}
                               onChange={(e) =>
-                                setCard((c) => ({ ...c, expiry: e.target.value }))
+                                setCard((c) => ({
+                                  ...c,
+                                  expiry: e.target.value,
+                                }))
                               }
                             />
                           </div>
@@ -559,17 +567,26 @@ export default function ShopPage() {
                         </Button>
                       )}
                       {payMethod === "klarna" && (
-                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                        <Button
+                          className="w-full h-11 rounded-lg font-semibold"
+                          variant="secondary"
+                        >
                           Mit Klarna fortfahren
                         </Button>
                       )}
                       {payMethod === "apple" && (
-                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                        <Button
+                          className="w-full h-11 rounded-lg font-semibold"
+                          variant="secondary"
+                        >
                            Pay
                         </Button>
                       )}
                       {payMethod === "google" && (
-                        <Button className="w-full h-11 rounded-lg font-semibold" variant="secondary">
+                        <Button
+                          className="w-full h-11 rounded-lg font-semibold"
+                          variant="secondary"
+                        >
                           Google Pay
                         </Button>
                       )}
