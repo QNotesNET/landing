@@ -32,6 +32,7 @@ export default function Header() {
     { label: "Entdecken", href: "/#features" },
     { label: "Preise", href: "/#pricing" },
     { label: "Shop", href: "/shop" },
+    { label: "App", href: "/app" },
     { label: "Business", href: "/business" },
   ];
 
