@@ -28,10 +28,10 @@ export default function Header() {
   }, [mobileOpen]);
 
   const items = [
-    { label: "So funktioniert's", href: "/#features" },
+    { label: "So funktioniert's", href: "/#how" },
     { label: "Preise", href: "/#pricing" },
     { label: "Shop", href: "/shop" },
-    { label: "App", href: "/app" },
+    { label: "App", href: "/mobile" },
     { label: "Business", href: "/business" },
   ];
 

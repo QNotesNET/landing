@@ -78,7 +78,7 @@ export default function Hero() {
               <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/#how-it-works"
+              href="/#how"
               className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-5 py-3 font-medium text-white backdrop-blur hover:bg-white/20"
             >
               So funktioniert’s

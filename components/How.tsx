@@ -17,7 +17,7 @@ import {
 
 export default function How() {
   return (
-    <section id="how-it-works" className="py-24 sm:py-28" style={{ backgroundColor: INK }}>
+    <section className="py-24 sm:py-28" style={{ backgroundColor: INK }} id="how">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-white">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
