@@ -63,7 +63,7 @@ export default function How() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/signup"
+                href="https://my.powerbook.at/register"
                 className="rounded-xl bg-white px-6 py-3 text-black shadow-lg hover:-translate-y-0.5 transition"
               >
                 Jetzt kostenlos starten

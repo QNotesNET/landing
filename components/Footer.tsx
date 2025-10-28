@@ -1,41 +1,312 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronDown, Instagram, Linkedin, Facebook } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
 
-export default function Footer() {
-  return (
-    <footer className="border-t border-black/5 bg-white py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* 3-Spalten-Layout: Logo | Mitte (Links+Status) | Copyright */}
-        <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[auto_1fr_auto]">
-          {/* Links: Logo */}
-          <Link href="/" className="flex items-center justify-center sm:justify-start">
-            <Image
-              src="/images/logos/logo-black.svg"
-              alt="Powerbook"
-              width={120}
-              height={24}
-              className="h-15 w-auto"
-              priority
-            />
-          </Link>
+const NAV = [
+  { label: "So funktioniert's", href: "/#how" },
+  { label: "Preise", href: "/#pricing" },
+  { label: "Shop", href: "/shop" },
+  { label: "Business", href: "/business" },
+];
 
-          {/* Mitte: Rechts-Links + Status darunter, zentriert */}
-          <div className="flex flex-col items-center">
-            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-600">
-              <Link href="/impressum" className="hover:text-gray-900">Impressum</Link>
-              <Link href="/datenschutz" className="hover:text-gray-900">Datenschutz</Link>
-              <Link href="/agb" className="hover:text-gray-900">AGB</Link>
+const LINKS = [
+  { label: "Jetzt starten", href: "https://my.powerbook.at/register" },
+  { label: "Kontakt", href: "mailto:info@powerbook.at" },
+  { label: "Status", href: "https://status.powerbook.at" },
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-neutral-950 text-neutral-200">
+      {/* Top area */}
+      <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        {/* Mobile: Accordion */}
+        <div className="md:hidden space-y-6">
+          {/* 1. Logo + Socials */}
+          <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
+              Powerbook
+              <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="px-4 pb-4">
+              <Link href="/" className="inline-flex items-center">
+                <Image
+                  src="/images/logos/logo-white.svg"
+                  alt="Powerbook"
+                  width={140}
+                  height={28}
+                  className="h-12 w-auto"
+                  priority
+                />
+              </Link>
+              <div className="mt-4 flex items-center gap-4">
+                <a
+                  href="https://linkedin.com"
+                  aria-label="LinkedIn"
+                  className="hover:text-white"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  aria-label="Instagram"
+                  className="hover:text-white"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  aria-label="Facebook"
+                  className="hover:text-white"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </details>
+
+          {/* 2. Navigation */}
+          <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
+              Navigation
+              <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
+            </summary>
+            <nav className="px-4 pb-4">
+              <ul className="space-y-3">
+                {NAV.map((it) => (
+                  <li key={it.label}>
+                    <Link
+                      href={it.href}
+                      className="text-neutral-300 hover:text-white"
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
-            <div className="mt-2">
-              <StatusBadge />
+          </details>
+
+          {/* 3. Links */}
+          <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
+              Links
+              <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
+            </summary>
+            <nav className="px-4 pb-4">
+              <ul className="space-y-3">
+                {LINKS.map((it) => (
+                  <li key={it.label}>
+                    <Link
+                      href={it.href}
+                      className="text-neutral-300 hover:text-white"
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </details>
+
+          {/* 4. Powerbook (Anmelden + Stores) */}
+          <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
+            <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
+              Mobile App
+              <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="px-4 pb-4">
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <a
+                  href="https://apps.apple.com/"
+                  aria-label="Lade im App Store"
+                  className="inline-block"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
+                    alt="Download on the App Store"
+                    className="h-10 w-auto"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/"
+                  aria-label="Jetzt bei Google Play"
+                  className="inline-block"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
+                    alt="Get it on Google Play"
+                    className="h-10 w-auto"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        {/* Desktop: 4 columns */}
+        <div className="hidden md:grid md:grid-cols-4 md:gap-8">
+          {/* Col 1: Logo + Socials */}
+          <div className="space-y-6">
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/images/logos/logo-white.svg"
+                alt="Powerbook"
+                width={140}
+                height={28}
+                className="h-15 w-auto"
+                priority
+              />
+            </Link>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://linkedin.com/company/powerbook"
+                aria-label="LinkedIn"
+                className="hover:text-white"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com"
+                aria-label="Instagram"
+                className="hover:text-white"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                aria-label="Facebook"
+                className="hover:text-white"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
-          {/* Rechts: Copyright */}
-          <div className="text-center text-xs text-gray-400 sm:text-right">
-            © {new Date().getFullYear()} Powerbook - Alle Rechte vorbehalten.
+          {/* Col 2: Navigation */}
+          <div>
+            <h3 className="text-sm font-semibold text-white">Navigation</h3>
+            <nav className="mt-4">
+              <ul className="space-y-3">
+                {NAV.map((it) => (
+                  <li key={it.label}>
+                    <Link
+                      href={it.href}
+                      className="text-sm text-neutral-300 hover:text-white"
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
+
+          {/* Col 3: Links */}
+          <div>
+            <h3 className="text-sm font-semibold text-white">Links</h3>
+            <nav className="mt-4">
+              <ul className="space-y-3">
+                {LINKS.map((it) => (
+                  <li key={it.label}>
+                    <Link
+                      href={it.href}
+                      className="text-sm text-neutral-300 hover:text-white"
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+
+          {/* Col 4: Powerbook (Anmelden + Stores) */}
+          <div>
+            <h3 className="text-sm font-semibold text-white">Powerbook</h3>
+            <div className="mt-4 space-y-4">
+              <Link
+                href="https://my.powerbook.at"
+                className="text-sm text-neutral-300 hover:text-white"
+              >
+                Anmelden
+              </Link>
+              <div className="flex flex-col gap-2 mt-4">
+                <a
+                  href="https://apps.apple.com/"
+                  aria-label="Lade im App Store"
+                  className="inline-block"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
+                    alt="Download on the App Store"
+                    className="h-11 w-auto"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/"
+                  aria-label="Jetzt bei Google Play"
+                  className="inline-block"
+                >
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
+                    alt="Get it on Google Play"
+                    className="h-11 w-auto"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar with legal + status */}
+      <div className="border-t border-white/10">
+        <div
+          className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8
+                        flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          {/* LEFT GROUP: Copyright | Status (links ausgerichtet auf Desktop) */}
+          <div
+            className="flex flex-col items-center gap-2
+                          md:flex-row md:items-center md:justify-start md:gap-3"
+          >
+            {/* Divider only on desktop */}
+            {/* Status first on mobile, second on desktop */}
+            <div className="order-1 md:order-2 text-xs">
+              <span className="hidden md:inline-block md:order-3 text-neutral-400">
+                |ㅤ{" "}
+              </span>
+              <StatusBadge />
+            </div>
+
+            {/* Copyright second on mobile, first on desktop */}
+            <p className="order-2 md:order-1 text-xs text-neutral-400">
+              © {year}{" "}
+              <span className="font-medium text-neutral-200">Powerbook</span> ·
+              Alle Rechte vorbehalten.
+            </p>
+          </div>
+
+          {/* RIGHT GROUP: Legal Links */}
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-neutral-400">
+            <Link href="/impressum" className="hover:text-white">
+              Impressum
+            </Link>
+            <Link href="/datenschutz" className="hover:text-white">
+              Datenschutz
+            </Link>
+            <Link href="/agb" className="hover:text-white">
+              AGB
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

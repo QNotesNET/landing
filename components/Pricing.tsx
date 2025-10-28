@@ -292,7 +292,7 @@ export default function Pricing() {
               erhalten <span className="font-semibold">20 % Rabatt</span> auf
               Plus & Pro. Bitte{" "}
               <Link
-                href="/contact"
+                href="mailto:info@powerbook.at"
                 className="underline underline-offset-4"
               >
                 kontaktiert uns

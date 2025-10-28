@@ -71,7 +71,7 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              href="/signup"
+              href="https://my.powerbook.at/register"
               className="group inline-flex items-center gap-2 rounded-xl bg-[#2D2825] px-5 py-3 font-medium text-white shadow-lg shadow-black/20 hover:-translate-y-0.5 transition"
             >
               Jetzt starten{" "}

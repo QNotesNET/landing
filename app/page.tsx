@@ -43,8 +43,6 @@ export default function Page() {
       <MotionSection><Integrations /></MotionSection>
       <MotionSection><Pricing /></MotionSection>
       <MotionSection><FAQ /></MotionSection>
-      <MotionSection><Newsletter /></MotionSection>
-
       <Footer />
     </main>
   );
