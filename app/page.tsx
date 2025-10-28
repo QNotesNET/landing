@@ -2,7 +2,6 @@
 
 import { cx, inter } from "@/lib/ui";
 import Hero from "@/components/Hero";
-import FeatureDetails from "@/components/FeatureDetails";
 import Comparison from "@/components/Comparison";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
@@ -13,6 +12,7 @@ import Header from "@/components/Header";
 // ⬇️ Neu: Framer Motion + dezente Fade/Stagger Presets (wie auf Business)
 import { motion } from "framer-motion";
 import How from "@/components/How";
+import AppPreview from "@/components/AppPreview";
 const fade = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
 const MotionSection: React.FC<React.PropsWithChildren<{ delay?: number }>> = ({
   children,
@@ -37,7 +37,7 @@ export default function Page() {
       {/* ⬇️ Jede Section nur dezent animiert beim Scroll-Eintritt */}
       <Hero />
       <MotionSection><How /></MotionSection>
-      <MotionSection><FeatureDetails /></MotionSection>
+      <MotionSection><AppPreview /></MotionSection>
       <MotionSection><Comparison /></MotionSection>
       <MotionSection><Pricing /></MotionSection>
       <MotionSection><FAQ /></MotionSection>

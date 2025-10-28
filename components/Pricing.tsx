@@ -118,7 +118,7 @@ export default function Pricing() {
               "text-3xl sm:text-4xl leading-tight"
             )}
           >
-            Preise für Privatpersonen
+            Faire Preise
           </h2>
           <p className="mt-3 text-gray-600">
             Software & Online-Powerbooks – das physische Powerbook ist optional
