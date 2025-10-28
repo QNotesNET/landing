@@ -39,13 +39,13 @@ export default function MobileLandingPage() {
     <div className="min-h-dvh flex flex-col" style={{ backgroundColor: INK }}>
       <Header />
       {/* Main section: mobile-first Stack, rechts Bild auf md+ */}
-      <section className="flex-1 -mt-12">
-        <div className="relative aspect-[10/16] w-full  md:max-w-xl mx-auto overflow-hidden rounded-2xl lg:hidden">
+      <section className="flex-1 pt-22 lg:pt-0">
+        <div className="relative aspect-[10/16] w-full  md:max-w-xl mx-auto overflow-hidden rounded-2xl lg:hidden max-h-90">
           <Image
             src="/images/mobile.svg" // TODO: durch euer Mockup ersetzen
             alt="Powerbook App – Vorschau"
             fill
-            className="object-contain"
+            className="object-contain h-32px"
             priority
           />
         </div>
@@ -64,7 +64,7 @@ export default function MobileLandingPage() {
                 organisieren – egal, ob du ein iOS- oder Android-Gerät nutzt.
               </p>
 
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full">
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full pb-15">
                 <StoreBadges platform={platform} />
               </div>
             </div>
@@ -93,9 +93,9 @@ export default function MobileLandingPage() {
 function StoreBadges({ platform }: { platform: Platform }) {
   // Badge-Images (vom Nutzer vorgegeben)
   const IOS_BADGE =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png";
+    "/images/icons/appstore.webp";
   const ANDROID_BADGE =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png";
+    "/images/icons/playstore.webp";
 
   // TODO: Echte Store-Links eintragen
   const iosHref = "https://apps.apple.com/";

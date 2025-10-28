@@ -12,8 +12,8 @@ const NAV = [
 
 const LINKS = [
   { label: "Jetzt starten", href: "https://my.powerbook.at/register" },
-  { label: "Kontakt", href: "mailto:info@powerbook.at" },
   { label: "Status", href: "https://status.powerbook.at" },
+  { label: "Kontakt", href: "mailto:info@powerbook.at" },
 ];
 
 export default function Footer() {
@@ -126,7 +126,7 @@ export default function Footer() {
                   className="inline-block"
                 >
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
+                    src="/images/icons/appstore.webp"
                     alt="Download on the App Store"
                     className="h-10 w-auto"
                     loading="lazy"
@@ -138,7 +138,7 @@ export default function Footer() {
                   className="inline-block"
                 >
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
+                    src="/images/icons/playstore.webp"
                     alt="Get it on Google Play"
                     className="h-10 w-auto"
                     loading="lazy"
@@ -243,7 +243,7 @@ export default function Footer() {
                   className="inline-block"
                 >
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png"
+                    src="/images/icons/appstore.webp"
                     alt="Download on the App Store"
                     className="h-11 w-auto"
                     loading="lazy"
@@ -255,7 +255,7 @@ export default function Footer() {
                   className="inline-block"
                 >
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
+                    src="/images/icons/playstore.webp"
                     alt="Get it on Google Play"
                     className="h-11 w-auto"
                     loading="lazy"

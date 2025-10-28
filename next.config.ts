@@ -4,7 +4,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   images: {
     // Entweder kurz …
-    domains: ['app.powerbook.at' , 'images.unsplash.com', 'upload.wikimedia.org'],
+    domains: ['app.powerbook.at' , 'images.unsplash.com',],
 
     // … oder granular:
     // remotePatterns: [
