@@ -28,8 +28,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   const items = [
-    { label: "Home", href: "/" },
-    { label: "Entdecken", href: "/#features" },
+    { label: "So funktioniert's", href: "/#features" },
     { label: "Preise", href: "/#pricing" },
     { label: "Shop", href: "/shop" },
     { label: "App", href: "/app" },
