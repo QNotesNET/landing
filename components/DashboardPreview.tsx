@@ -20,7 +20,7 @@ const features = [
 
 export default function DashboardPreview() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           {/* Titel in Playfair Display + INK */}
@@ -28,10 +28,10 @@ export default function DashboardPreview() {
             className={cx(
                           display.className,
                           // mobil kleiner, ab sm wieder größer
-                          "text-3xl sm:text-4xl leading-tight sm:leading-[1.05]"
+                          "text-3xl sm:text-4xl leading-tight sm:leading-[1.05] "
                         )}
           >
-            Alles an einem Ort. Mit System.
+            Alles an einem Ort. 
           </p>
 
           <p className="mt-3 text-gray-600">

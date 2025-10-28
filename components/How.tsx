@@ -20,12 +20,17 @@ export default function How() {
     <section id="how-it-works" className="py-24 sm:py-28" style={{ backgroundColor: INK }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-white">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center pb-6">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className={cx(display.className, "text-3xl sm:text-4xl leading-tight")}>
             So funktioniert’s
           </h2>
-          <p className={cx(inter.className, "mt-3 text-white/85")}>
-            Schreibe wie immer auf Papier. Powerbook macht daraus durchsuchbare <br></br>Notizen,
+          <p className={cx(inter.className, "mt-3 text-white/85 text-base lg:hidden")}>
+            Schreibe wie immer auf Papier. Powerbook macht daraus durchsuchbare Notizen,
+            Aufgaben und Termine – automatisch organisiert.
+          </p>
+
+         <p className={cx(inter.className, "mt-3 text-white/85 hidden lg:block")}>
+            Schreibe wie immer auf Papier. Powerbook macht daraus <br></br>durchsuchbare Notizen,
             Aufgaben und Termine – automatisch organisiert.
           </p>
         </div>

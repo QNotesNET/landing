@@ -90,7 +90,7 @@ export default function Pricing() {
   const note = useMemo(
     () =>
       billing === "yearly"
-        ? "Jahresabo: spare ~30 %"
+        ? "Jahresabo: spare ~20 %"
         : "Monatlich, jederzeit kündbar",
     [billing]
   );
@@ -120,8 +120,16 @@ export default function Pricing() {
           >
             Faire Preise
           </h2>
-          <p className="mt-3 text-gray-600">
-            Software & Online-Powerbooks – das physische Powerbook ist optional
+          <p className="mt-3 text-gray-600 hidden lg:block">
+            Das physische Powerbook ist optional
+            im{" "}
+            <Link href="/shop" className="underline underline-offset-4">
+              Shop
+            </Link>{" "}
+            erhältlich.
+          </p>
+        <p className="mt-3 text-gray-600 lg:hidden">
+            Das physische Powerbook ist optional<br></br>
             im{" "}
             <Link href="/shop" className="underline underline-offset-4">
               Shop
@@ -153,7 +161,7 @@ export default function Pricing() {
                   : "text-gray-700 hover:bg-gray-100"
               )}
             >
-              Jährlich <span className="ml-1 hidden sm:inline">(~30 % günstiger)</span>
+              Jährlich <span className="ml-1 hidden sm:inline">(~20 % günstiger)</span>
             </button>
           </div>
 

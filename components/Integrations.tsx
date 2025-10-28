@@ -53,11 +53,15 @@ export default function Integrations() {
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
         {/* Heading */}
         <div className="text-center">
-          <h2 className={cx(display.className, "text-3xl sm:text-4xl md:text-5xl tracking-tight")}>
+          <h2 className={cx(display.className, "text-3xl sm:text-4xl tracking-tight")}>
             Unsere Integrationen
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600">
-            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten <br />
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 lg:hidden">
+            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten 
+            automatisch synchron – sicher, transparent und jederzeit widerrufbar.
+          </p>
+                    <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 hidden lg:block">
+            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten <br></br>
             automatisch synchron – sicher, transparent und jederzeit widerrufbar.
           </p>
         </div>
