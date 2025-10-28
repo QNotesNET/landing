@@ -176,8 +176,11 @@ export default function AppPreview() {
         {/* Sektion-Headline: Playfair (display) bleibt wie gewünscht */}
         <div className="mx-auto max-w-2xl text-center">
           <h2 className={cx(display.className, 'text-3xl sm:text-4xl leading-tight text-gray-900')}>
-            Ein Blick ins Dashboard
+            Klarheit auf einen Blick.
           </h2>
+               <p className="mt-3 pb-11 text-gray-600">
+            Powerbook erkennt Aufgaben, Termine und Seiten automatisch – und zeigt dir alles strukturiert und synchronisiert in einem zentralen Arbeitsbereich.
+          </p>
         </div>
 
         <FeaturesMobile />

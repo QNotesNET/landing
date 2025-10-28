@@ -2,7 +2,6 @@
 
 import { cx, inter } from "@/lib/ui";
 import Hero from "@/components/Hero";
-import Comparison from "@/components/Comparison";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
@@ -13,6 +12,8 @@ import Header from "@/components/Header";
 import { motion } from "framer-motion";
 import How from "@/components/How";
 import AppPreview from "@/components/AppPreview";
+import DashboardPreview from "@/components/DashboardPreview";
+import Integrations from "@/components/Integrations";
 const fade = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } };
 const MotionSection: React.FC<React.PropsWithChildren<{ delay?: number }>> = ({
   children,
@@ -38,7 +39,8 @@ export default function Page() {
       <Hero />
       <MotionSection><How /></MotionSection>
       <MotionSection><AppPreview /></MotionSection>
-      <MotionSection><Comparison /></MotionSection>
+      <MotionSection><DashboardPreview /></MotionSection>
+      <MotionSection><Integrations /></MotionSection>
       <MotionSection><Pricing /></MotionSection>
       <MotionSection><FAQ /></MotionSection>
       <MotionSection><Newsletter /></MotionSection>
