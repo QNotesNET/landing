@@ -2,13 +2,26 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Rocket, Menu, X } from "lucide-react";
+import { Rocket, Menu, X, Globe, Check } from "lucide-react";
 import { cx } from "@/lib/ui";
 import Image from "next/image";
+
+/* ⬇️ shadcn/ui DropdownMenu */
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // (optional) Local UI-Status der Sprache – aktuell nur visuell
+  const [lang, setLang] = useState<"de" | "en">("de");
 
   // Scroll-State (für Logo-Invert im Header)
   useEffect(() => {
@@ -75,6 +88,43 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          {/* ⬇️ EINZIGE NEUE FUNKTION: Sprach-Auswahl über Globus-Icon (shadcn Dropdown) */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                aria-label="Sprache wählen"
+                className="rounded-xl px-3 py-2 cursor-pointer hover:bg-white/10 inline-flex items-center"
+              >
+                <Globe className="h-5 w-5" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuLabel>Sprache</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onSelect={(e) => {
+                  e.preventDefault();
+                  setLang("de");
+                  // später: Router/Locale-Switch hier einbauen
+                }}
+                className="justify-between"
+              >
+                Deutsch {lang === "de" && <Check className="h-4 w-4" />}
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onSelect={(e) => {
+                  e.preventDefault();
+                  setLang("en");
+                  // später: Router/Locale-Switch hier einbauen (z.B. push('/en') o.ä.)
+                }}
+                className="justify-between"
+              >
+                English {lang === "en" && <Check className="h-4 w-4" />}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          {/* ⬆️ NEU: Globus + Dropdown */}
+
           <Link
             href="https://my.powerbook.at/login"
             className="rounded-xl px-4 py-2 text-sm font-medium hover:bg-white/10"
@@ -89,7 +139,7 @@ export default function Header() {
               scrolled ? "bg-black text-white" : "bg-white text-black"
             )}
           >
-            Jetzt starten 
+            Jetzt starten
           </Link>
         </div>
 

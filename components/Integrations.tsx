@@ -121,7 +121,7 @@ export default function Integrations() {
 
                   <div className="mt-4 flex items-center justify-between">
                     <StatusPill status={it.status ?? "available"} />
-                    <span className="text-[11px] text-gray-400">API & OAuth</span>
+                    <span className="text-[11px] text-gray-400">API & More</span>
                   </div>
                 </Link>
               </motion.div>

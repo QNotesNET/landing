@@ -99,7 +99,7 @@ export const ExclusivePartner = () => {
 
                   <div className="mt-5 flex items-center justify-between">
                     <StatusPill status={it.status ?? "available"} />
-                    <span className="text-[11px] text-gray-400">API & OAuth</span>
+                    <span className="text-[11px] text-gray-400">API & More</span>
                   </div>
                 </Link>
               </motion.div>
