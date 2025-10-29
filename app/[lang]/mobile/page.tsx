@@ -23,13 +23,9 @@ export default function MobileLandingPage(props: {
   useEffect(() => {
     async function loadLang() {
       try {
-        const translations =
-          lang === "en"
-            ? await import("@/lib/dictionaries/en.json")
-            : await import("@/lib/dictionaries/de.json");
+        const translations = await import(`@/lib/dictionaries/${lang}.json`);
         setT(translations.default);
       } catch (err) {
-        console.error("Fehler beim Laden der Sprachdatei:", err);
         const fallback = await import("@/lib/dictionaries/de.json");
         setT(fallback.default);
       }

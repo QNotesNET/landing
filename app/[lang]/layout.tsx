@@ -4,7 +4,7 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 
-const LOCALES = ["de", "en"] as const;
+const LOCALES = ["de", "en", "ru"] as const;
 
 export async function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));

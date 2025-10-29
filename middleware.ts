@@ -4,9 +4,9 @@ import type { NextRequest } from "next/server";
 import Negotiator from "negotiator";
 import { match as intlMatch } from "@formatjs/intl-localematcher";
 
-const LOCALES = ["de", "en"] as const;
+const LOCALES = ["de", "en", "ru"] as const; // 🇩🇪🇬🇧🇷🇺
 const DEFAULT_LOCALE = "de";
-const SUFFIX_ROUTES = [""]; // => /datenschutz/de
+const SUFFIX_ROUTES = [""]; // Beispiel: /datenschutz -> /datenschutz/de
 
 function isInternal(pathname: string) {
   return (
@@ -19,15 +19,17 @@ function isInternal(pathname: string) {
 }
 
 function getBestLocale(req: NextRequest) {
-  // 1) Cookie bevorzugen (wenn du Lokalsprache persistieren willst)
+  // 1) Cookie bevorzugen (wenn gesetzt)
   const cookieLocale = req.cookies.get("locale")?.value;
   if (cookieLocale && LOCALES.includes(cookieLocale as any)) {
     return cookieLocale as (typeof LOCALES)[number];
   }
 
-  // 2) Accept-Language korrekt parsen & matchen
-  const headers = { "accept-language": req.headers.get("accept-language") ?? "" };
-  const languages = new Negotiator({ headers }).languages(); // sortiert nach q-Wert
+  // 2) Sprache per Accept-Language Header bestimmen
+  const headers = {
+    "accept-language": req.headers.get("accept-language") ?? "",
+  };
+  const languages = new Negotiator({ headers }).languages();
   const best = intlMatch(languages, LOCALES, DEFAULT_LOCALE);
   return best as (typeof LOCALES)[number];
 }
@@ -36,15 +38,18 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const { pathname } = url;
 
+  // interne Pfade ignorieren
   if (isInternal(pathname)) return NextResponse.next();
 
-  // --- Suffix-Routen: /datenschutz -> /datenschutz/<lang>
+  // --- Suffix-Routen (z. B. /datenschutz -> /datenschutz/de)
   const suffixBase = SUFFIX_ROUTES.find(
     (base) => pathname === base || pathname.startsWith(`${base}/`)
   );
   if (suffixBase) {
     const hasSuffix = LOCALES.some(
-      (l) => pathname === `${suffixBase}/${l}` || pathname.startsWith(`${suffixBase}/${l}/`)
+      (l) =>
+        pathname === `${suffixBase}/${l}` ||
+        pathname.startsWith(`${suffixBase}/${l}/`)
     );
     if (!hasSuffix) {
       const locale = getBestLocale(req);
@@ -54,7 +59,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // --- Prefix-Routen: / -> /<lang>   und   /foo -> /<lang>/foo
+  // --- Prefix-Routen (z. B. / -> /de, /shop -> /de/shop)
   const hasPrefix = LOCALES.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
   );

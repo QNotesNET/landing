@@ -16,17 +16,28 @@ import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
-const LOCALES = ["de", "en"] as const;
+const LOCALES = ["de", "en", "ru"] as const;
 
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
-  if (!LOCALES.includes(lang as any)) notFound();
+export async function generateStaticParams(): Promise<{ lang: string }[]> {
+  return LOCALES.map((lang) => ({ lang }));
+}
 
-  const t = await getDictionary(lang as "de" | "en");
+// ✅ KORREKTER PARAM-TYP für Next.js App Router
+interface PageProps {
+  params: { lang: string };
+}
+
+export default async function HomePage({ params }: any)
+{
+  const { lang } = params;
+
+  // Validierung der Sprache
+  if (!LOCALES.includes(lang as (typeof LOCALES)[number])) {
+    notFound();
+  }
+
+  // Dynamisches Dictionary laden
+  const t = await getDictionary(lang as "de" | "en" | "ru");
 
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
@@ -45,37 +56,14 @@ export default async function HomePage({
             label: t.header.language.label,
             de: t.header.language.de,
             en: t.header.language.en,
+            ru: t.header.language.ru,
           },
         }}
       />
 
-      <Hero
-        texts={{
-          titleLine1: t.hero.titleLine1,
-          titleLine2: t.hero.titleLine2,
-          description: t.hero.description,
-          features: {
-            scan: t.hero.features.scan,
-            search: t.hero.features.search,
-            ai: t.hero.features.ai,
-          },
-          ctaPrimary: t.hero.ctaPrimary,
-          ctaSecondary: t.hero.ctaSecondary,
-        }}
-      />
+      <Hero texts={t.hero} />
+      <How texts={t.how} />
 
-      <How
-        texts={{
-          heading: t.how.heading,
-          description: t.how.description,
-          steps: t.how.steps,
-          features: t.how.features,
-          ctaPrimary: t.how.ctaPrimary,
-          ctaSecondary: t.how.ctaSecondary,
-          problems: t.how.problems,
-          mock: t.how.mock,
-        }}
-      />
       {/* @ts-expect-error --- */}
       <AppPreview texts={t.appPreview} />
       {/* @ts-expect-error --- */}
@@ -84,6 +72,7 @@ export default async function HomePage({
       <ExclusivePartner texts={t.exclusivePartner} />
       {/* @ts-expect-error --- */}
       <Integrations texts={t.integrations} />
+
       <Pricing texts={t.pricing} />
       <FAQ texts={t.faq} />
       <Footer texts={t.footer} />

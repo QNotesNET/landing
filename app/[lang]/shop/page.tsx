@@ -6,20 +6,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { display, CREAM, cx } from "@/lib/ui";
 
-export default function ShopPage(props: { params: Promise<{ lang?: string }> }) {
+export default function ShopPage(props: {
+  params: Promise<{ lang?: string }>;
+}) {
   const [t, setT] = useState<any>(null);
   const { lang } = use(props.params); // <– Promise korrekt auflösen
 
   useEffect(() => {
     async function loadLang() {
       try {
-        const translations =
-          lang === "en"
-            ? await import("@/lib/dictionaries/en.json")
-            : await import("@/lib/dictionaries/de.json");
+        const translations = await import(`@/lib/dictionaries/${lang}.json`);
         setT(translations.default);
       } catch (err) {
-        console.error("Fehler beim Laden der Sprachdatei:", err);
         const fallback = await import("@/lib/dictionaries/de.json");
         setT(fallback.default);
       }
