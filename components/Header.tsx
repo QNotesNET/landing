@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Rocket, Menu, X, Globe, Check } from "lucide-react";
 import { cx } from "@/lib/ui";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { locales, type Locale, defaultLocale } from "@/lib/i18n";
 
 /* ⬇️ shadcn/ui DropdownMenu */
 import {
@@ -16,12 +18,84 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-export default function Header() {
+/** --- Mini-Dictionary für DE/EN (inkl. Dropdown-Texte) --- */
+const DICT = {
+  de: {
+    nav: [
+      { label: "So funktioniert's", hash: "#how" },
+      { label: "Preise", hash: "#pricing" },
+      { label: "Shop", path: "/shop" },
+      { label: "App", path: "/mobile" },
+      { label: "Business", path: "/business" },
+    ],
+    login: "Anmelden",
+    cta: "Jetzt starten",
+    menuLabel: "Sprache",
+    menuItems: [
+      { code: "de", label: "Deutsch" },
+      { code: "en", label: "Englisch" },
+    ] as const,
+  },
+  en: {
+    nav: [
+      { label: "How it works", hash: "#how" },
+      { label: "Pricing", hash: "#pricing" },
+      { label: "Shop", path: "/shop" },
+      { label: "App", path: "/mobile" },
+      { label: "Business", path: "/business" },
+    ],
+    login: "Sign in",
+    cta: "Get started",
+    menuLabel: "Language",
+    menuItems: [
+      { code: "de", label: "German" },
+      { code: "en", label: "English" },
+    ] as const,
+  },
+} as const;
+
+export default function Header({ current }: { current: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // (optional) Local UI-Status der Sprache – aktuell nur visuell
+  // (optional) Local UI-Status – bleibt für die Check-Icons erhalten
   const [lang, setLang] = useState<"de" | "en">("de");
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Aktive Sprache aus der URL ableiten (Fallback auf prop 'current' oder 'de')
+  const activeLocale: Locale = (() => {
+    const seg = pathname?.split("/")[1] || "";
+    if ((locales as readonly string[]).includes(seg)) return seg as Locale;
+    if (current && (locales as readonly string[]).includes(current)) return current;
+    return "de";
+  })();
+
+  useEffect(() => {
+    // sync lokaler UI-State mit aktiver URL-Sprache (für Check-Icon)
+    if (activeLocale === "de" || activeLocale === "en") setLang(activeLocale);
+  }, [activeLocale]);
+
+  // Robuster Pfadwechsel (mit defaultLocale = "de"): ersetzt vorhandenes Sprachsegment oder fügt es ein/entfernt es
+  function switchTo(locale: Locale) {
+    if (!pathname) return;
+
+    const segments = pathname.split("/"); // ["", maybeLang, ...]
+    const hasPrefix = (locales as readonly string[]).includes(segments[1]);
+
+    if (locale === defaultLocale) {
+      // -> Defaultsprache: Prefix entfernen (falls vorhanden)
+      if (hasPrefix) segments.splice(1, 1);
+    } else {
+      // -> Nicht-Default: Prefix setzen/ersetzen
+      if (hasPrefix) segments[1] = locale;
+      else segments.splice(1, 0, locale);
+    }
+
+    const next = segments.join("/") || "/";
+    router.push(next);
+  }
 
   // Scroll-State (für Logo-Invert im Header)
   useEffect(() => {
@@ -40,13 +114,21 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  const items = [
-    { label: "So funktioniert's", href: "/#how" },
-    { label: "Preise", href: "/#pricing" },
-    { label: "Shop", href: "/shop" },
-    { label: "App", href: "/mobile" },
-    { label: "Business", href: "/business" },
-  ];
+  /** --- Texte & URL-Prefix pro Sprache --- */
+  const T = DICT[activeLocale];
+  const prefix = activeLocale === defaultLocale ? "" : `/${activeLocale}`;
+
+  // Navigation-Items mit richtigem Prefix bauen
+  const items = T.nav.map((i) => {
+    const href =
+      "hash" in i && i.hash
+        ? `${prefix}/${i.hash.replace(/^#/, "") ? i.hash : ""}`
+        : `${prefix}${i.path || ""}`;
+    return {
+      label: i.label,
+      href: href.replace(/\/+$/, "").replace(/([^:])\/{2,}/g, "$1/") || "/",
+    };
+  });
 
   return (
     <header
@@ -61,10 +143,11 @@ export default function Header() {
       <div
         className={cx(
           "mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
-          mobileOpen && "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"
+          mobileOpen &&
+            "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto"
         )}
       >
-        <Link href="/">
+        <Link href={prefix || "/"}>
           <Image
             src="/images/logos/logo-white.svg"
             className={cx(
@@ -88,7 +171,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          {/* ⬇️ EINZIGE NEUE FUNKTION: Sprach-Auswahl über Globus-Icon (shadcn Dropdown) */}
+          {/* ⬇️ Sprach-Auswahl über Globus-Icon (shadcn Dropdown) */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
@@ -98,40 +181,36 @@ export default function Header() {
                 <Globe className="h-5 w-5" />
               </button>
             </DropdownMenuTrigger>
+
+            {/* Design bleibt unverändert – nur Texte dynamisch */}
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuLabel>Sprache</DropdownMenuLabel>
+              <DropdownMenuLabel>{T.menuLabel}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onSelect={(e) => {
-                  e.preventDefault();
-                  setLang("de");
-                  // später: Router/Locale-Switch hier einbauen
-                }}
-                className="justify-between"
-              >
-                Deutsch {lang === "de" && <Check className="h-4 w-4" />}
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onSelect={(e) => {
-                  e.preventDefault();
-                  setLang("en");
-                  // später: Router/Locale-Switch hier einbauen (z.B. push('/en') o.ä.)
-                }}
-                className="justify-between"
-              >
-                English {lang === "en" && <Check className="h-4 w-4" />}
-              </DropdownMenuItem>
+
+              {T.menuItems.map(({ code, label }) => (
+                <DropdownMenuItem
+                  key={code}
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    setLang(code as "de" | "en");
+                    switchTo(code as Locale);
+                  }}
+                  className="justify-between"
+                >
+                  {label} {lang === code && <Check className="h-4 w-4" />}
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          {/* ⬆️ NEU: Globus + Dropdown */}
+          {/* ⬆️ Globus + Dropdown */}
 
           <Link
             href="https://my.powerbook.at/login"
             className="rounded-xl px-4 py-2 text-sm font-medium hover:bg-white/10"
           >
-            Anmelden
+            {T.login}
           </Link>
-          {/* ⬇️ EINZIGE ÄNDERUNG: Farbe abhängig von `scrolled` */}
+
           <Link
             href="https://my.powerbook.at/register"
             className={cx(
@@ -139,7 +218,7 @@ export default function Header() {
               scrolled ? "bg-black text-white" : "bg-white text-black"
             )}
           >
-            Jetzt starten
+            {T.cta}
           </Link>
         </div>
 
@@ -174,9 +253,9 @@ export default function Header() {
             <div className="absolute inset-0 bg-[#2D2825]" />
 
             <div className="relative flex h-full w-full flex-col">
-              {/* Drawer-Topbar: gleiche Höhe/Alignment wie Header */}
+              {/* Drawer-Topbar */}
               <div className="flex h-16 items-center justify-between px-4">
-                <Link href="/" onClick={() => setMobileOpen(false)}>
+                <Link href={prefix || "/"} onClick={() => setMobileOpen(false)}>
                   <Image
                     src="/images/logos/logo-white.svg"
                     alt="Powerbook Logo"
@@ -195,7 +274,7 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Nav zentriert & mittig */}
+              {/* Nav */}
               <nav className="flex flex-1 items-center justify-center px-6  bg-[#2D2825]">
                 <ul className="w-full space-y-3 text-center">
                   {items.map((i) => (
@@ -219,14 +298,14 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl px-4 py-3 text-center text-sm font-medium text-white bg-white/10 hover:bg-white/15"
                 >
-                  Anmelden
+                  {T.login}
                 </Link>
                 <Link
                   href="https://my.powerbook.at/register"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
                 >
-                  Jetzt starten
+                  {T.cta}
                 </Link>
               </div>
             </div>
