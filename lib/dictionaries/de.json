@@ -1,10 +1,18 @@
 {
-  "home": {
-    "title": "Powerbook – Mehr Fokus. Mehr Übersicht.",
-    "cta": "Jetzt starten"
-  },
-  "datenschutz": {
-    "heading": "Datenschutz",
-    "content": "Hier finden Sie unsere Datenschutzbestimmungen."
+  "header": {
+    "nav": {
+      "how": "So funktioniert's",
+      "pricing": "Preise",
+      "shop": "Shop",
+      "app": "App",
+      "business": "Business"
+    },
+    "login": "Anmelden",
+    "cta": "Jetzt starten",
+    "language": {
+      "label": "Sprache",
+      "de": "Deutsch",
+      "en": "Englisch"
+    }
   }
 }

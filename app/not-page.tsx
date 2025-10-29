@@ -33,7 +33,7 @@ const MotionSection: React.FC<React.PropsWithChildren<{ delay?: number }>> = ({
 export default function Page() {
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
-      <Header />
+      {/* <Header /> */}
 
       {/* ⬇️ Jede Section nur dezent animiert beim Scroll-Eintritt */}
       <Hero />

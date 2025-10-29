@@ -9,7 +9,7 @@ import { display, CREAM, cx } from "@/lib/ui";
 export default function ShopPage() {
   return (
     <main className={cx("text-gray-900")} style={{ backgroundColor: CREAM }}>
-      <Header />
+      {/* <Header /> */}
 
       {/* Centered message */}
       <section className="min-h-[70vh] grid place-items-center px-4">

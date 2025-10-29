@@ -14,7 +14,7 @@ export const metadata = {
 export default function Page() {
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero – braun bis ganz oben */}
       <section className="-mt-16 pt-44 pb-16 text-white" style={{ backgroundColor: INK }}>

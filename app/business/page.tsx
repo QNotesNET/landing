@@ -15,7 +15,7 @@ import ContactCTA from "@/components/business/ContactCTA";
 export default function Page() {
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
-      <Header />
+      {/* <Header /> */}
       <Hero />
       <ValuePillars />
       <FeatureStrips />

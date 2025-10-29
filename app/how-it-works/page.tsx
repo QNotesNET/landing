@@ -33,7 +33,7 @@ const Pill: React.FC<{ label: string; caption?: string }> = ({ label, caption })
 export default function Page() {
   return (
     <main className={cx(inter.className, "bg-white text-gray-900")}>
-      <Header />
+      {/* <Header /> */}
 
       {/* HERO – reduziert, ikonisch */}
       <section

@@ -34,7 +34,7 @@ export default function MobileLandingPage() {
 
   return (
     <div className="min-h-dvh flex flex-col" style={{ backgroundColor: INK }}>
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section (angepasst aus deiner Tailwind-Section) */}
       <section className="relative isolate">

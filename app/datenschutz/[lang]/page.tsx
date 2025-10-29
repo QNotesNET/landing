@@ -21,8 +21,8 @@ export default async function DatenschutzPage({
 
   return (
     <main>
-      <h1>{t.datenschutz.heading}</h1>
-      <p>{t.datenschutz.content}</p>
+      {/* <h1>{t.datenschutz.heading}</h1> */}
+      {/* <p>{t.datenschutz.content}</p> */}
       {/* Hier fügst du deinen bisherigen Datenschutz‑Inhalt ein */}
     </main>
   );

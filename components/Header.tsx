@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Rocket, Menu, X, Globe, Check } from "lucide-react";
+import { Menu, X, Globe, Check } from "lucide-react";
 import { cx } from "@/lib/ui";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
-/* ⬇️ shadcn/ui DropdownMenu */
+/* shadcn/ui */
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -16,12 +17,39 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
-export default function Header() {
+type HeaderTexts = {
+  nav: {
+    how: string;
+    pricing: string;
+    shop: string;
+    app: string;
+    business: string;
+  };
+  login: string;
+  cta: string;
+  language: {
+    label: string;
+    de: string;
+    en: string;
+  };
+};
+
+export default function Header({ texts }: { texts: HeaderTexts }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // (optional) Local UI-Status der Sprache – aktuell nur visuell
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // UI-State der aktuellen Sprache aus URL ableiten
   const [lang, setLang] = useState<"de" | "en">("de");
+  useEffect(() => {
+    const mPrefix = pathname.match(/^\/(de|en)(\/|$)/);
+    const mSuffix = pathname.match(/\/(de|en)(\/|$)$/);
+    if (mPrefix) setLang(mPrefix[1] as "de" | "en");
+    else if (mSuffix) setLang(mSuffix[1] as "de" | "en");
+    else setLang("de");
+  }, [pathname]);
 
   // Scroll-State (für Logo-Invert im Header)
   useEffect(() => {
@@ -41,12 +69,39 @@ export default function Header() {
   }, [mobileOpen]);
 
   const items = [
-    { label: "So funktioniert's", href: "/#how" },
-    { label: "Preise", href: "/#pricing" },
-    { label: "Shop", href: "/shop" },
-    { label: "App", href: "/mobile" },
-    { label: "Business", href: "/business" },
+    { label: texts.nav.how, href: "/#how" },
+    { label: texts.nav.pricing, href: "/#pricing" },
+    { label: texts.nav.shop, href: "/shop" },
+    { label: texts.nav.app, href: "/mobile" },
+    { label: texts.nav.business, href: "/business" },
   ];
+
+  // Sprachwechsel: erkennt Prefix- und Suffix-Routen (z. B. /datenschutz/de)
+  const switchLang = (nextLang: "de" | "en") => {
+    if (nextLang === lang) return;
+
+    const suffixBases = ["/datenschutz"]; // hier deine Suffix-Routen pflegen
+    const isSuffix = suffixBases.find(
+      (base) => pathname === base || pathname.startsWith(`${base}/`)
+    );
+
+    if (isSuffix) {
+      const nextPath = /(\/)(de|en)(\/|$)/.test(pathname.slice(isSuffix.length))
+        ? pathname.replace(/(\/)(de|en)(\/|$)/, `$1${nextLang}$3`)
+        : `${pathname.replace(/\/+$/, "")}/${nextLang}`;
+      router.push(nextPath);
+      setLang(nextLang);
+      return;
+    }
+
+    // Prefix-Fall: /de/...  <->  /en/...
+    const hasPrefix = /^\/(de|en)(\/|$)/.test(pathname);
+    const nextPath = hasPrefix
+      ? pathname.replace(/^\/(de|en)(?=\/|$)/, `/${nextLang}`)
+      : `/${nextLang}${pathname}`;
+    router.push(nextPath);
+    setLang(nextLang);
+  };
 
   return (
     <header
@@ -57,7 +112,7 @@ export default function Header() {
           : "backdrop-blur-sm bg-gradient-to-b from-black/30 to-transparent text-white"
       )}
     >
-      {/* Topbar – wird unsichtbar, sobald der Drawer offen ist */}
+      {/* Topbar */}
       <div
         className={cx(
           "mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
@@ -69,7 +124,7 @@ export default function Header() {
             src="/images/logos/logo-white.svg"
             className={cx(
               "flex items-center h-35 w-35 transition",
-              scrolled && "invert" // beim Scrollen invertieren (weiß -> schwarz)
+              scrolled && "invert"
             )}
             alt="Powerbook Logo"
             width={25}
@@ -88,50 +143,46 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          {/* ⬇️ EINZIGE NEUE FUNKTION: Sprach-Auswahl über Globus-Icon (shadcn Dropdown) */}
+          {/* Sprach-Auswahl */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                aria-label="Sprache wählen"
+                aria-label={texts.language.label}
                 className="rounded-xl px-3 py-2 cursor-pointer hover:bg-white/10 inline-flex items-center"
               >
                 <Globe className="h-5 w-5" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuLabel>Sprache</DropdownMenuLabel>
+              <DropdownMenuLabel>{texts.language.label}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onSelect={(e) => {
                   e.preventDefault();
-                  setLang("de");
-                  // später: Router/Locale-Switch hier einbauen
+                  switchLang("de");
                 }}
                 className="justify-between"
               >
-                Deutsch {lang === "de" && <Check className="h-4 w-4" />}
+                {texts.language.de} {lang === "de" && <Check className="h-4 w-4" />}
               </DropdownMenuItem>
               <DropdownMenuItem
                 onSelect={(e) => {
                   e.preventDefault();
-                  setLang("en");
-                  // später: Router/Locale-Switch hier einbauen (z.B. push('/en') o.ä.)
+                  switchLang("en");
                 }}
                 className="justify-between"
               >
-                English {lang === "en" && <Check className="h-4 w-4" />}
+                {texts.language.en} {lang === "en" && <Check className="h-4 w-4" />}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          {/* ⬆️ NEU: Globus + Dropdown */}
 
           <Link
             href="https://my.powerbook.at/login"
             className="rounded-xl px-4 py-2 text-sm font-medium hover:bg-white/10"
           >
-            Anmelden
+            {texts.login}
           </Link>
-          {/* ⬇️ EINZIGE ÄNDERUNG: Farbe abhängig von `scrolled` */}
           <Link
             href="https://my.powerbook.at/register"
             className={cx(
@@ -139,7 +190,7 @@ export default function Header() {
               scrolled ? "bg-black text-white" : "bg-white text-black"
             )}
           >
-            Jetzt starten
+            {texts.cta}
           </Link>
         </div>
 
@@ -163,18 +214,13 @@ export default function Header() {
           role="dialog"
           aria-modal="true"
         >
-          {/* Overlay */}
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
           />
-
-          {/* Panel: Fullscreen, dunkler Gradient + Blur */}
           <aside className="absolute inset-0">
             <div className="absolute inset-0 bg-[#2D2825]" />
-
             <div className="relative flex h-full w-full flex-col">
-              {/* Drawer-Topbar: gleiche Höhe/Alignment wie Header */}
               <div className="flex h-16 items-center justify-between px-4">
                 <Link href="/" onClick={() => setMobileOpen(false)}>
                   <Image
@@ -195,8 +241,7 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Nav zentriert & mittig */}
-              <nav className="flex flex-1 items-center justify-center px-6  bg-[#2D2825]">
+              <nav className="flex flex-1 items-center justify-center px-6 bg-[#2D2825]">
                 <ul className="w-full space-y-3 text-center">
                   {items.map((i) => (
                     <li key={i.label}>
@@ -212,21 +257,20 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* CTA-Buttons unten */}
               <div className="px-6 pb-6 grid gap-3 bg-gradient-to-b bg-[#2D2825] pt-6 rounded-b-lg">
                 <Link
                   href="https://my.powerbook.at/login"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl px-4 py-3 text-center text-sm font-medium text-white bg-white/10 hover:bg-white/15"
                 >
-                  Anmelden
+                  {texts.login}
                 </Link>
                 <Link
                   href="https://my.powerbook.at/register"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
                 >
-                  Jetzt starten
+                  {texts.cta}
                 </Link>
               </div>
             </div>

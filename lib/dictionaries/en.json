@@ -1,10 +1,18 @@
 {
-  "home": {
-    "title": "Powerbook – More focus. More clarity.",
-    "cta": "Get started"
-  },
-  "datenschutz": {
-    "heading": "Privacy Policy",
-    "content": "Here you can find our privacy policy."
+  "header": {
+    "nav": {
+      "how": "How it works",
+      "pricing": "Pricing",
+      "shop": "Shop",
+      "app": "App",
+      "business": "Business"
+    },
+    "login": "Sign in",
+    "cta": "Get started",
+    "language": {
+      "label": "Language",
+      "de": "German",
+      "en": "English"
+    }
   }
 }
