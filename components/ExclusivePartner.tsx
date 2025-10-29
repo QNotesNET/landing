@@ -1,14 +1,13 @@
-// app/(site)/components/Integrations.tsx
 "use client";
 
+import React from 'react'
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowPathIcon, LinkIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { cx, display } from "@/lib/ui";
 
 type Integration = {
-  key: "google" | "microsoft" | "whatsapp" | "telegram";
+  key: "google" | "nexoro" | "whatsapp" | "darlean";
   name: string;
   href: string;
   desc: string;
@@ -17,57 +16,42 @@ type Integration = {
 
 const INTEGRATIONS: Integration[] = [
   {
-    key: "google",
-    name: "Google",
-    href: "https://google.com",
-    desc: "Kalender, Kontakte & Aufgaben nahtlos synchronisieren.",
+    key: "darlean",
+    name: "Darlean",
+    href: "https://darlean.com",
+    desc: "Projekte, Aufgaben & Workflows nahtlos synchronisieren.",
     status: "available",
   },
   {
-    key: "microsoft",
-    name: "Microsoft",
-    href: "https://microsoft.com",
-    desc: "Kalender, Kontakte & Aufgaben nahtlos synchronisieren.",
-    status: "available",
-  },
-  {
-    key: "whatsapp",
-    name: "WhatsApp",
-    href: "https://whatsapp.com",
-    desc: "Nachrichten versenden, Workflows starten.",
-    status: "available",
-  },
-  {
-    key: "telegram",
-    name: "Telegram",
-    href: "https://telegram.org",
-    desc: "Nachrichten versenden, Workflows starten.",
+    key: "nexoro",
+    name: "Nexoro",
+    href: "https://nexoro.net",
+    desc: "Projekte, Aufgaben & Workflows nahtlos synchronisieren.",
     status: "available",
   },
 ];
 
-export default function Integrations() {
+export const ExclusivePartner = () => {
   return (
     <section id="integrations" className="relative bg-white">
       <div aria-hidden className="pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-6xl px-4 ">
+      <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
         {/* Heading */}
         <div className="text-center">
           <h2 className={cx(display.className, "text-3xl sm:text-4xl tracking-tight")}>
-            Unsere Integrationen
+            Unsere exklusiven Integrationspartner
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 lg:hidden">
-            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten 
-            automatisch synchron – sicher, transparent und jederzeit widerrufbar.
+            Verknüpfe Powerbook mit deinem Darlean und Nexoro Konto und halte Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.
           </p>
-                    <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 hidden lg:block">
-            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten <br></br>
-            automatisch synchron – sicher, transparent und jederzeit widerrufbar.
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 hidden lg:block">
+            Verknüpfe Powerbook mit deinem Darlean und Nexoro Konto und halte <br />
+            Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto justify-center place-items-center">
           {INTEGRATIONS.map((it, idx) => {
             const iconSrc = `/images/icons/${it.key}.svg`;
             return (
@@ -77,27 +61,21 @@ export default function Integrations() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 viewport={{ once: true, margin: "-60px" }}
-                className="h-full"
+                className="h-full w-full"
               >
                 <Link
                   href={it.href}
                   target="_blank"
                   className={cx(
-                    "group block h-full rounded-2xl border border-black/5 bg-white p-5",
+                    // Karten größer gemacht (mehr Padding), sonst unverändert
+                    "group block h-full rounded-2xl border border-black/5 bg-white p-6 lg:p-8",
                     "shadow-[0_1px_0_0_rgba(0,0,0,0.03)] hover:border-black/10 hover:shadow-md transition"
                   )}
                 >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className={cx(
-                        "rounded-xl p-2 ring-1 ring-inset ring-black/5 bg-white/80 backdrop-blur-sm"
-                      )}
-                    >
-                      <span
-                        className={cx(
-                          "grid h-10 w-10 place-items-center rounded-lg",
-                        )}
-                      >
+                  <div className="flex items-start gap-4">
+                    {/* Innere Border entfernt (kein ring-1) – Icon-Größe bleibt wie zuvor */}
+                    <span className="rounded-xl p-2 bg-white/80 backdrop-blur-sm">
+                      <span className="grid h-10 w-10 place-items-center rounded-lg">
                         <Image
                           src={iconSrc}
                           alt={`${it.name} Logo`}
@@ -119,7 +97,7 @@ export default function Integrations() {
                     </div>
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between">
+                  <div className="mt-5 flex items-center justify-between">
                     <StatusPill status={it.status ?? "available"} />
                     <span className="text-[11px] text-gray-400">API & OAuth</span>
                   </div>
@@ -127,35 +105,6 @@ export default function Integrations() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Value bullets */}
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Feature
-            icon={ArrowPathIcon}
-            title="Nahtlose Synchronisierung"
-            desc="Zwei-Wege-Sync für Aufgaben, Kalender & Kontakte – ohne doppelte Einträge."
-          />
-          <Feature
-            icon={ShieldCheckIcon}
-            title="Datenschutz an erster Stelle"
-            desc="EU-Hosting, klare Berechtigungen, jederzeit widerrufbar."
-          />
-          <Feature
-            icon={LinkIcon}
-            title="Mehr als nur APIs"
-            desc="Events & Workflows verbinden – Powerbook passt sich deinem Stack an."
-          />
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="mailto:info@powerbook.at"
-            className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white shadow-sm hover:opacity-90"
-          >
-            Weitere Integrationen anfragen
-          </Link>
         </div>
       </div>
     </section>
