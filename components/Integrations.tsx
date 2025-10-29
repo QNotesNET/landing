@@ -8,7 +8,7 @@ import { ArrowPathIcon, LinkIcon, ShieldCheckIcon } from "@heroicons/react/24/ou
 import { cx, display } from "@/lib/ui";
 
 type Integration = {
-  key: "google" | "nexoro" | "whatsapp" | "telegram";
+  key: "google" | "nexoro" | "whatsapp" | "darlean";
   name: string;
   href: string;
   desc: string;
@@ -38,10 +38,10 @@ const INTEGRATIONS: Integration[] = [
     status: "available",
   },
   {
-    key: "telegram",
-    name: "Telegram",
-    href: "https://telegram.org",
-    desc: "Nachrichten, Erinnerungen & Bots direkt verknüpfen.",
+    key: "darlean",
+    name: "Darlean",
+    href: "https://darlean.com",
+    desc: "Kundenkommunikation & Inbox mit Powerbook verbinden.",
     status: "available",
   },
 ];
