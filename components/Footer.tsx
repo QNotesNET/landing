@@ -1,29 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown, Instagram, Linkedin, Facebook } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
 
-const NAV = [
-  { label: "So funktioniert's", href: "/#how" },
-  { label: "Preise", href: "/#pricing" },
-  { label: "Shop", href: "/shop" },
-  { label: "Business", href: "/business" },
-];
+type FooterTexts = {
+  navHeading: string;
+  linksHeading: string;
+  appHeading: string;
+  nav: { label: string; href: string }[];
+  links: { label: string; href: string }[];
+  legal: { label: string; href: string }[];
+  copyright: string;
+};
 
-const LINKS = [
-  { label: "Jetzt starten", href: "https://my.powerbook.at/register" },
-  { label: "Status", href: "https://status.powerbook.at" },
-  { label: "Kontakt", href: "mailto:info@powerbook.at" },
-];
-
-export default function Footer() {
+export default function Footer({ texts }: { texts: FooterTexts }) {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-neutral-950 text-neutral-200">
       {/* Top area */}
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Mobile: Accordion */}
+        {/* Mobile Accordion */}
         <div className="md:hidden space-y-6">
           {/* 1. Logo + Socials */}
           <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
@@ -71,12 +70,12 @@ export default function Footer() {
           {/* 2. Navigation */}
           <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
             <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
-              Navigation
+              {texts.navHeading}
               <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
             </summary>
             <nav className="px-4 pb-4">
               <ul className="space-y-3">
-                {NAV.map((it) => (
+                {texts.nav.map((it) => (
                   <li key={it.label}>
                     <Link
                       href={it.href}
@@ -93,12 +92,12 @@ export default function Footer() {
           {/* 3. Links */}
           <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
             <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
-              Links
+              {texts.linksHeading}
               <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
             </summary>
             <nav className="px-4 pb-4">
               <ul className="space-y-3">
-                {LINKS.map((it) => (
+                {texts.links.map((it) => (
                   <li key={it.label}>
                     <Link
                       href={it.href}
@@ -112,17 +111,17 @@ export default function Footer() {
             </nav>
           </details>
 
-          {/* 4. Powerbook (Anmelden + Stores) */}
+          {/* 4. App Section */}
           <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
             <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
-              Mobile App
+              {texts.appHeading}
               <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
             </summary>
             <div className="px-4 pb-4">
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <a
                   href="https://apps.apple.com/"
-                  aria-label="Lade im App Store"
+                  aria-label="App Store"
                   className="inline-block"
                 >
                   <img
@@ -134,7 +133,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="https://play.google.com/"
-                  aria-label="Jetzt bei Google Play"
+                  aria-label="Google Play"
                   className="inline-block"
                 >
                   <img
@@ -149,9 +148,9 @@ export default function Footer() {
           </details>
         </div>
 
-        {/* Desktop: 4 columns */}
+        {/* Desktop Layout */}
         <div className="hidden md:grid md:grid-cols-4 md:gap-8">
-          {/* Col 1: Logo + Socials */}
+          {/* Logo + Socials */}
           <div className="space-y-6">
             <Link href="/" className="inline-flex items-center">
               <Image
@@ -188,12 +187,14 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold text-white">Navigation</h3>
+            <h3 className="text-sm font-semibold text-white">
+              {texts.navHeading}
+            </h3>
             <nav className="mt-4">
               <ul className="space-y-3">
-                {NAV.map((it) => (
+                {texts.nav.map((it) => (
                   <li key={it.label}>
                     <Link
                       href={it.href}
@@ -207,12 +208,14 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Col 3: Links */}
+          {/* Links */}
           <div>
-            <h3 className="text-sm font-semibold text-white">Links</h3>
+            <h3 className="text-sm font-semibold text-white">
+              {texts.linksHeading}
+            </h3>
             <nav className="mt-4">
               <ul className="space-y-3">
-                {LINKS.map((it) => (
+                {texts.links.map((it) => (
                   <li key={it.label}>
                     <Link
                       href={it.href}
@@ -226,9 +229,11 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Col 4: Powerbook (Anmelden + Stores) */}
+          {/* App */}
           <div>
-            <h3 className="text-sm font-semibold text-white">Powerbook</h3>
+            <h3 className="text-sm font-semibold text-white">
+              {texts.appHeading}
+            </h3>
             <div className="mt-4 space-y-4">
               <Link
                 href="https://my.powerbook.at"
@@ -239,7 +244,7 @@ export default function Footer() {
               <div className="flex flex-col gap-2 mt-4">
                 <a
                   href="https://apps.apple.com/"
-                  aria-label="Lade im App Store"
+                  aria-label="App Store"
                   className="inline-block"
                 >
                   <img
@@ -251,7 +256,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="https://play.google.com/"
-                  aria-label="Jetzt bei Google Play"
+                  aria-label="Google Play"
                   className="inline-block"
                 >
                   <img
@@ -267,45 +272,35 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar with legal + status */}
+      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div
           className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8
-                        flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+            flex flex-col md:flex-row md:items-center md:justify-between gap-4"
         >
-          {/* LEFT GROUP: Copyright | Status (links ausgerichtet auf Desktop) */}
+          {/* Left */}
           <div
             className="flex flex-col items-center gap-2
-                          md:flex-row md:items-center md:justify-start md:gap-3"
+              md:flex-row md:items-center md:justify-start md:gap-3"
           >
-            {/* Divider only on desktop */}
-            {/* Status first on mobile, second on desktop */}
             <div className="order-1 md:order-2 text-xs">
               <span className="hidden md:inline-block md:order-3 text-neutral-400">
                 |ㅤ{" "}
               </span>
               <StatusBadge />
             </div>
-
-            {/* Copyright second on mobile, first on desktop */}
             <p className="order-2 md:order-1 text-xs text-neutral-400">
-              © {year}{" "}
-              <span className="font-medium text-neutral-200">Powerbook</span> ·
-              Alle Rechte vorbehalten.
+              © {year} Powerbook · {texts.copyright}
             </p>
           </div>
 
-          {/* RIGHT GROUP: Legal Links */}
+          {/* Right */}
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-neutral-400">
-            <Link href="/impressum" className="hover:text-white">
-              Impressum
-            </Link>
-            <Link href="/datenschutz" className="hover:text-white">
-              Datenschutz
-            </Link>
-            <Link href="/agb" className="hover:text-white">
-              AGB
-            </Link>
+            {texts.legal.map((it) => (
+              <Link key={it.label} href={it.href} className="hover:text-white">
+                {it.label}
+              </Link>
+            ))}
           </nav>
         </div>
       </div>

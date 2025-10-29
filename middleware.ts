@@ -6,7 +6,7 @@ import { match as intlMatch } from "@formatjs/intl-localematcher";
 
 const LOCALES = ["de", "en"] as const;
 const DEFAULT_LOCALE = "de";
-const SUFFIX_ROUTES = ["/datenschutz"]; // => /datenschutz/de
+const SUFFIX_ROUTES = [""]; // => /datenschutz/de
 
 function isInternal(pathname: string) {
   return (

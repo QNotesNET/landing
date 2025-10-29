@@ -1,74 +1,69 @@
-// app/(site)/components/Integrations.tsx
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowPathIcon, LinkIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowPathIcon,
+  LinkIcon,
+  ShieldCheckIcon,
+} from "@heroicons/react/24/outline";
 import { cx, display } from "@/lib/ui";
 
 type Integration = {
-  key: "google" | "microsoft" | "whatsapp" | "telegram";
+  key: string;
   name: string;
   href: string;
   desc: string;
   status?: "connected" | "available";
 };
 
-const INTEGRATIONS: Integration[] = [
-  {
-    key: "google",
-    name: "Google",
-    href: "https://google.com",
-    desc: "Kalender, Kontakte & Aufgaben nahtlos synchronisieren.",
-    status: "available",
-  },
-  {
-    key: "microsoft",
-    name: "Microsoft",
-    href: "https://microsoft.com",
-    desc: "Kalender, Kontakte & Aufgaben nahtlos synchronisieren.",
-    status: "available",
-  },
-  {
-    key: "whatsapp",
-    name: "WhatsApp",
-    href: "https://whatsapp.com",
-    desc: "Nachrichten versenden, Workflows starten.",
-    status: "available",
-  },
-  {
-    key: "telegram",
-    name: "Telegram",
-    href: "https://telegram.org",
-    desc: "Nachrichten versenden, Workflows starten.",
-    status: "available",
-  },
-];
+type IntegrationTexts = {
+  heading: string;
+  description: string;
+  integrations: Integration[];
+  features: { title: string; desc: string; icon: "sync" | "shield" | "link" }[];
+  labels: {
+    open: string;
+    api: string;
+    connected: string;
+    available: string;
+    cta: string;
+  };
+};
 
-export default function Integrations() {
+const iconMap = {
+  sync: ArrowPathIcon,
+  shield: ShieldCheckIcon,
+  link: LinkIcon,
+};
+
+export default function Integrations({ texts }: { texts: IntegrationTexts }) {
   return (
     <section id="integrations" className="relative bg-white">
       <div aria-hidden className="pointer-events-none absolute inset-0" />
       <div className="relative mx-auto max-w-6xl px-4 pb-25">
         {/* Heading */}
         <div className="text-center">
-          <h2 className={cx(display.className, "text-3xl sm:text-4xl tracking-tight")}>
-            Unsere Integrationen
+          <h2
+            className={cx(
+              display.className,
+              "text-3xl sm:text-4xl tracking-tight"
+            )}
+          >
+            {texts.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 lg:hidden">
-            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten 
-            automatisch synchron – sicher, transparent und jederzeit widerrufbar.
+            {texts.description}
           </p>
-                    <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 hidden lg:block">
-            Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten <br></br>
-            automatisch synchron – sicher, transparent und jederzeit widerrufbar.
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-gray-600 hidden lg:block">
+            {texts.description}
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Integration Cards */}
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
-          {INTEGRATIONS.map((it, idx) => {
+          {texts.integrations.map((it, idx) => {
             const iconSrc = `/images/icons/${it.key}.svg`;
             return (
               <motion.div
@@ -88,21 +83,13 @@ export default function Integrations() {
                   )}
                 >
                   <div className="flex items-start gap-3">
-                    <span
-                      className={cx(
-                        "rounded-xl p-2 ring-1 ring-inset ring-black/5 bg-white/80 backdrop-blur-sm"
-                      )}
-                    >
-                      <span
-                        className={cx(
-                          "grid h-10 w-10 place-items-center rounded-lg",
-                        )}
-                      >
+                    <span className="rounded-xl p-2 ring-1 ring-inset ring-black/5 bg-white/80 backdrop-blur-sm">
+                      <span className="grid h-10 w-10 place-items-center rounded-lg">
                         <Image
                           src={iconSrc}
                           alt={`${it.name} Logo`}
-                          width={22}
-                          height={22}
+                          width={40}
+                          height={40}
                           className="h-[40px] w-[40px] object-contain"
                         />
                       </span>
@@ -110,18 +97,27 @@ export default function Integrations() {
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="truncate text-sm font-semibold tracking-tight">{it.name}</h3>
+                        <h3 className="truncate text-sm font-semibold tracking-tight">
+                          {it.name}
+                        </h3>
                         <span className="text-[10px] font-medium text-gray-400 group-hover:text-gray-500">
-                          Öffnen ↗
+                          {texts.labels.open}
                         </span>
                       </div>
-                      <p className="mt-1 line-clamp-3 text-xs text-gray-600">{it.desc}</p>
+                      <p className="mt-1 line-clamp-3 text-xs text-gray-600">
+                        {it.desc}
+                      </p>
                     </div>
                   </div>
 
                   <div className="mt-4 flex items-center justify-between">
-                    <StatusPill status={it.status ?? "available"} />
-                    <span className="text-[11px] text-gray-400">API & More</span>
+                    <StatusPill
+                      status={it.status ?? "available"}
+                      labels={texts.labels}
+                    />
+                    <span className="text-[11px] text-gray-400">
+                      {texts.labels.api}
+                    </span>
                   </div>
                 </Link>
               </motion.div>
@@ -131,21 +127,17 @@ export default function Integrations() {
 
         {/* Value bullets */}
         <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Feature
-            icon={ArrowPathIcon}
-            title="Nahtlose Synchronisierung"
-            desc="Zwei-Wege-Sync für Aufgaben, Kalender & Kontakte – ohne doppelte Einträge."
-          />
-          <Feature
-            icon={ShieldCheckIcon}
-            title="Datenschutz an erster Stelle"
-            desc="EU-Hosting, klare Berechtigungen, jederzeit widerrufbar."
-          />
-          <Feature
-            icon={LinkIcon}
-            title="Mehr als nur APIs"
-            desc="Events & Workflows verbinden – Powerbook passt sich deinem Stack an."
-          />
+          {texts.features.map((feat) => {
+            const Icon = iconMap[feat.icon];
+            return (
+              <Feature
+                key={feat.title}
+                icon={Icon}
+                title={feat.title}
+                desc={feat.desc}
+              />
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -154,7 +146,7 @@ export default function Integrations() {
             href="mailto:info@powerbook.at"
             className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white shadow-sm hover:opacity-90"
           >
-            Weitere Integrationen anfragen
+            {texts.labels.cta}
           </Link>
         </div>
       </div>
@@ -162,27 +154,36 @@ export default function Integrations() {
   );
 }
 
-function StatusPill({ status }: { status: "connected" | "available" }) {
+function StatusPill({
+  status,
+  labels,
+}: {
+  status: "connected" | "available";
+  labels: IntegrationTexts["labels"];
+}) {
   if (status === "connected") {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-[11px] font-medium text-green-700 ring-1 ring-inset ring-green-200">
-        Verbunden
+        {labels.connected}
       </span>
     );
   }
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-gray-50 px-2 py-1 text-[11px] font-medium text-gray-700 ring-1 ring-inset ring-gray-200">
-      Verfügbar
+      {labels.available}
     </span>
   );
 }
 
-function Feature(props: {
+function Feature({
+  icon: Icon,
+  title,
+  desc,
+}: {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   desc: string;
 }) {
-  const Icon = props.icon;
   return (
     <div className="rounded-2xl border border-black/5 bg-white p-5 shadow-[0_1px_0_0_rgba(0,0,0,0.03)]">
       <div className="flex items-start gap-3">
@@ -190,8 +191,8 @@ function Feature(props: {
           <Icon className="h-5 w-5 text-gray-700" />
         </span>
         <div>
-          <h3 className="text-sm font-semibold tracking-tight">{props.title}</h3>
-          <p className="mt-1 text-xs text-gray-600">{props.desc}</p>
+          <h3 className="text-sm font-semibold tracking-tight">{title}</h3>
+          <p className="mt-1 text-xs text-gray-600">{desc}</p>
         </div>
       </div>
     </div>

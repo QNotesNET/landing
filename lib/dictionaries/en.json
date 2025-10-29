@@ -14,5 +14,748 @@
       "de": "German",
       "en": "English"
     }
+  },
+  "hero": {
+    "titleLine1": "Write analog.",
+    "titleLine2": "Organized digitally.",
+    "description": "Write on paper — Powerbook does the rest: scan, organize neatly, and search instantly. AI detects tasks & highlights, creates calendar events, and syncs across iOS, Android & Web.",
+    "features": {
+      "scan": "Auto-scan with edge detection, alignment & OCR",
+      "search": "Searchable notes, tags & smart organization",
+      "ai": "AI assist: tasks, messages, contacts, events & more"
+    },
+    "ctaPrimary": "Get started",
+    "ctaSecondary": "How it works"
+  },
+  "how": {
+    "heading": "How it works",
+    "description": "Write as usual on paper. Powerbook turns it into searchable notes, tasks and events – automatically organized.",
+    "steps": {
+      "write": {
+        "title": "Write",
+        "text": "Take notes on your Powerbook paper: TODO, CAL, bullet points.",
+        "badge": "Analog"
+      },
+      "scan": {
+        "title": "Scan",
+        "text": "Open the app, capture the page. Auto-crop, straighten & OCR.",
+        "badge": "Scan"
+      },
+      "organize": {
+        "title": "Organize",
+        "text": "AI detects tasks & events, tags & search – everything sorted.",
+        "badge": "Digital"
+      }
+    },
+    "features": {
+      "search": "Full-text search: Find content in seconds (even from scans).",
+      "todos": "AI-Assist: Detect tasks & add them to lists automatically.",
+      "calendar": "Calendar sync: Send events to Apple/Google Calendar.",
+      "tags": "Tags & structure: Projects, topics, meetings – neatly organized."
+    },
+    "ctaPrimary": "Start for free",
+    "ctaSecondary": "See pricing",
+    "problems": {
+      "problemTitle": "Without Powerbook",
+      "solutionTitle": "With Powerbook",
+      "problemPoints": [
+        "Paper clutter & duplicate notes",
+        "Not searchable, nothing linked",
+        "Tasks & events get lost"
+      ],
+      "solutionPoints": [
+        "Scans, recognizes, tags automatically",
+        "Searchable & neatly structured",
+        "AI-tasks, calendar sync, export"
+      ]
+    },
+    "mock": {
+      "title": "Powerbook App",
+      "scanLabel": "Scan · 1/1",
+      "lines": [
+        "TODO: Send offer",
+        "CAL: 2:00 PM Team call",
+        "Notes: Check budget"
+      ],
+      "badges": [
+        "Tasks detected (2)",
+        "Tags: Project, Sales",
+        "Export: PDF",
+        "Calendar sync"
+      ]
+    }
+  },
+  "appPreview": {
+    "heading": "Clarity at a glance.",
+    "description": "Powerbook automatically detects tasks, events and pages – showing everything organized and synced in one central workspace.",
+    "features": [
+      {
+        "name": "Organization & Focus",
+        "summary": "Tasks & Lists",
+        "description": "Powerbook detects to-dos from your notes, assigns them to projects or lists, and syncs seamlessly with services like Google Tasks.",
+        "image": "/images/tasks.png",
+        "icon": "check"
+      },
+      {
+        "name": "Time & Structure",
+        "summary": "Calendar & Events",
+        "description": "Detected events are suggested automatically and synced with your Google or Powerbook calendar.",
+        "image": "/images/calendar.png",
+        "icon": "calendar"
+      },
+      {
+        "name": "Digitization & Clarity",
+        "summary": "Scans & Assignments",
+        "description": "Automatic page detection, straightening and OCR ensure perfect digital copies – ideal for archiving, search and AI features.",
+        "image": "/images/scan.png",
+        "icon": "camera"
+      }
+    ]
+  },
+  "dashboard": {
+    "heading": "Everything in one place.",
+    "description": "Keep track of your Powerbooks, pages and tasks – Powerbook connects paper, structure and digital work in one clear system.",
+    "imageAlt": "App dashboard",
+    "features": [
+      {
+        "name": "Scan and go.",
+        "description": "Capture pages, let them be recognized automatically and continue working right in your dashboard.",
+        "icon": "upload"
+      },
+      {
+        "name": "Data protection in the EU.",
+        "description": "Servers located in Europe and developed with GDPR compliance in mind – your notes stay with you.",
+        "icon": "fingerprint"
+      },
+      {
+        "name": "Encrypted.",
+        "description": "All data is transmitted and stored encrypted, keeping your private information safe.",
+        "icon": "lock"
+      },
+      {
+        "name": "Automatic backups.",
+        "description": "Regular backups ensure nothing is ever lost.",
+        "icon": "server"
+      },
+      {
+        "name": "Always in sync.",
+        "description": "Web and mobile apps keep your content updated across all devices automatically.",
+        "icon": "sync"
+      },
+      {
+        "name": "Plenty of integrations.",
+        "description": "Connect calendars, tasks and other tools in just a few clicks – everything in one place.",
+        "icon": "settings"
+      }
+    ]
+  },
+  "exclusivePartner": {
+    "heading": "Our Exclusive Integration Partners",
+    "description": "Connect Powerbook with your Darlean and Nexoro accounts to keep data automatically synchronized – secure, transparent, and revocable at any time.",
+    "labels": {
+      "open": "Open ↗",
+      "api": "API & More",
+      "connected": "Connected",
+      "available": "Available"
+    },
+    "integrations": [
+      {
+        "key": "darlean",
+        "name": "Darlean",
+        "href": "https://darlean.com",
+        "desc": "Seamlessly synchronize projects, tasks & workflows.",
+        "status": "available"
+      },
+      {
+        "key": "nexoro",
+        "name": "Nexoro",
+        "href": "https://nexoro.net",
+        "desc": "Seamlessly synchronize projects, tasks & workflows.",
+        "status": "available"
+      }
+    ]
+  },
+  "integrations": {
+    "heading": "Our Integrations",
+    "description": "Connect Powerbook with your favorite tools and keep your data automatically synchronized – secure, transparent, and revocable at any time.",
+    "labels": {
+      "open": "Open ↗",
+      "api": "API & More",
+      "connected": "Connected",
+      "available": "Available",
+      "cta": "Request additional integrations"
+    },
+    "integrations": [
+      {
+        "key": "google",
+        "name": "Google",
+        "href": "https://google.com",
+        "desc": "Seamlessly sync calendar, contacts, and tasks.",
+        "status": "available"
+      },
+      {
+        "key": "microsoft",
+        "name": "Microsoft",
+        "href": "https://microsoft.com",
+        "desc": "Seamlessly sync calendar, contacts, and tasks.",
+        "status": "available"
+      },
+      {
+        "key": "whatsapp",
+        "name": "WhatsApp",
+        "href": "https://whatsapp.com",
+        "desc": "Send messages, trigger workflows.",
+        "status": "available"
+      },
+      {
+        "key": "telegram",
+        "name": "Telegram",
+        "href": "https://telegram.org",
+        "desc": "Send messages, trigger workflows.",
+        "status": "available"
+      }
+    ],
+    "features": [
+      {
+        "title": "Seamless synchronization",
+        "desc": "Two-way sync for tasks, calendars & contacts – no duplicates.",
+        "icon": "sync"
+      },
+      {
+        "title": "Privacy first",
+        "desc": "EU hosting, transparent permissions, revocable at any time.",
+        "icon": "shield"
+      },
+      {
+        "title": "More than APIs",
+        "desc": "Connect events & workflows – Powerbook adapts to your stack.",
+        "icon": "link"
+      }
+    ]
+  },
+  "pricing": {
+    "heading": "Fair Pricing",
+    "subtext": "The physical Powerbook is optional and available in our Shop.",
+    "noteMonthly": "Monthly, cancel anytime",
+    "noteYearly": "Annual plan: save ~20%",
+    "labels": {
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "yearlyDiscount": "~20% cheaper",
+      "popular": "Popular",
+      "cta": "Get Started",
+      "freeUnit": "/ month",
+      "shopBadge": "Recommended",
+      "shopHeading": "Add a physical Powerbook – for the best flow",
+      "shopText": "Hard or soft cover, A5/A4. Perfectly matched with your online Powerbooks: scan, sync and keep working anywhere.",
+      "shopButton": "Go to Shop",
+      "studentText": "Students and pupils receive a 20% discount on Plus & Pro. Please contact us with valid proof."
+    },
+    "plans": [
+      {
+        "id": "free",
+        "name": "Free",
+        "tagline": "For getting started",
+        "monthly": 0,
+        "yearly": 0,
+        "ctaHref": "/signup?plan=free",
+        "features": [
+          "2 Powerbooks, 10 pages/Powerbook",
+          "120 scans/month (basic OCR)",
+          "1 device + web",
+          "EU cloud sync: 500 MB",
+          "Export: PDF & PNG",
+          "Basic search, tags & folders"
+        ]
+      },
+      {
+        "id": "plus",
+        "name": "Plus",
+        "tagline": "Most popular choice",
+        "monthly": 6.99,
+        "yearly": 59,
+        "popular": true,
+        "highlight": true,
+        "ctaHref": "/signup?plan=plus",
+        "features": [
+          "Unlimited Powerbooks",
+          "1,500 scans/month with Smart-Scan",
+          "3 devices + web",
+          "EU cloud sync: 10 GB",
+          "OCR EN/DE + full text search",
+          "Version history (30 days)",
+          "Templates & reminders",
+          "Email-to-Powerbook"
+        ]
+      },
+      {
+        "id": "pro",
+        "name": "Pro",
+        "tagline": "For power users",
+        "monthly": 11.99,
+        "yearly": 99,
+        "ctaHref": "/signup?plan=pro",
+        "features": [
+          "Unlimited, fair-use scans",
+          "5 devices + web",
+          "EU cloud sync: 100 GB",
+          "Advanced OCR (multi-language, handwriting*)",
+          "AI Assist: Summaries & To-dos",
+          "Automatic backups (90 days)",
+          "PDF import & auto-splitting",
+          "Passcode/Face/Touch lock"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "Do I need to buy a Powerbook to use the app?",
+        "a": "No. You can use Powerbook without the physical notebook. The printed Powerbook simply gives you an optimized writing experience and a smoother workflow."
+      },
+      {
+        "q": "Where are my data and scans stored?",
+        "a": "Your data is stored on EU servers. We use transport encryption (TLS), store only what's necessary, and you can delete your data at any time."
+      },
+      {
+        "q": "Are my scans private?",
+        "a": "Yes. All your scans are private."
+      },
+      {
+        "q": "Do I need internet to scan?",
+        "a": "No. Scans also work offline and sync once you're back online."
+      },
+      {
+        "q": "Is there a web app?",
+        "a": "Yes. Powerbook works on iOS, Android, and in your browser."
+      },
+      {
+        "q": "How much does Powerbook cost?",
+        "a": "You can start for free. Pricing for advanced features and the physical Powerbook is available on our website."
+      },
+      {
+        "q": "Can I connect Powerbook with other tools?",
+        "a": "Optionally, you can enable integrations (e.g. calendar or tasks). Your consent is required and you can revoke it anytime."
+      },
+      {
+        "q": "Can I export or share my scans?",
+        "a": "Yes. You can export pages as PDF/JPG and share them through your preferred apps or services."
+      }
+    ]
+  },
+  "footer": {
+    "navHeading": "Navigation",
+    "linksHeading": "Links",
+    "appHeading": "Mobile App",
+    "nav": [
+      { "label": "How it works", "href": "/#how" },
+      { "label": "Pricing", "href": "/#pricing" },
+      { "label": "Shop", "href": "/shop" },
+      { "label": "Business", "href": "/business" }
+    ],
+    "links": [
+      { "label": "Get Started", "href": "https://my.powerbook.at/register" },
+      { "label": "Status", "href": "https://status.powerbook.at" },
+      { "label": "Contact", "href": "mailto:info@powerbook.at" }
+    ],
+    "legal": [
+      { "label": "Imprint", "href": "/impressum" },
+      { "label": "Privacy", "href": "/datenschutz" },
+      { "label": "Terms", "href": "/agb" }
+    ],
+    "copyright": "All rights reserved."
+  },
+  "mobile": {
+    "heading": "Download the Powerbook App",
+    "subheading": "One photo is enough: pages are detected, content is organized and securely stored. Start now on your device.",
+    "imageAlt": "Powerbook App – preview",
+    "storeLabels": {
+      "ios": "Download on the App Store",
+      "android": "Get it on Google Play"
+    }
+  },
+  "business": {
+    "hero": {
+      "badge": "Powerbook for Teams",
+      "title": "Powerbook",
+      "titleAccent": "Business",
+      "subtitle": "The focused note and work ecosystem – with a dedicated business dashboard, custom branding & domain, employee management, contacts, projects, to-dos, calendar and more. Includes a personal account manager.",
+      "primaryCta": {
+        "label": "Get started",
+        "href": "/signup"
+      },
+      "secondaryCta": {
+        "label": "Request demo",
+        "href": "#contact"
+      },
+      "badges": [
+        { "icon": "shield", "label": "GDPR-ready" },
+        { "icon": "server", "label": "EU hosting" },
+        { "icon": "lock", "label": "SSO optional" }
+      ]
+    },
+    "valuePillars": {
+      "items": [
+        {
+          "icon": "building",
+          "title": "Custom Branding & Domain",
+          "text": "Your logo, colors, sub-/custom-domain – a consistent brand experience for teams and clients."
+        },
+        {
+          "icon": "users",
+          "title": "Manage employees globally",
+          "text": "Roles & permissions, groups, teams – centrally controlled. Optional SSO/SCIM."
+        },
+        {
+          "icon": "notebook",
+          "title": "Projects & Powerbooks",
+          "text": "Structure notebooks and projects with pages, versions, tags and sharing options."
+        },
+        {
+          "icon": "todo",
+          "title": "Tasks & Workflows",
+          "text": "To-dos, status & assignees, boards & lists, automations (beta)."
+        }
+      ]
+    },
+    "featureStrips": {
+      "items": [
+        {
+          "badge": "Dashboard",
+          "title": "A central business dashboard",
+          "text": "KPIs, schedules, tasks and project status at a glance – customized per role. Widgets for workload, to-do burndown, calendar, contacts and note streams.",
+          "bullets": [
+            { "icon": "check", "label": "Drag & Drop widgets" },
+            { "icon": "check", "label": "Team/project filters" },
+            { "icon": "check", "label": "Exports & reports" }
+          ],
+          "icon": ["barchart"]
+        },
+        {
+          "badge": "Branding",
+          "title": "Custom branding & domain",
+          "text": "Whitelabel interface with logo, colors and hostname (e.g. notes.your-domain.com). Unified experience across web & mobile – for teams and clients.",
+          "tags": ["Logo/Colors", "Custom Domain", "Email Templates"],
+          "icon": ["palette", "globe"]
+        },
+        {
+          "badge": "Work",
+          "title": "Contacts, projects, tasks & calendar",
+          "text": "A lightweight CRM for teams: contacts & companies, Powerbooks/projects, tasks with assignees, deadlines & dependencies, calendar (ICS import/export), note streams.",
+          "bullets": [
+            { "icon": "contact", "label": "Contact/company records" },
+            { "icon": "layers", "label": "Powerbooks/projects" },
+            { "icon": "todo", "label": "Boards & lists" },
+            { "icon": "calendar", "label": "Calendar & events" }
+          ],
+          "icon": []
+        }
+      ]
+    },
+    "securityCompliance": {
+      "items": [
+        {
+          "icon": "shield",
+          "title": "Security by Design",
+          "text": "TLS, at-rest encryption on the platform, role-based permissions, and audit logging."
+        },
+        {
+          "icon": "server",
+          "title": "EU Hosting",
+          "text": "Data storage within the EU, data-processing agreements, and rolling backup retention."
+        },
+        {
+          "icon": "lock",
+          "title": "SSO/SCIM (optional)",
+          "text": "Integration with your IdP landscape for login and user provisioning."
+        }
+      ]
+    },
+    "pricing": {
+      "plans": [
+        {
+          "badge": "Business",
+          "title": "Team",
+          "text": "Everything small and mid-sized teams need – full Powerbook functionality with collaboration features.",
+          "price": "€9",
+          "priceNote": "/ user / month",
+          "features": [
+            "Projects, contacts, boards/lists",
+            "Calendar, note streams, exports",
+            "Roles/permissions, groups"
+          ],
+          "cta": {
+            "href": "/signup",
+            "label": "Get started"
+          }
+        },
+        {
+          "badge": "Business",
+          "title": "Enterprise",
+          "text": "For larger organizations with compliance and integration requirements.",
+          "price": "On request",
+          "features": [
+            "Custom domain & branding",
+            "SSO/SCIM, IdP integration",
+            "Premium support & SLA"
+          ],
+          "cta": {
+            "href": "#contact",
+            "label": "Book a meeting"
+          },
+          "popular": true,
+          "popularLabel": "Popular"
+        }
+      ]
+    },
+    "contactCTA": {
+      "title": "Personal consultation for your team",
+      "text": "We support you from onboarding to rollout – with templates, role models, and best practices.",
+      "contacts": [
+        { "type": "mail", "value": "hello@powerbook.at" },
+        { "type": "phone", "value": "+43 (0) XXX XXX XXX" }
+      ],
+      "form": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "message": "Your project",
+        "button": "Send request"
+      }
+    }
+  },
+  "howItWorks": {
+    "hero": {
+      "badge": "Quick guide",
+      "title": "How to use",
+      "text": "Write as usual. Circle an action, scan – done.",
+      "icons": [
+        { "icon": "PenLine", "label": "Write" },
+        { "icon": "Circle", "label": "Circle" },
+        { "icon": "Camera", "label": "Scan" },
+        { "icon": "Sparkles", "label": "Automatically sorted" }
+      ]
+    },
+    "keywords": {
+      "heading": "KEYWORD / ACTION",
+      "sub": "Write a KEYWORD next to your note and circle it.",
+      "items": [
+        {
+          "pillLabel": "KEYWORD",
+          "code": "TODO",
+          "actionLabel": "ACTION",
+          "desc": "Creates a task in Tasks.",
+          "note": "Optional: add date/time in the note."
+        },
+        {
+          "pillLabel": "KEYWORD",
+          "code": "CAL",
+          "actionLabel": "ACTION",
+          "desc": "Creates an event in the calendar.",
+          "note": "Optional: include time/date."
+        },
+        {
+          "pillLabel": "KEYWORD",
+          "code": "WA",
+          "actionLabel": "ACTION",
+          "desc": "Shares the selected section via WhatsApp.",
+          "note": "Perfect for quick updates."
+        },
+        {
+          "pillLabel": "KEYWORD",
+          "code": "CO",
+          "actionLabel": "ACTION",
+          "desc": "Creates a new contact in Contacts.",
+          "note": "Name/phone/note as written."
+        }
+      ],
+      "ruleTitle": "Important:",
+      "ruleText": "A KEYWORD only counts when it’s circled."
+    },
+    "destinations": [
+      {
+        "icon": "ListTodo",
+        "title": "Tasks",
+        "text": "All TODOs – with priority & due dates."
+      },
+      {
+        "icon": "Calendar",
+        "title": "Calendar",
+        "text": "CAL becomes events – ICS compatible."
+      },
+      {
+        "icon": "Contact",
+        "title": "Contacts",
+        "text": "CO creates new contacts."
+      },
+      {
+        "icon": "MessageCircle",
+        "title": "Forward",
+        "text": "WA shares notes e.g. via WhatsApp."
+      }
+    ],
+    "cta": {
+      "title": "Try it in 30 seconds",
+      "text": "Example: TODO New offer → circle it → scan → task created.",
+      "button": { "label": "Open app", "href": "https://my.powerbook.at/login" }
+    }
+  },
+  "agb": {
+    "hero": {
+      "badge": "Terms & Conditions",
+      "title": "General Terms and Conditions",
+      "text": "Applicable to the use of the Powerbook app and related services."
+    },
+    "intro": "Contracting party: TRO GmbH, Mötlas 47, 4273 Unterweißenbach, Austria. Deviating terms apply only if confirmed in writing.",
+    "sections": [
+      {
+        "title": "1. Scope & Contract Partner",
+        "text": "These terms apply between the provider (TRO GmbH) and users of the Powerbook app and all related services (e.g. my.powerbook.at)."
+      },
+      {
+        "type": "card",
+        "icon": "Handshake",
+        "title": "2. Service Description",
+        "paragraphs": [
+          "Digitization, organization and synchronization of handwritten notes; web and mobile app.",
+          "Beta/Early Access features may vary; no entitlement to specific functions."
+        ]
+      },
+      {
+        "type": "list",
+        "icon": "ShieldCheck",
+        "title": "3. Usage, Accounts & Obligations",
+        "items": [
+          "Account required; keep login credentials confidential.",
+          "Prohibited: illegal content, system interference, shared accounts without authorization.",
+          "Backups are created; users remain responsible for their exports."
+        ]
+      },
+      {
+        "type": "card",
+        "icon": "Truck",
+        "title": "4. Prices, Term & Cancellation",
+        "paragraphs": [
+          "Prices include VAT unless stated otherwise.",
+          "Subscriptions renew automatically; cancellation possible in the app/account settings.",
+          "Statutory rights remain unaffected."
+        ]
+      },
+      {
+        "type": "card",
+        "title": "5. Availability & Maintenance",
+        "paragraphs": [
+          "State-of-the-art availability; maintenance windows may cause brief interruptions.",
+          "Planned maintenance will be announced in advance whenever possible."
+        ]
+      },
+      {
+        "title": "6. Liability",
+        "text": "Liability for slight negligence only for essential duties and limited to foreseeable damages."
+      },
+      {
+        "title": "7. Intellectual Property",
+        "text": "All rights to software, trademarks and content remain with the provider or licensors."
+      },
+      {
+        "title": "8. Privacy",
+        "text": "Our privacy policy applies and can be found under /privacy."
+      },
+      {
+        "title": "9. Final Provisions",
+        "text": "Austrian law applies; place of jurisdiction Linz (where permissible). Last updated: {{DATE}}"
+      }
+    ]
+  },
+  "privacy": {
+    "hero": {
+      "badge": "GDPR Austria",
+      "title": "Privacy Policy",
+      "text": "Valid for website & app under <a href=\"https://my.powerbook.at\" class=\"underline\">my.powerbook.at</a>."
+    },
+    "controller": {
+      "title": "Controller",
+      "text": "<strong>TRO GmbH</strong>, Mötlas 47, 4273 Unterweißenbach, Austria · E-mail: <a href=\"mailto:privacy@powerbook.at\" class=\"underline\">privacy@powerbook.at</a>."
+    },
+    "sections": [
+      {
+        "icon": "Shield",
+        "title": "Purposes & Legal Basis",
+        "list": [
+          "<strong>Account & App Use</strong> (registration, login, sync): Art. 6 (1)(b) GDPR.",
+          "<strong>Support & Communication</strong>: Art. 6 (1)(b)(f) GDPR.",
+          "<strong>Product Improvement / Logs</strong>: Art. 6 (1)(f) GDPR.",
+          "<strong>Marketing / Newsletter</strong> (optional): Art. 6 (1)(a) GDPR (consent, revocable)."
+        ]
+      },
+      {
+        "icon": "UserCheck",
+        "title": "What Data Do We Process?",
+        "text": "<ul class='list-disc pl-5 space-y-2'><li><strong>Basic data</strong>: name, email, hashed passwords, account details.</li><li><strong>Usage / log data</strong>: events, IP, browser/OS for security.</li><li><strong>Content data</strong>: uploaded scans / notes for sync and display in your account.</li></ul>"
+      },
+      {
+        "icon": "Database",
+        "title": "Processors & Transfers",
+        "text": "We use carefully selected EU service providers (Hosting, Email, Monitoring, optional Analytics). Transfers outside the EU only with adequate safeguards (Art. 44 ff GDPR)."
+      },
+      {
+        "icon": "Cookie",
+        "title": "Cookies & Tracking",
+        "text": "Necessary cookies for login & security; optional analytics only with consent (adjustable in banner)."
+      },
+      {
+        "title": "Your Rights (Art. 15–22 GDPR)",
+        "text": "Access, rectification, erasure, restriction, portability and objection rights. Contact <a href='mailto:privacy@powerbook.at' class='underline'>privacy@powerbook.at</a>. Complaints: <a href='https://www.dsb.gv.at/' class='underline'>Austrian Data Protection Authority</a>."
+      },
+      {
+        "title": "Retention & Security",
+        "text": "Processing for contract duration; statutory retention obligations remain. TLS, encryption at rest, access controls, backups. Last updated: {{DATE}}."
+      }
+    ],
+    "contactBox": "Questions? Email us at <a class='underline' href='mailto:privacy@powerbook.at'>privacy@powerbook.at</a> – we’ll reply as soon as possible."
+  },
+  "impressum": {
+    "hero": {
+      "badge": "Legal Information",
+      "title": "Imprint",
+      "text": "Information according to § 5 ECG, § 14 UGB and § 24 MedienG (Austria)."
+    },
+    "company": {
+      "title": "Company",
+      "name": "TRO GmbH",
+      "address": "Mötlas 47, 4273 Unterweißenbach, Austria",
+      "url": "https://my.powerbook.at",
+      "urlLabel": "my.powerbook.at",
+      "email": "hello@powerbook.at",
+      "phone": "+43 (0) XXX XXX XXX"
+    },
+    "editor": {
+      "title": "Media Owner / Editorial",
+      "text": "TRO GmbH – content of this website and app is created and maintained internally."
+    },
+    "legal": {
+      "title": "Company Details",
+      "lines": [
+        "Commercial Register Court: <strong>Regional Court Linz</strong>",
+        "Company Register No.: <strong>FN 000000x</strong> (example)",
+        "VAT ID: <strong>ATU00000000</strong> (example)",
+        "Managing Director: <strong>—</strong> (example)",
+        "Member of WKO, Section: <strong>Information & Consulting</strong> (example)"
+      ]
+    },
+    "authority": {
+      "title": "Supervisory Authority",
+      "text": "District Authority Freistadt (example)"
+    },
+    "liability": {
+      "title": "Liability / Copyright",
+      "paragraphs": [
+        "The contents have been prepared with the greatest care. No guarantee is given for accuracy or completeness. External links are carefully checked; responsibility for their content lies with the respective operators.",
+        "Texts, trademarks, photos and graphics on this website and in the app are protected by copyright. Any use outside copyright limitations requires prior written consent from the rights holder.",
+        "Gender note: for readability, gendered terms are used inclusively for all genders."
+      ]
+    }
   }
 }

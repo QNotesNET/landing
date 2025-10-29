@@ -10,7 +10,7 @@ import Hero from "@/components/Hero";
 import How from "@/components/How";
 import AppPreview from "@/components/AppPreview";
 import DashboardPreview from "@/components/DashboardPreview";
-import { ExclusivePartner } from "@/components/ExclusivePartner";
+import ExclusivePartner from "@/components/ExclusivePartner";
 import Integrations from "@/components/Integrations";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
@@ -50,19 +50,43 @@ export default async function HomePage({
       />
 
       <Hero
-        // title={t.home?.title ?? "Powerbook"}
-        // subtitle={t.home?.subtitle ?? ""}
-        // ctaLabel={t.home?.cta ?? "Get started"}
+        texts={{
+          titleLine1: t.hero.titleLine1,
+          titleLine2: t.hero.titleLine2,
+          description: t.hero.description,
+          features: {
+            scan: t.hero.features.scan,
+            search: t.hero.features.search,
+            ai: t.hero.features.ai,
+          },
+          ctaPrimary: t.hero.ctaPrimary,
+          ctaSecondary: t.hero.ctaSecondary,
+        }}
       />
 
-      <How />
-      <AppPreview />
-      <DashboardPreview />
-      <ExclusivePartner />
-      <Integrations />
-      <Pricing />
-      <FAQ />
-      <Footer />
+      <How
+        texts={{
+          heading: t.how.heading,
+          description: t.how.description,
+          steps: t.how.steps,
+          features: t.how.features,
+          ctaPrimary: t.how.ctaPrimary,
+          ctaSecondary: t.how.ctaSecondary,
+          problems: t.how.problems,
+          mock: t.how.mock,
+        }}
+      />
+      {/* @ts-expect-error --- */}
+      <AppPreview texts={t.appPreview} />
+      {/* @ts-expect-error --- */}
+      <DashboardPreview texts={t.dashboard} />
+      {/* @ts-expect-error --- */}
+      <ExclusivePartner texts={t.exclusivePartner} />
+      {/* @ts-expect-error --- */}
+      <Integrations texts={t.integrations} />
+      <Pricing texts={t.pricing} />
+      <FAQ texts={t.faq} />
+      <Footer texts={t.footer} />
     </main>
   );
 }

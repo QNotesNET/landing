@@ -1,30 +1,57 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { use, useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { display, CREAM, cx } from "@/lib/ui";
 
-// --- Aktive, reduzierte Shop-Seite (Platzhalter) ---
-export default function ShopPage() {
+export default function ShopPage(props: { params: Promise<{ lang?: string }> }) {
+  const [t, setT] = useState<any>(null);
+  const { lang } = use(props.params); // <– Promise korrekt auflösen
+
+  useEffect(() => {
+    async function loadLang() {
+      try {
+        const translations =
+          lang === "en"
+            ? await import("@/lib/dictionaries/en.json")
+            : await import("@/lib/dictionaries/de.json");
+        setT(translations.default);
+      } catch (err) {
+        console.error("Fehler beim Laden der Sprachdatei:", err);
+        const fallback = await import("@/lib/dictionaries/de.json");
+        setT(fallback.default);
+      }
+    }
+    loadLang();
+  }, [lang]);
+
+  // Warten bis Sprache geladen ist
+  if (!t) return null;
+
   return (
     <main className={cx("text-gray-900")} style={{ backgroundColor: CREAM }}>
-      {/* <Header /> */}
+      <Header texts={t.header} />
 
-      {/* Centered message */}
+      {/* Shop Placeholder */}
       <section className="min-h-[70vh] grid place-items-center px-4">
-        <h1 className={cx(display.className, "text-4xl sm:text-5xl tracking-tight text-center")}>
-          Shop bald verfügbar
+        <h1
+          className={cx(
+            display.className,
+            "text-4xl sm:text-5xl tracking-tight text-center"
+          )}
+        >
+          {lang === "en" ? "Shop coming soon" : "Shop bald verfügbar"}
         </h1>
       </section>
 
-      <Footer />
+      <Footer texts={t.footer} />
     </main>
   );
 }
 
 // Wenn Shop ready ist oberen Bereich entfernen und den unteren wieder einkommentieren
-
 
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 // "use client";
