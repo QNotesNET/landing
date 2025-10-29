@@ -50,7 +50,7 @@ export default function Integrations() {
   return (
     <section id="integrations" className="relative bg-white">
       <div aria-hidden className="pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-6xl px-4 ">
+      <div className="relative mx-auto max-w-6xl px-4 pb-25">
         {/* Heading */}
         <div className="text-center">
           <h2 className={cx(display.className, "text-3xl sm:text-4xl tracking-tight")}>
