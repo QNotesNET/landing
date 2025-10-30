@@ -2,8 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, Instagram, Linkedin, Facebook } from "lucide-react";
+import { ChevronDown, Instagram, Linkedin, Facebook, Globe, Check } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
+
+/* shadcn/ui Dropdown */
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 type FooterTexts = {
   navHeading: string;
@@ -13,10 +23,46 @@ type FooterTexts = {
   links: { label: string; href: string }[];
   legal: { label: string; href: string }[];
   copyright: string;
+  // Labels für Language-Switcher (kommt aus footer.language in JSON)
+  language?: { label: string; de: string; en: string; ru: string };
 };
 
 export default function Footer({ texts }: { texts: FooterTexts }) {
   const year = new Date().getFullYear();
+
+  // Sprache aus URL ableiten (/de/*, /en/*, /ru/* -> Segment; sonst 'de')
+  const getLocaleFromPath = () => {
+    if (typeof window === "undefined") return "de";
+    const seg = (window.location.pathname.split("/")[1] || "").toLowerCase();
+    return ["de", "en", "ru"].includes(seg) ? seg : "de";
+  };
+  const currentLang = getLocaleFromPath();
+
+  // Locale-Pfad bauen: erstes Segment ersetzen oder einfügen
+  const buildHref = (target: "de" | "en" | "ru") => {
+    if (typeof window === "undefined") return `/${target}`;
+    const { pathname, search, hash } = window.location;
+    const segs = pathname.split("/"); // e.g. "/de/foo" => ["", "de", "foo"]
+    const first = (segs[1] || "").toLowerCase();
+    const isLocale = ["de", "en", "ru"].includes(first);
+
+    let newPath: string;
+    if (isLocale) {
+      segs[1] = target; // replace existing locale
+      newPath = segs.join("/") || `/${target}`;
+    } else {
+      const tail = segs.slice(1).join("/"); // keep rest
+      newPath = `/${target}${tail ? `/${tail}` : ""}`;
+    }
+    return `${newPath}${search}${hash}`;
+  };
+
+  const L = {
+    label: texts.language?.label ?? "Sprache",
+    de: texts.language?.de ?? "Deutsch",
+    en: texts.language?.en ?? "English",
+    ru: texts.language?.ru ?? "Русский",
+  };
 
   return (
     <footer className="bg-neutral-950 text-neutral-200">
@@ -42,25 +88,13 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
                 />
               </Link>
               <div className="mt-4 flex items-center gap-4">
-                <a
-                  href="https://linkedin.com"
-                  aria-label="LinkedIn"
-                  className="hover:text-white"
-                >
+                <a href="https://linkedin.com" aria-label="LinkedIn" className="hover:text-white">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a
-                  href="https://instagram.com"
-                  aria-label="Instagram"
-                  className="hover:text-white"
-                >
+                <a href="https://instagram.com" aria-label="Instagram" className="hover:text-white">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a
-                  href="https://facebook.com"
-                  aria-label="Facebook"
-                  className="hover:text-white"
-                >
+                <a href="https://facebook.com" aria-label="Facebook" className="hover:text-white">
                   <Facebook className="h-5 w-5" />
                 </a>
               </div>
@@ -77,10 +111,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
               <ul className="space-y-3">
                 {texts.nav.map((it) => (
                   <li key={it.label}>
-                    <Link
-                      href={it.href}
-                      className="text-neutral-300 hover:text-white"
-                    >
+                    <Link href={it.href} className="text-neutral-300 hover:text-white">
                       {it.label}
                     </Link>
                   </li>
@@ -99,10 +130,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
               <ul className="space-y-3">
                 {texts.links.map((it) => (
                   <li key={it.label}>
-                    <Link
-                      href={it.href}
-                      className="text-neutral-300 hover:text-white"
-                    >
+                    <Link href={it.href} className="text-neutral-300 hover:text-white">
                       {it.label}
                     </Link>
                   </li>
@@ -119,11 +147,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             </summary>
             <div className="px-4 pb-4">
               <div className="mt-3 flex flex-wrap items-center gap-3">
-                <a
-                  href="https://apps.apple.com/"
-                  aria-label="App Store"
-                  className="inline-block"
-                >
+                <a href="https://apps.apple.com/" aria-label="App Store" className="inline-block">
                   <img
                     src="/images/icons/appstore.webp"
                     alt="Download on the App Store"
@@ -131,11 +155,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
                     loading="lazy"
                   />
                 </a>
-                <a
-                  href="https://play.google.com/"
-                  aria-label="Google Play"
-                  className="inline-block"
-                >
+                <a href="https://play.google.com/" aria-label="Google Play" className="inline-block">
                   <img
                     src="/images/icons/playstore.webp"
                     alt="Get it on Google Play"
@@ -163,25 +183,13 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
               />
             </Link>
             <div className="flex items-center gap-4">
-              <a
-                href="https://linkedin.com/company/powerbook"
-                aria-label="LinkedIn"
-                className="hover:text-white"
-              >
+              <a href="https://linkedin.com/company/powerbook" aria-label="LinkedIn" className="hover:text-white">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href="https://instagram.com"
-                aria-label="Instagram"
-                className="hover:text-white"
-              >
+              <a href="https://instagram.com" aria-label="Instagram" className="hover:text-white">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://facebook.com"
-                aria-label="Facebook"
-                className="hover:text-white"
-              >
+              <a href="https://facebook.com" aria-label="Facebook" className="hover:text-white">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>
@@ -189,17 +197,12 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold text-white">
-              {texts.navHeading}
-            </h3>
+            <h3 className="text-sm font-semibold text-white">{texts.navHeading}</h3>
             <nav className="mt-4">
               <ul className="space-y-3">
                 {texts.nav.map((it) => (
                   <li key={it.label}>
-                    <Link
-                      href={it.href}
-                      className="text-sm text-neutral-300 hover:text-white"
-                    >
+                    <Link href={it.href} className="text-sm text-neutral-300 hover:text-white">
                       {it.label}
                     </Link>
                   </li>
@@ -210,17 +213,12 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
 
           {/* Links */}
           <div>
-            <h3 className="text-sm font-semibold text-white">
-              {texts.linksHeading}
-            </h3>
+            <h3 className="text-sm font-semibold text-white">{texts.linksHeading}</h3>
             <nav className="mt-4">
               <ul className="space-y-3">
                 {texts.links.map((it) => (
                   <li key={it.label}>
-                    <Link
-                      href={it.href}
-                      className="text-sm text-neutral-300 hover:text-white"
-                    >
+                    <Link href={it.href} className="text-sm text-neutral-300 hover:text-white">
                       {it.label}
                     </Link>
                   </li>
@@ -231,40 +229,17 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
 
           {/* App */}
           <div>
-            <h3 className="text-sm font-semibold text-white">
-              {texts.appHeading}
-            </h3>
+            <h3 className="text-sm font-semibold text-white">{texts.appHeading}</h3>
             <div className="mt-4 space-y-4">
-              <Link
-                href="https://my.powerbook.at"
-                className="text-sm text-neutral-300 hover:text-white"
-              >
+              <Link href="https://my.powerbook.at" className="text-sm text-neutral-300 hover:text-white">
                 Anmelden
               </Link>
               <div className="flex flex-col gap-2 mt-4">
-                <a
-                  href="https://apps.apple.com/"
-                  aria-label="App Store"
-                  className="inline-block"
-                >
-                  <img
-                    src="/images/icons/appstore.webp"
-                    alt="Download on the App Store"
-                    className="h-11 w-auto"
-                    loading="lazy"
-                  />
+                <a href="https://apps.apple.com/" aria-label="App Store" className="inline-block">
+                  <img src="/images/icons/appstore.webp" alt="Download on the App Store" className="h-11 w-auto" loading="lazy" />
                 </a>
-                <a
-                  href="https://play.google.com/"
-                  aria-label="Google Play"
-                  className="inline-block"
-                >
-                  <img
-                    src="/images/icons/playstore.webp"
-                    alt="Get it on Google Play"
-                    className="h-11 w-auto"
-                    loading="lazy"
-                  />
+                <a href="https://play.google.com/" aria-label="Google Play" className="inline-block">
+                  <img src="/images/icons/playstore.webp" alt="Get it on Google Play" className="h-11 w-auto" loading="lazy" />
                 </a>
               </div>
             </div>
@@ -281,14 +256,44 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
           {/* Left */}
           <div
             className="flex flex-col items-center gap-2
-              md:flex-row md:items-center md:justify-start md:gap-3"
+    md:flex-row md:items-center md:justify-start md:gap-3"
           >
-            <div className="order-1 md:order-2 text-xs">
-              <span className="hidden md:inline-block md:order-3 text-neutral-400">
-                |ㅤ{" "}
-              </span>
-              <StatusBadge />
+            {/* Sprach-Switcher: mobil oben, Desktop bleibt rechts */}
+            <div className="order-1 md:order-3 flex items-center">
+              <span className="hidden md:inline-block text-neutral-400 mx-3">|</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    aria-label={L.label}
+                    className="rounded-xl px-2 py-1 inline-flex items-center gap-2 text-xs
+               text-neutral-400 hover:text-neutral-300 hover:bg-white/10"
+                  >
+                    <Globe className="h-4 w-4 text-current" />
+                    <span className="inline">{L.label}</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-44">
+                  <DropdownMenuLabel>{L.label}</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild className="justify-between">
+                    <Link href={buildHref("de")}>
+                      {L.de} {currentLang === "de" && <Check className="h-4 w-4" />}
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="justify-between">
+                    <Link href={buildHref("en")}>
+                      {L.en} {currentLang === "en" && <Check className="h-4 w-4" />}
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="justify-between">
+                    <Link href={buildHref("ru")}>
+                      {L.ru} {currentLang === "ru" && <Check className="h-4 w-4" />}
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
+
             <p className="order-2 md:order-1 text-xs text-neutral-400">
               © {year} Powerbook · {texts.copyright}
             </p>
