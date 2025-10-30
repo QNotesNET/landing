@@ -266,7 +266,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
                   <button
                     aria-label={L.label}
                     className="rounded-xl px-2 py-1 inline-flex items-center gap-2 text-xs
-               text-neutral-400 hover:text-neutral-300 hover:bg-white/10"
+               text-neutral-400 hover:text-neutral-300 hover:bg-white/10 cursor-pointer"
                   >
                     <Globe className="h-4 w-4 text-current" />
                     <span className="inline">{L.label}</span>
