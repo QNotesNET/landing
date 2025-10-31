@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Powerbook – Write analog. Organize digitally.",
+    "description": "Write on paper. Powerbook handles the rest: scan, organize, search. AI detects tasks & highlights, sends events to your calendar, and syncs it all."
+},
   "header": {
     "nav": {
       "how": "How it works",
