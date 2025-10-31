@@ -347,28 +347,29 @@
     ]
   },
 "footer": {
-  "navHeading": "Navigation",
-  "linksHeading": "Links",
-  "appHeading": "Mobile App",
-  "nav": [
-    { "label": "How it works", "href": "/#how" },
-    { "label": "Pricing", "href": "/#pricing" },
-    { "label": "Shop", "href": "/shop" },
-    { "label": "Business", "href": "/business" }
-  ],
-  "links": [
-    { "label": "Get Started", "href": "https://my.powerbook.at/register" },
-    { "label": "Status", "href": "https://status.powerbook.at" },
-    { "label": "Contact", "href": "mailto:info@powerbook.at" }
-  ],
-  "legal": [
-    { "label": "Imprint", "href": "/impressum" },
-    { "label": "Privacy", "href": "/datenschutz" },
-    { "label": "Terms", "href": "/agb" }
-  ],
-  "copyright": "All rights reserved.",
-  "language": { "label": "Language", "de": "German", "en": "English", "ru": "Russian" }
-},
+    "navHeading": "Navigation",
+    "linksHeading": "Links",
+    "appHeading": "Mobile App",
+    "appLogin": { "label": "Sign in", "href": "https://my.powerbook.at" },
+    "nav": [
+      { "label": "How it works", "href": "/#how" },
+      { "label": "Pricing", "href": "/#pricing" },
+      { "label": "Shop", "href": "/shop" },
+      { "label": "Business", "href": "/business" }
+    ],
+    "links": [
+      { "label": "Get started", "href": "https://my.powerbook.at/register" },
+      { "label": "Status", "href": "https://status.powerbook.at" },
+      { "label": "Contact", "href": "mailto:info@powerbook.at" }
+    ],
+    "legal": [
+      { "label": "Imprint", "href": "/impressum" },
+      { "label": "Privacy", "href": "/datenschutz" },
+      { "label": "Terms", "href": "/agb" }
+    ],
+    "copyright": "All rights reserved.",
+    "language": { "label": "Language", "de": "German", "en": "English", "ru": "Russian" }
+  },
   "mobile": {
     "heading": "Download the Powerbook App",
     "subheading": "One photo is enough: pages are detected, content is organized and securely stored. Start now on your device.",

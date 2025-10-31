@@ -23,6 +23,8 @@ type FooterTexts = {
   links: { label: string; href: string }[];
   legal: { label: string; href: string }[];
   copyright: string;
+  // NEW: Login-Button i18n
+  appLogin?: { label: string; href: string };
   // Labels für Language-Switcher (kommt aus footer.language in JSON)
   language?: { label: string; de: string; en: string; ru: string };
 };
@@ -42,16 +44,16 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
   const buildHref = (target: "de" | "en" | "ru") => {
     if (typeof window === "undefined") return `/${target}`;
     const { pathname, search, hash } = window.location;
-    const segs = pathname.split("/"); // e.g. "/de/foo" => ["", "de", "foo"]
+    const segs = pathname.split("/");
     const first = (segs[1] || "").toLowerCase();
     const isLocale = ["de", "en", "ru"].includes(first);
 
     let newPath: string;
     if (isLocale) {
-      segs[1] = target; // replace existing locale
+      segs[1] = target;
       newPath = segs.join("/") || `/${target}`;
     } else {
-      const tail = segs.slice(1).join("/"); // keep rest
+      const tail = segs.slice(1).join("/");
       newPath = `/${target}${tail ? `/${tail}` : ""}`;
     }
     return `${newPath}${search}${hash}`;
@@ -231,8 +233,11 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
           <div>
             <h3 className="text-sm font-semibold text-white">{texts.appHeading}</h3>
             <div className="mt-4 space-y-4">
-              <Link href="https://my.powerbook.at" className="text-sm text-neutral-300 hover:text-white">
-                Anmelden
+              <Link
+                href={texts.appLogin?.href ?? "https://my.powerbook.at"}
+                className="text-sm text-neutral-300 hover:text-white"
+              >
+                {texts.appLogin?.label ?? "Anmelden"}
               </Link>
               <div className="flex flex-col gap-2 mt-4">
                 <a href="https://apps.apple.com/" aria-label="App Store" className="inline-block">

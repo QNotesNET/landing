@@ -347,28 +347,29 @@
     ]
   },
 "footer": {
-  "navHeading": "Навигация",
-  "linksHeading": "Ссылки",
-  "appHeading": "Мобильное приложение",
-  "nav": [
-    { "label": "Как это работает", "href": "/#how" },
-    { "label": "Цены", "href": "/#pricing" },
-    { "label": "Магазин", "href": "/shop" },
-    { "label": "Для бизнеса", "href": "/business" }
-  ],
-  "links": [
-    { "label": "Начать", "href": "https://my.powerbook.at/register" },
-    { "label": "Статус", "href": "https://status.powerbook.at" },
-    { "label": "Контакт", "href": "mailto:info@powerbook.at" }
-  ],
-  "legal": [
-    { "label": "Импрессум", "href": "/impressum" },
-    { "label": "Конфиденциальность", "href": "/datenschutz" },
-    { "label": "Условия", "href": "/agb" }
-  ],
-  "copyright": "Все права защищены.",
-  "language": { "label": "Язык", "de": "Немецкий", "en": "Английский", "ru": "Русский" }
-},
+    "navHeading": "Навигация",
+    "linksHeading": "Ссылки",
+    "appHeading": "Мобильное приложение",
+    "appLogin": { "label": "Войти", "href": "https://my.powerbook.at" },
+    "nav": [
+      { "label": "Как это работает", "href": "/#how" },
+      { "label": "Цены", "href": "/#pricing" },
+      { "label": "Магазин", "href": "/shop" },
+      { "label": "Для бизнеса", "href": "/business" }
+    ],
+    "links": [
+      { "label": "Начать", "href": "https://my.powerbook.at/register" },
+      { "label": "Статус", "href": "https://status.powerbook.at" },
+      { "label": "Контакты", "href": "mailto:info@powerbook.at" }
+    ],
+    "legal": [
+      { "label": "Импрессум", "href": "/impressum" },
+      { "label": "Конфиденциальность", "href": "/datenschutz" },
+      { "label": "Условия", "href": "/agb" }
+    ],
+    "copyright": "Все права защищены.",
+    "language": { "label": "Язык", "de": "Немецкий", "en": "Английский", "ru": "Русский" }
+  },
   "mobile": {
     "heading": "Скачай приложение Powerbook",
     "subheading": "Одного фото достаточно: страницы распознаются, контент организуется и безопасно сохраняется. Начни сейчас на своём устройстве.",

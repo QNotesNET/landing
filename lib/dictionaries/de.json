@@ -346,29 +346,30 @@
       }
     ]
   },
-"footer": {
-  "navHeading": "Navigation",
-  "linksHeading": "Links",
-  "appHeading": "Mobile App",
-  "nav": [
-    { "label": "So funktioniert's", "href": "/#how" },
-    { "label": "Preise", "href": "/#pricing" },
-    { "label": "Shop", "href": "/shop" },
-    { "label": "Business", "href": "/business" }
-  ],
-  "links": [
-    { "label": "Jetzt starten", "href": "https://my.powerbook.at/register" },
-    { "label": "Status", "href": "https://status.powerbook.at" },
-    { "label": "Kontakt", "href": "mailto:info@powerbook.at" }
-  ],
-  "legal": [
-    { "label": "Impressum", "href": "/impressum" },
-    { "label": "Datenschutz", "href": "/datenschutz" },
-    { "label": "AGB", "href": "/agb" }
-  ],
-  "copyright": "Alle Rechte vorbehalten.",
-  "language": { "label": "Sprache", "de": "Deutsch", "en": "Englisch", "ru": "Russisch" }
-},
+  "footer": {
+    "navHeading": "Navigation",
+    "linksHeading": "Links",
+    "appHeading": "Mobile App",
+    "appLogin": { "label": "Anmelden", "href": "https://my.powerbook.at" },
+    "nav": [
+      { "label": "So funktioniert's", "href": "/#how" },
+      { "label": "Preise", "href": "/#pricing" },
+      { "label": "Shop", "href": "/shop" },
+      { "label": "Business", "href": "/business" }
+    ],
+    "links": [
+      { "label": "Jetzt starten", "href": "https://my.powerbook.at/register" },
+      { "label": "Status", "href": "https://status.powerbook.at" },
+      { "label": "Kontakt", "href": "mailto:info@powerbook.at" }
+    ],
+    "legal": [
+      { "label": "Impressum", "href": "/impressum" },
+      { "label": "Datenschutz", "href": "/datenschutz" },
+      { "label": "AGB", "href": "/agb" }
+    ],
+    "copyright": "Alle Rechte vorbehalten.",
+    "language": { "label": "Sprache", "de": "Deutsch", "en": "Englisch", "ru": "Russisch" }
+  },
   "mobile": {
     "heading": "Jetzt Powerbook-App herunterladen",
     "subheading": "Ein Foto genügt: Seiten werden erkannt, Inhalte zugeordnet und sicher gespeichert. Starte jetzt auf deinem Gerät.",
