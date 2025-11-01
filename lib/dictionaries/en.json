@@ -385,7 +385,6 @@
   },
   "business": {
     "hero": {
-      "badge": "Powerbook for Teams",
       "title": "Powerbook",
       "titleAccent": "Business",
       "subtitle": "The focused note and work ecosystem – with a dedicated business dashboard, custom branding & domain, employee management, contacts, projects, to-dos, calendar and more. Includes a personal account manager.",
@@ -518,7 +517,7 @@
       ]
     },
     "contactCTA": {
-      "title": "Personal consultation for your team",
+      "title": "Personal consultation",
       "text": "We support you from onboarding to rollout – with templates, role models, and best practices.",
       "contacts": [
         { "type": "mail", "value": "info@powerbook.at" },
