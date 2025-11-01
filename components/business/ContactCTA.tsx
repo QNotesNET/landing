@@ -140,7 +140,7 @@ export default function ContactCTA({ texts }: { texts: any }) {
               />
               <input
                 name="phone"
-                placeholder={texts.form?.phone || "Telefon (optional)"}
+                placeholder={texts.form?.telephone || "Telefon (optional)"}
                 className="rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-white/60 outline-none focus:ring-2 focus:ring-white/40"
               />
               <textarea
@@ -163,12 +163,11 @@ export default function ContactCTA({ texts }: { texts: any }) {
               {/* Status-Feedback */}
               {status === "ok" && (
                 <p className="sm:col-span-2 text-sm text-emerald-300">
-                  Vielen Dank! Wir melden uns in Kürze bei Ihnen.
-                </p>
+                   { texts.form?.status || "Vielen Dank! Wir melden uns in Kürze bei Ihnen." }</p>
               )}
               {status === "error" && (
                 <p className="sm:col-span-2 text-sm text-rose-300">
-                  Ups, etwas ist schiefgelaufen. Bitte später erneut versuchen.
+                  Error
                 </p>
               )}
             </form>

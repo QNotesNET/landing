@@ -527,8 +527,12 @@
         "firstName": "First name",
         "lastName": "Last name",
         "email": "Email",
+        "company": "Company",
+        "telephone": "Number",
         "message": "Your project",
-        "button": "Send request"
+        "button": "Send request",
+        "status": "Thank you! We will get back to you shortly.",
+        "sending": "Sending..."
       }
     }
   },

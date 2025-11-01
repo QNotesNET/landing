@@ -527,8 +527,12 @@
         "firstName": "Vorname",
         "lastName": "Nachname",
         "email": "E-Mail",
+        "company": "Unternehmen",
+        "telephone": "Nummer",
         "message": "Ihr Vorhaben",
-        "button": "Anfrage senden"
+        "button": "Anfrage senden",
+        "status": "Vielen Dank! Wir melden uns in Kürze bei Ihnen.",
+        "sending": "Senden…"
       }
     }
   },
