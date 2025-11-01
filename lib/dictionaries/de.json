@@ -517,7 +517,7 @@
       ]
     },
     "contactCTA": {
-      "title": "Persönliche Beratung für Ihr Team",
+      "title": "Persönliche Beratung",
       "text": "Wir begleiten Sie vom Onboarding bis zum Rollout – mit Templates, Rollenmodellen und Best Practices.",
       "contacts": [
         { "type": "mail", "value": "info@powerbook.at" },
