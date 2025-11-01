@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { use, useEffect, useState } from "react"; // <– wichtig: use() importieren
+import { use, useEffect, useState } from "react"; // useId entfernt
 import Link from "next/link";
 import Image from "next/image";
 
@@ -78,43 +78,16 @@ export default function MobileLandingPage(props: {
             </div>
           </div>
 
+          {/* Rechts: nur das Bild, gleiche Größe/Position wie vorheriges SVG */}
           <div className="mt-12 sm:mt-16 lg:mt-0 lg:shrink-0 lg:grow">
-            <svg
-              role="img"
-              viewBox="0 0 366 729"
+            <Image
+              src="/images/mobile-mock2.svg"
+              alt={m.imageAlt}
+              width={366}
+              height={729}
+              priority
               className="mx-auto w-[366px] max-w-full drop-shadow-xl"
-            >
-              <title>{m.imageAlt}</title>
-              <defs>
-                <clipPath id="clip-screen-316x684">
-                  <rect rx="36" width="316" height="684" />
-                </clipPath>
-              </defs>
-              <path
-                d="M363.315 64.213C363.315 22.99 341.312 1 300.092 1H66.751C25.53 1 3.528 22.99 3.528 64.213v44.68..."
-                fill="#4B5563"
-              />
-              <path
-                d="M16 59c0-23.748 19.252-43 43-43h246c23.748 0 43 19.252 43 43v615..."
-                fill="#343E4E"
-              />
-              <foreignObject
-                width="316"
-                height="684"
-                clipPath="url(#clip-screen-316x684)"
-                transform="translate(24 24)"
-              >
-                <img
-                  alt={m.imageAlt}
-                  src="/images/mobile-mock.png"
-                  style={{
-                    width: "316px",
-                    height: "684px",
-                    objectFit: "cover",
-                  }}
-                />
-              </foreignObject>
-            </svg>
+            />
           </div>
         </div>
       </section>
