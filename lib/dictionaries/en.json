@@ -521,7 +521,7 @@
       "title": "Personal consultation for your team",
       "text": "We support you from onboarding to rollout – with templates, role models, and best practices.",
       "contacts": [
-        { "type": "mail", "value": "hello@powerbook.at" },
+        { "type": "mail", "value": "info@powerbook.at" },
         { "type": "phone", "value": "+43 (0) XXX XXX XXX" }
       ],
       "form": {

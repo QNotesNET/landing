@@ -521,7 +521,7 @@
       "title": "Persönliche Beratung für Ihr Team",
       "text": "Wir begleiten Sie vom Onboarding bis zum Rollout – mit Templates, Rollenmodellen und Best Practices.",
       "contacts": [
-        { "type": "mail", "value": "hello@powerbook.at" },
+        { "type": "mail", "value": "info@powerbook.at" },
         { "type": "phone", "value": "+43 (0) XXX XXX XXX" }
       ],
       "form": {

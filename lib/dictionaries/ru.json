@@ -509,7 +509,7 @@
       "title": "Персональная консультация для вашей команды",
       "text": "Мы поддержим вас от внедрения до запуска — с шаблонами, ролями и лучшими практиками.",
       "contacts": [
-        { "type": "mail", "value": "hello@powerbook.at" },
+        { "type": "mail", "value": "info@powerbook.at" },
         { "type": "phone", "value": "+43 (0) XXX XXX XXX" }
       ],
       "form": {

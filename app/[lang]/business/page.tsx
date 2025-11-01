@@ -39,8 +39,8 @@ export default function BusinessPage(props: {
       <Header texts={t.header} />
       <Hero texts={t.business.hero} />
       <ValuePillars texts={t.business.valuePillars} />
-      <FeatureStrips texts={t.business.featureStrips} />
-      <SecurityCompliance texts={t.business.securityCompliance} />
+      {/* <FeatureStrips texts={t.business.featureStrips} /> */}
+      {/* <SecurityCompliance texts={t.business.securityCompliance} /> */}
       <Pricing texts={t.business.pricing} />
       <ContactCTA texts={t.business.contactCTA} />
       <Footer texts={t.footer} />
