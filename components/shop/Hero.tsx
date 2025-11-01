@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Truck, RotateCcw, ShieldCheck, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Size = "A5" | "A4";
 type Pages = 100 | 140 | 200;
@@ -287,12 +288,20 @@ function Hero({
 
             {/* CTA */}
             <div className="mt-6">
-              <Button
+              {/* <Button
                 onClick={onCheckoutClick}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:bg-white/80 transition"
               >
                 Zur Kasse <ChevronRight className="h-4 w-4" />
-              </Button>
+              </Button> */}
+              <Link
+                href={
+                  "https://billing.powerbook.at/checkout?product=prod_TLNfWJ4SYdzVHZ&userId=null&success=https://powerbook.at/success&cancel=https://powerbook.at/shop"
+                }
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:bg-white/80 transition"
+              >
+                Zur Kasse <ChevronRight className="h-4 w-4" />
+              </Link>
             </div>
 
             {/* Trust Icons */}
