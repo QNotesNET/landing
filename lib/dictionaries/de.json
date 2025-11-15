@@ -381,7 +381,11 @@
     "storeLabels": {
       "ios": "Im App Store herunterladen",
       "android": "Bei Google Play herunterladen"
-    }
+    },
+    "desktopTitle": "Powerbook Desktop",
+    "desktopSubtitle": "Lade Powerbook für Mac oder Windows herunter und starte die Desktop-Version.",
+    "downloadWindows": "Für Windows herunterladen",
+    "downloadMac": "Für macOS herunterladen"
   },
   "business": {
     "hero": {

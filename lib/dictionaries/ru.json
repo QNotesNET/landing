@@ -381,6 +381,12 @@
     "storeLabels": {
       "ios": "Загрузить в App Store",
       "android": "Скачать в Google Play"
+    },
+    "mobile": {
+      "desktopTitle": "Powerbook для компьютера",
+      "desktopSubtitle": "Скачайте Powerbook для Windows или macOS и используйте приложение прямо на своем компьютере.",
+      "downloadWindows": "Скачать для Windows",
+      "downloadMac": "Скачать для macOS"
     }
   },
   "business": {
