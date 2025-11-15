@@ -296,7 +296,7 @@ function Hero({
               </Button> */}
               <Link
                 href={
-                  `https://billing.powerbook.at/checkout?product=prod_TLNfWJ4SYdzVHZ&userId=null&pieces=${qty}&success=https://powerbook.at/success&cancel=https://powerbook.at/shop`
+                  `https://billing.powerbook.at/checkout?product=prod_TQfRiKkRvD0Dcl&userId=null&pieces=${qty}&success=https://powerbook.at/success&cancel=https://powerbook.at/shop`
                 }
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-black shadow-lg hover:bg-white/80 transition"
               >
