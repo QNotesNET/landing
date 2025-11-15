@@ -31,6 +31,7 @@ function Hero({
   setQty,
   total,
   paymentUrl,
+  stock,
 }: any) {
   const hasPayment = !!paymentUrl;
 
@@ -223,7 +224,7 @@ function Hero({
                     <div className="flex-1 text-center py-2">{qty}</div>
                     <button
                       className="w-10 text-lg text-white hover:bg-white/10"
-                      onClick={() => setQty((q: number) => Math.min(99, q + 1))}
+                      onClick={() => setQty((q: number) => Math.min(stock, q + 1))}
                     >
                       +
                     </button>
@@ -240,19 +241,41 @@ function Hero({
             </div>
 
             {/* CTA */}
-            <div className="mt-6">
-              <Link
-                href={hasPayment ? `${paymentUrl}&pieces=${qty}` : "#"}
-                className={cx(
-                  "w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-medium shadow-lg",
-                  hasPayment
-                    ? "bg-white text-black hover:bg-white/80"
-                    : "bg-white/20 text-white/40 cursor-not-allowed"
-                )}
-              >
-                Zur Kasse <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
+            {stock > 0 && stock <= 10 ? (
+              <div className="mt-6 text-sm text-white/85">
+                Nur noch {stock} Stück auf Lager!
+              </div>
+            ) : null}
+            {stock > 0 ? (
+              <div className="mt-6">
+                <Link
+                  href={
+                    hasPayment || stock > 0
+                      ? `${paymentUrl}&pieces=${qty}`
+                      : "#"
+                  }
+                  className={cx(
+                    "w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-medium shadow-lg",
+                    hasPayment || stock > 0
+                      ? "bg-white text-black hover:bg-white/80"
+                      : "bg-white/20 text-white/40 cursor-not-allowed"
+                  )}
+                >
+                  Zur Kasse <ChevronRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ) : (
+              <div className="mt-6">
+                <Link
+                  href={"#"}
+                  className={cx(
+                    "w-full inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-medium shadow-lg bg-white/20 text-white/40 cursor-not-allowed"
+                  )}
+                >
+                  Derzeit nicht verfügbar
+                </Link>
+              </div>
+            )}
 
             {/* Trust */}
             <div className="mt-6 grid grid-cols-1 gap-3 text-sm text-white/85 sm:grid-cols-3">

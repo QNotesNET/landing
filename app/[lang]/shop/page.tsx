@@ -100,6 +100,7 @@ export default function ShopPage(props: {
   const subtotal = price * qty;
   const total = subtotal;
   const paymentUrl: string | null = variant?.paymentUrl || null;
+  const stock: number = variant?.stock || 0;
 
   // -------- LOADING / NO PRODUCT UI --------
   if (!loaded || !t) {
@@ -152,6 +153,7 @@ export default function ShopPage(props: {
         fade={fade}
         stagger={stagger}
         paymentUrl={paymentUrl}
+        stock={stock}
       />
 
       <Features
