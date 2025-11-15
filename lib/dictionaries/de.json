@@ -372,7 +372,12 @@
       { "label": "AGB", "href": "/agb" }
     ],
     "copyright": "Alle Rechte vorbehalten.",
-    "language": { "label": "Sprache", "de": "Deutsch", "en": "Englisch", "ru": "Russisch" }
+    "language": {
+      "label": "Sprache",
+      "de": "Deutsch",
+      "en": "Englisch",
+      "ru": "Russisch"
+    }
   },
   "mobile": {
     "heading": "Jetzt Powerbook-App herunterladen",
@@ -774,5 +779,11 @@
         "Genderhinweis: Aus Gründen der Lesbarkeit wird auf Doppelnennungen verzichtet; alle Bezeichnungen gelten gleichermaßen für alle Geschlechter."
       ]
     }
+  },
+  "success": {
+    "title": "Danke für deinen Einkauf!",
+    "subtitle": "Deine Bestellung wurde erfolgreich abgeschlossen. Eine Bestätigung wurde dir per E-Mail zugeschickt.",
+    "backToHome": "Zur Startseite",
+    "needHelp": "Hilfe benötigt?"
   }
 }

@@ -2,7 +2,7 @@
   "meta": {
     "title": "Powerbook – Write analog. Organize digitally.",
     "description": "Write on paper. Powerbook handles the rest: scan, organize, search. AI detects tasks & highlights, sends events to your calendar, and syncs it all."
-},
+  },
   "header": {
     "nav": {
       "how": "How it works",
@@ -350,7 +350,7 @@
       }
     ]
   },
-"footer": {
+  "footer": {
     "navHeading": "Navigation",
     "linksHeading": "Links",
     "appHeading": "Mobile App",
@@ -372,7 +372,12 @@
       { "label": "Terms", "href": "/agb" }
     ],
     "copyright": "All rights reserved.",
-    "language": { "label": "Language", "de": "German", "en": "English", "ru": "Russian" }
+    "language": {
+      "label": "Language",
+      "de": "German",
+      "en": "English",
+      "ru": "Russian"
+    }
   },
   "mobile": {
     "heading": "Download the Powerbook App",
@@ -773,5 +778,11 @@
         "Gender note: for readability, gendered terms are used inclusively for all genders."
       ]
     }
+  },
+  "success": {
+    "title": "Thank you for your purchase!",
+    "subtitle": "Your order has been completed successfully. A confirmation email has been sent to you.",
+    "backToHome": "Back to Home",
+    "needHelp": "Need help?"
   }
 }
