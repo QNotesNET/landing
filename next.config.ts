@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       "images.unsplash.com",
       "flaticon.com",
       "cdn-icons-png.flaticon.com",
+      "cdn.sanity.io",
     ],
 
     // … oder granular:

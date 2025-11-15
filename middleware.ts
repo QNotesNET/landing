@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
@@ -38,6 +39,11 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const { pathname } = url;
 
+  // Studio NICHT umlenken
+  if (pathname.startsWith("/studio")) {
+    return NextResponse.next();
+  }
+
   // interne Pfade ignorieren
   if (isInternal(pathname)) return NextResponse.next();
 
@@ -73,5 +79,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|assets|.*\\..*).*)"],
+  matcher: ["/((?!studio|_next|api|assets|.*\\..*).*)"],
 };
+
