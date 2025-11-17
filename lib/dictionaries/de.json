@@ -761,15 +761,13 @@
       "title": "Unternehmensdaten",
       "lines": [
         "Firmenbuchgericht: <strong>Landesgericht Linz</strong>",
-        "Firmenbuchnummer: <strong>FN 000000x</strong> (Beispiel)",
-        "UID/USt-ID: <strong>ATU00000000</strong> (Beispiel)",
-        "Geschäftsführung: <strong>—</strong> (Beispiel)",
-        "Mitglied der WKÖ, Fachgruppe: <strong>Information & Consulting</strong> (Beispiel)"
+        "Firmenbuchnummer: <strong>FN 570632s</strong> ",
+        "UID/USt-ID: <strong>ATU77606226</strong> "
       ]
     },
     "authority": {
       "title": "Aufsichtsbehörde",
-      "text": "Bezirkshauptmannschaft Freistadt (Beispiel)"
+      "text": "Bezirkshauptmannschaft Freistadt"
     },
     "liability": {
       "title": "Haftung / Urheberrecht",

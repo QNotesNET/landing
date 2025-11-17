@@ -760,15 +760,13 @@
       "title": "Company Details",
       "lines": [
         "Commercial Register Court: <strong>Regional Court Linz</strong>",
-        "Company Register No.: <strong>FN 000000x</strong> (example)",
-        "VAT ID: <strong>ATU00000000</strong> (example)",
-        "Managing Director: <strong>—</strong> (example)",
-        "Member of WKO, Section: <strong>Information & Consulting</strong> (example)"
+        "Company Register No.: <strong>FN 570632s</strong>",
+        "VAT ID: <strong>ATU77606226</strong> "
       ]
     },
     "authority": {
       "title": "Supervisory Authority",
-      "text": "District Authority Freistadt (example)"
+      "text": "District Authority Freistadt"
     },
     "liability": {
       "title": "Liability / Copyright",
