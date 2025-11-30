@@ -125,7 +125,7 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/images/logos/logo-new-white.svg"
+            src="/images/logos/logo-new-white.png"
             className={cx(
               "flex items-center h-35 w-35 transition",
               scrolled && "invert"
@@ -228,7 +228,7 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
               <div className="flex h-16 items-center justify-between px-4">
                 <Link href="/" onClick={() => setMobileOpen(false)}>
                   <Image
-                    src="/images/logos/logo-new-white.svg"
+                    src="/images/logos/logo-new-white.png"
                     alt="Powerbook Logo"
                     width={25}
                     height={15}
