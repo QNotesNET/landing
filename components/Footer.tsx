@@ -81,7 +81,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             <div className="px-4 pb-4">
               <Link href="/" className="inline-flex items-center">
                 <Image
-                  src="/images/logos/logo-white.png"
+                  src="/images/logos/logo.svg"
                   alt="Powerbook"
                   width={140}
                   height={28}
@@ -176,7 +176,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
           <div className="space-y-6">
             <Link href="/" className="inline-flex items-center">
               <Image
-                src="/images/logos/logo-white.png"
+                src="/images/logos/logo.svg"
                 alt="Powerbook"
                 width={140}
                 height={28}
