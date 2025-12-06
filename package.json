@@ -29,10 +29,10 @@
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "negotiator": "^1.0.0",
-    "next": "15.5.4",
+    "next": "15.5.7",
     "next-sanity": "^11.6.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.1.2",
+    "react-dom": "19.1.2",
     "sanity": "^4.15.0",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.3.1"
