@@ -354,7 +354,7 @@
     "navHeading": "Навигация",
     "linksHeading": "Ссылки",
     "appHeading": "Мобильное приложение",
-    "appLogin": { "label": "Войти", "href": "https://my.Powrbook.at" },
+    "appLogin": { "label": "Войти", "href": "https://my.powrbook.com" },
     "nav": [
       { "label": "Как это работает", "href": "/#how" },
       { "label": "Цены", "href": "/#pricing" },
@@ -362,7 +362,7 @@
       { "label": "Для бизнеса", "href": "/business" }
     ],
     "links": [
-      { "label": "Начать", "href": "https://my.Powrbook.at/register" },
+      { "label": "Начать", "href": "https://my.powrbook.com/register" },
       { "label": "Статус", "href": "https://status.Powrbook.at" },
       { "label": "Контакты", "href": "mailto:info@Powrbook.at" }
     ],
@@ -610,7 +610,7 @@
       "text": "Пример: TODO Новое предложение → обведи → отсканируй → задача создана.",
       "button": {
         "label": "Открыть приложение",
-        "href": "https://my.Powrbook.at/login"
+        "href": "https://my.powrbook.com/login"
       }
     }
   },
@@ -624,7 +624,7 @@
     "sections": [
       {
         "title": "1. Область действия и договорные стороны",
-        "text": "Настоящие условия действуют между поставщиком (TRO GmbH) и пользователями приложения Powrbook и всех связанных сервисов (например my.Powrbook.at)."
+        "text": "Настоящие условия действуют между поставщиком (TRO GmbH) и пользователями приложения Powrbook и всех связанных сервисов (например my.powrbook.com)."
       },
       {
         "type": "card",
@@ -641,7 +641,7 @@
     "hero": {
       "badge": "GDPR Австрия",
       "title": "Политика конфиденциальности",
-      "text": "Действует для сайта и приложения под <a href=\"https://my.Powrbook.at\" class=\"underline\">my.Powrbook.at</a>."
+      "text": "Действует для сайта и приложения под <a href=\"https://my.powrbook.com\" class=\"underline\">my.powrbook.com</a>."
     },
     "controller": {
       "title": "Ответственный",
@@ -694,8 +694,8 @@
       "title": "Компания",
       "name": "TRO GmbH",
       "address": "Mötlas 47, 4273 Unterweißenbach, Австрия",
-      "url": "https://my.Powrbook.at",
-      "urlLabel": "my.Powrbook.at",
+      "url": "https://my.powrbook.com",
+      "urlLabel": "my.powrbook.com",
       "email": "hello@Powrbook.at",
       "phone": "+43 (0) XXX XXX XXX"
     },

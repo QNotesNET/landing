@@ -354,7 +354,7 @@
     "navHeading": "Navigation",
     "linksHeading": "Links",
     "appHeading": "Mobile App",
-    "appLogin": { "label": "Sign in", "href": "https://my.Powrbook.at" },
+    "appLogin": { "label": "Sign in", "href": "https://my.powrbook.com" },
     "nav": [
       { "label": "How it works", "href": "/#how" },
       { "label": "Pricing", "href": "/#pricing" },
@@ -362,7 +362,7 @@
       { "label": "Business", "href": "/business" }
     ],
     "links": [
-      { "label": "Get started", "href": "https://my.Powrbook.at/register" },
+      { "label": "Get started", "href": "https://my.powrbook.com/register" },
       { "label": "Status", "href": "https://status.Powrbook.at" },
       { "label": "Contact", "href": "mailto:info@Powrbook.at" }
     ],
@@ -620,7 +620,7 @@
     "cta": {
       "title": "Try it in 30 seconds",
       "text": "Example: TODO New offer → circle it → scan → task created.",
-      "button": { "label": "Open app", "href": "https://my.Powrbook.at/login" }
+      "button": { "label": "Open app", "href": "https://my.powrbook.com/login" }
     }
   },
   "agb": {
@@ -633,7 +633,7 @@
     "sections": [
       {
         "title": "1. Scope & Contract Partner",
-        "text": "These terms apply between the provider (TRO GmbH) and users of the Powrbook app and all related services (e.g. my.Powrbook.at)."
+        "text": "These terms apply between the provider (TRO GmbH) and users of the Powrbook app and all related services (e.g. my.powrbook.com)."
       },
       {
         "type": "card",
@@ -694,7 +694,7 @@
     "hero": {
       "badge": "GDPR Austria",
       "title": "Privacy Policy",
-      "text": "Valid for website & app under <a href=\"https://my.Powrbook.at\" class=\"underline\">my.Powrbook.at</a>."
+      "text": "Valid for website & app under <a href=\"https://my.powrbook.com\" class=\"underline\">my.powrbook.com</a>."
     },
     "controller": {
       "title": "Controller",
@@ -747,8 +747,8 @@
       "title": "Company",
       "name": "TRO GmbH",
       "address": "Mötlas 47, 4273 Unterweißenbach, Austria",
-      "url": "https://my.Powrbook.at",
-      "urlLabel": "my.Powrbook.at",
+      "url": "https://my.powrbook.com",
+      "urlLabel": "my.powrbook.com",
       "email": "hello@Powrbook.at",
       "phone": "+43 (0) XXX XXX XXX"
     },
