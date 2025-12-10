@@ -156,7 +156,7 @@ function StoreBadges({
   const IOS_BADGE = "/images/icons/appstore.webp";
   const ANDROID_BADGE = "/images/icons/playstore.webp";
 
-  const iosHref = "https://apps.apple.com/";
+  const iosHref = "https://apps.apple.com/at/app/powrbook-papier-aber-smart/id6754575938";
   const androidHref = "https://play.google.com/store";
 
   const showIOS = platform === "ios" || platform === "other";

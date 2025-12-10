@@ -149,7 +149,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             </summary>
             <div className="px-4 pb-4">
               <div className="mt-3 flex flex-wrap items-center gap-3">
-                <a href="https://apps.apple.com/" aria-label="App Store" className="inline-block">
+                <a href="https://apps.apple.com/at/app/powrbook-papier-aber-smart/id6754575938" aria-label="App Store" className="inline-block">
                   <img
                     src="/images/icons/appstore.webp"
                     alt="Download on the App Store"
@@ -240,7 +240,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
                 {texts.appLogin?.label ?? "Anmelden"}
               </Link>
               <div className="flex flex-col gap-2 mt-4">
-                <a href="https://apps.apple.com/" aria-label="App Store" className="inline-block">
+                <a href="https://apps.apple.com/at/app/powrbook-papier-aber-smart/id6754575938" aria-label="App Store" className="inline-block">
                   <img src="/images/icons/appstore.webp" alt="Download on the App Store" className="h-11 w-auto" loading="lazy" />
                 </a>
                 <a href="https://play.google.com/" aria-label="Google Play" className="inline-block">
