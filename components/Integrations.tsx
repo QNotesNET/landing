@@ -143,7 +143,7 @@ export default function Integrations({ texts }: { texts: IntegrationTexts }) {
         {/* CTA */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
-            href="mailto:info@powerbook.at"
+            href="mailto:info@powrbook.com"
             className="inline-flex items-center justify-center rounded-xl bg-black px-5 py-3 text-sm font-medium text-white shadow-sm hover:opacity-90"
           >
             {texts.labels.cta}

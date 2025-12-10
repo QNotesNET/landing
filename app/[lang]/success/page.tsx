@@ -79,7 +79,7 @@ export default function SuccessPage(props: {
             </Link>
 
             <Link
-              href={`mailto:support@powerbook.at`}
+              href={`mailto:support@powrbook.com`}
               className="px-8 py-3 rounded-xl bg-gray-100 text-gray-800 text-lg shadow hover:bg-gray-200 transition"
             >
               {s.needHelp}

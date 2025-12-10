@@ -195,7 +195,7 @@ export default function ShopPage(props: {
               Analog schreiben. Digital arbeiten.
             </h3>
             <p className="mt-1 text-sm text-gray-700">
-              Powerbook funktioniert mit iOS, Android & Web. Datenhaltung in der
+              Powrbook funktioniert mit iOS, Android & Web. Datenhaltung in der
               EU, DSGVO-ready.
             </p>
           </motion.div>

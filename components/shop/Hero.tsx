@@ -74,7 +74,7 @@ function Hero({
                     >
                       <Image
                         src={src}
-                        alt={`Powerbook Ansicht ${i + 1}`}
+                        alt={`Powrbook Ansicht ${i + 1}`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -127,7 +127,7 @@ function Hero({
             </div>
 
             <h1 className={cx(display.className, "text-4xl leading-tight")}>
-              Powerbook
+              Powrbook
             </h1>
 
             <p className="mt-2 text-white/85">

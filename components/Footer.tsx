@@ -75,14 +75,14 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
           {/* 1. Logo + Socials */}
           <details className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur">
             <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-base font-medium">
-              Powerbook
+              Powrbook
               <ChevronDown className="h-5 w-5 text-neutral-400 transition-transform group-open:rotate-180" />
             </summary>
             <div className="px-4 pb-4">
               <Link href="/" className="inline-flex items-center">
                 <Image
                   src="/images/logos/logo.svg"
-                  alt="Powerbook"
+                  alt="Powrbook"
                   width={140}
                   height={28}
                   className="h-12 w-auto"
@@ -177,7 +177,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             <Link href="/" className="inline-flex items-center">
               <Image
                 src="/images/logos/logo.svg"
-                alt="Powerbook"
+                alt="Powrbook"
                 width={140}
                 height={28}
                 className="h-15 w-auto"
@@ -185,7 +185,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
               />
             </Link>
             <div className="flex items-center gap-4">
-              <a href="https://linkedin.com/company/powerbook" aria-label="LinkedIn" className="hover:text-white">
+              <a href="https://linkedin.com/company/Powrbook" aria-label="LinkedIn" className="hover:text-white">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://instagram.com" aria-label="Instagram" className="hover:text-white">
@@ -234,7 +234,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             <h3 className="text-sm font-semibold text-white">{texts.appHeading}</h3>
             <div className="mt-4 space-y-4">
               <Link
-                href={texts.appLogin?.href ?? "https://my.powerbook.at"}
+                href={texts.appLogin?.href ?? "https://my.powrbook.com"}
                 className="text-sm text-neutral-300 hover:text-white"
               >
                 {texts.appLogin?.label ?? "Anmelden"}
@@ -300,7 +300,7 @@ export default function Footer({ texts }: { texts: FooterTexts }) {
             </div>
 
             <p className="order-2 md:order-1 text-xs text-neutral-400">
-              © {year} Powerbook · {texts.copyright}
+              © {year} Powrbook · {texts.copyright}
             </p>
           </div>
 

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: any) {
   const t = await getDictionary(lang);
 
   return {
-    title: t.meta?.title ?? "Powerbook",
+    title: t.meta?.title ?? "Powrbook",
     description: t.meta?.description ?? "",
   };
 }

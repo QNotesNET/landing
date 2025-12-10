@@ -7,7 +7,7 @@ export default function DownloadWindowsPage() {
   // 👉 Auto-Download starten
   useEffect(() => {
     const downloadUrl =
-      "https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/Powerbook-1.0.2-win.exe";
+      "https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/powerbook-1.0.2-win.exe";
 
     setTimeout(() => {
       window.location.href = downloadUrl;
@@ -26,7 +26,7 @@ export default function DownloadWindowsPage() {
         />
 
         <h1 className="text-3xl font-semibold text-gray-900">
-          Powerbook für Windows
+          Powrbook für Windows
         </h1>
 
         <p className="mt-4 text-gray-600 text-lg">
@@ -34,7 +34,7 @@ export default function DownloadWindowsPage() {
         </p>
 
         <a
-          href="https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/Powerbook-1.0.2-win.exe"
+          href="https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/powerbook-1.0.2-win.exe"
           className="mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl shadow transition"
         >
           Download erneut starten

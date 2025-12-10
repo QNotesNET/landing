@@ -90,7 +90,7 @@ export default function Page(props: { params: Promise<{ lang: string }> }) {
               )}
             >
               {t.howItWorks.hero.title}{" "}
-              <span className="text-white/80">Powerbook</span>
+              <span className="text-white/80">Powrbook</span>
             </h1>
 
             <p className="mt-3 max-w-2xl text-white/85">

@@ -194,7 +194,7 @@ export default function Pricing({ texts }: { texts: PricingTexts }) {
           })}
         </div>
 
-        {/* Physical Powerbook Upsell */}
+        {/* Physical Powrbook Upsell */}
         <div className="mt-10">
           <div className="relative overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-sm ring-1 ring-gray-200">
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">

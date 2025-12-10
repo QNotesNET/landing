@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Powerbook – Analog schreiben. Digital organisiert.",
-    "description": "Schreibe auf Papier. Powerbook macht den Rest: scannen, ordnen, durchsuchen. KI erkennt Aufgaben & Highlights, übergibt Termine und synchronisiert alles."
+    "title": "Powrbook – Analog schreiben. Digital organisiert.",
+    "description": "Schreibe auf Papier. Powrbook macht den Rest: scannen, ordnen, durchsuchen. KI erkennt Aufgaben & Highlights, übergibt Termine und synchronisiert alles."
   },
   "header": {
     "nav": {
@@ -23,7 +23,7 @@
   "hero": {
     "titleLine1": "Analog schreiben.",
     "titleLine2": "Digital organisiert.",
-    "description": "Schreibe auf Papier – Powerbook macht den Rest: scannen, sauber ordnen, durchsuchen. AI erkennt Aufgaben & Highlights, übergibt Termine an deinen Kalender und synchronisiert mit iOS, Android & Web.",
+    "description": "Schreibe auf Papier – Powrbook macht den Rest: scannen, sauber ordnen, durchsuchen. AI erkennt Aufgaben & Highlights, übergibt Termine an deinen Kalender und synchronisiert mit iOS, Android & Web.",
     "features": {
       "scan": "Auto-Scan mit Rand-Erkennung, Begradigung & OCR",
       "search": "Durchsuchbare Notizen, Tags & intelligente Struktur",
@@ -34,11 +34,11 @@
   },
   "how": {
     "heading": "So funktioniert’s",
-    "description": "Schreibe wie immer auf Papier. Powerbook macht daraus durchsuchbare Notizen, Aufgaben und Termine – automatisch organisiert.",
+    "description": "Schreibe wie immer auf Papier. Powrbook macht daraus durchsuchbare Notizen, Aufgaben und Termine – automatisch organisiert.",
     "steps": {
       "write": {
         "title": "Schreiben",
-        "text": "Notiere auf deinem Powerbook-Papier: TODO, CAL, Stichpunkte.",
+        "text": "Notiere auf deinem Powrbook-Papier: TODO, CAL, Stichpunkte.",
         "badge": "Analog"
       },
       "scan": {
@@ -61,8 +61,8 @@
     "ctaPrimary": "Jetzt kostenlos starten",
     "ctaSecondary": "Preise ansehen",
     "problems": {
-      "problemTitle": "Ohne Powerbook",
-      "solutionTitle": "Mit Powerbook",
+      "problemTitle": "Ohne Powrbook",
+      "solutionTitle": "Mit Powrbook",
       "problemPoints": [
         "Zettelwirtschaft & doppelte Notizen",
         "Nicht durchsuchbar, nichts verknüpft",
@@ -75,7 +75,7 @@
       ]
     },
     "mock": {
-      "title": "Powerbook App",
+      "title": "Powrbook App",
       "scanLabel": "Scan · 1/1",
       "lines": [
         "TODO: Angebot senden",
@@ -92,19 +92,19 @@
   },
   "appPreview": {
     "heading": "Klarheit auf einen Blick.",
-    "description": "Powerbook erkennt Aufgaben, Termine und Seiten automatisch – und zeigt dir alles strukturiert und synchronisiert in einem zentralen Arbeitsbereich.",
+    "description": "Powrbook erkennt Aufgaben, Termine und Seiten automatisch – und zeigt dir alles strukturiert und synchronisiert in einem zentralen Arbeitsbereich.",
     "features": [
       {
         "name": "Organisation & Fokus",
         "summary": "Aufgaben & Listen",
-        "description": "Powerbook erkennt To-Dos aus Notizen, ordnet sie Listen/Projekten zu und synchronisiert sich nahtlos mit Diensten wie Google Tasks.",
+        "description": "Powrbook erkennt To-Dos aus Notizen, ordnet sie Listen/Projekten zu und synchronisiert sich nahtlos mit Diensten wie Google Tasks.",
         "image": "/images/tasks.png",
         "icon": "check"
       },
       {
         "name": "Zeit & Struktur",
         "summary": "Kalender & Termine",
-        "description": "Erkannte Termine werden als Ereignisse vorgeschlagen und mit deinem Google- oder Powerbook-Kalender synchronisiert.",
+        "description": "Erkannte Termine werden als Ereignisse vorgeschlagen und mit deinem Google- oder Powrbook-Kalender synchronisiert.",
         "image": "/images/calendar.png",
         "icon": "calendar"
       },
@@ -119,7 +119,7 @@
   },
   "dashboard": {
     "heading": "Alles an einem Ort.",
-    "description": "Behalte Überblick über Powerbooks, Seiten und Aufgaben – Powerbook verbindet Papier, Struktur und digitales Arbeiten in einem klaren System.",
+    "description": "Behalte Überblick über Powrbooks, Seiten und Aufgaben – Powrbook verbindet Papier, Struktur und digitales Arbeiten in einem klaren System.",
     "imageAlt": "App-Dashboard",
     "features": [
       {
@@ -156,7 +156,7 @@
   },
   "exclusivePartner": {
     "heading": "Unsere exklusiven Integrationspartner",
-    "description": "Verknüpfe Powerbook mit deinem Darlean und Nexoro Konto und halte Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.",
+    "description": "Verknüpfe Powrbook mit deinem Darlean und Nexoro Konto und halte Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.",
     "labels": {
       "open": "Öffnen ↗",
       "api": "API & More",
@@ -182,7 +182,7 @@
   },
   "integrations": {
     "heading": "Unsere Integrationen",
-    "description": "Verknüpfe Powerbook mit deinen Lieblings-Tools und halte Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.",
+    "description": "Verknüpfe Powrbook mit deinen Lieblings-Tools und halte Daten automatisch synchron – sicher, transparent und jederzeit widerrufbar.",
     "labels": {
       "open": "Öffnen ↗",
       "api": "API & More",
@@ -233,14 +233,14 @@
       },
       {
         "title": "Mehr als nur APIs",
-        "desc": "Events & Workflows verbinden – Powerbook passt sich deinem Stack an.",
+        "desc": "Events & Workflows verbinden – Powrbook passt sich deinem Stack an.",
         "icon": "link"
       }
     ]
   },
   "pricing": {
     "heading": "Faire Preise",
-    "subtext": "Das physische Powerbook ist optional im Shop erhältlich.",
+    "subtext": "Das physische Powrbook ist optional im Shop erhältlich.",
     "noteMonthly": "Monatlich, jederzeit kündbar",
     "noteYearly": "Jahresabo: spare ~20 %",
     "labels": {
@@ -251,8 +251,8 @@
       "cta": "Jetzt starten",
       "freeUnit": "/ Monat",
       "shopBadge": "Empfehlung",
-      "shopHeading": "Physisches Powerbook dazu kaufen – für den besten Flow",
-      "shopText": "Hard- oder Soft-Cover, A5/A4. Perfekt kombiniert mit Online-Powerbooks: scannen, synchronisieren und überall weiterarbeiten.",
+      "shopHeading": "Physisches Powrbook dazu kaufen – für den besten Flow",
+      "shopText": "Hard- oder Soft-Cover, A5/A4. Perfekt kombiniert mit Online-Powrbooks: scannen, synchronisieren und überall weiterarbeiten.",
       "shopButton": "Zum Shop",
       "studentText": "Studierende und Schüler:innen erhalten 20 % Rabatt auf Plus & Pro. Bitte kontaktiert uns mit einem gültigen Nachweis."
     },
@@ -265,7 +265,7 @@
         "yearly": 0,
         "ctaHref": "/signup?plan=free",
         "features": [
-          "2 Powerbooks, 10 Seiten/Powerbook",
+          "2 Powrbooks, 10 Seiten/Powrbook",
           "120 Scans/Monat (Basis-OCR)",
           "1 Gerät + Web",
           "EU-Cloud-Sync: 500 MB",
@@ -283,14 +283,14 @@
         "highlight": true,
         "ctaHref": "/signup?plan=plus",
         "features": [
-          "Unbegrenzte Powerbooks",
+          "Unbegrenzte Powrbooks",
           "1.500 Scans/Monat mit Smart-Scan",
           "3 Geräte + Web",
           "EU-Cloud-Sync: 10 GB",
           "OCR DE/EN + Volltextsuche",
           "Versionierung (30 Tage)",
           "Vorlagen & Erinnerungen",
-          "E-Mail-to-Powerbook"
+          "E-Mail-to-Powrbook"
         ]
       },
       {
@@ -317,8 +317,8 @@
     "heading": "Häufige Fragen",
     "items": [
       {
-        "q": "Muss ich ein Powerbook kaufen, um die App zu nutzen?",
-        "a": "Nein. Du kannst Powerbook auch ohne physisches Notizbuch verwenden. Das gedruckte Powerbook bietet dir zusätzlich ein optimiertes Schreibgefühl und einen besonders reibungslosen Workflow."
+        "q": "Muss ich ein Powrbook kaufen, um die App zu nutzen?",
+        "a": "Nein. Du kannst Powrbook auch ohne physisches Notizbuch verwenden. Das gedruckte Powrbook bietet dir zusätzlich ein optimiertes Schreibgefühl und einen besonders reibungslosen Workflow."
       },
       {
         "q": "Wo werden meine Daten und Scans gespeichert?",
@@ -334,14 +334,14 @@
       },
       {
         "q": "Gibt es eine Web-App?",
-        "a": "Ja. Powerbook funktioniert auf iOS, Android und im Browser."
+        "a": "Ja. Powrbook funktioniert auf iOS, Android und im Browser."
       },
       {
-        "q": "Was kostet Powerbook?",
-        "a": "Du kannst kostenlos starten. Preise für erweiterte Funktionen und das physische Powerbook findest du auf unserer Website."
+        "q": "Was kostet Powrbook?",
+        "a": "Du kannst kostenlos starten. Preise für erweiterte Funktionen und das physische Powrbook findest du auf unserer Website."
       },
       {
-        "q": "Kann ich Powerbook mit anderen Tools verbinden?",
+        "q": "Kann ich Powrbook mit anderen Tools verbinden?",
         "a": "Optional kannst du Integrationen (z. B. Kalender oder Aufgaben) aktivieren. Deine Zustimmung ist dafür erforderlich und du kannst sie jederzeit wieder trennen."
       },
       {
@@ -354,7 +354,7 @@
     "navHeading": "Navigation",
     "linksHeading": "Links",
     "appHeading": "Mobile App",
-    "appLogin": { "label": "Anmelden", "href": "https://my.powerbook.at" },
+    "appLogin": { "label": "Anmelden", "href": "https://my.Powrbook.at" },
     "nav": [
       { "label": "So funktioniert's", "href": "/#how" },
       { "label": "Preise", "href": "/#pricing" },
@@ -362,9 +362,9 @@
       { "label": "Business", "href": "/business" }
     ],
     "links": [
-      { "label": "Jetzt starten", "href": "https://my.powerbook.at/register" },
-      { "label": "Status", "href": "https://status.powerbook.at" },
-      { "label": "Kontakt", "href": "mailto:info@powerbook.at" }
+      { "label": "Jetzt starten", "href": "https://my.Powrbook.at/register" },
+      { "label": "Status", "href": "https://status.Powrbook.at" },
+      { "label": "Kontakt", "href": "mailto:info@Powrbook.at" }
     ],
     "legal": [
       { "label": "Impressum", "href": "/impressum" },
@@ -380,21 +380,21 @@
     }
   },
   "mobile": {
-    "heading": "Jetzt Powerbook-App herunterladen",
+    "heading": "Jetzt Powrbook-App herunterladen",
     "subheading": "Ein Foto genügt: Seiten werden erkannt, Inhalte zugeordnet und sicher gespeichert. Starte jetzt auf deinem Gerät.",
-    "imageAlt": "Powerbook App – Vorschau",
+    "imageAlt": "Powrbook App – Vorschau",
     "storeLabels": {
       "ios": "Im App Store herunterladen",
       "android": "Bei Google Play herunterladen"
     },
-    "desktopTitle": "Powerbook Desktop",
-    "desktopSubtitle": "Lade Powerbook für Mac oder Windows herunter und starte die Desktop-Version.",
+    "desktopTitle": "Powrbook Desktop",
+    "desktopSubtitle": "Lade Powrbook für Mac oder Windows herunter und starte die Desktop-Version.",
     "downloadWindows": "Für Windows herunterladen",
     "downloadMac": "Für macOS herunterladen"
   },
   "business": {
     "hero": {
-      "title": "Powerbook",
+      "title": "Powrbook",
       "titleAccent": "Business",
       "subtitle": "Das fokussierte Notiz- & Arbeitsökosystem – mit eigenem Business-Dashboard, Branding & Domain, Mitarbeiterverwaltung, Kontakten, Projekten, To-Dos, Kalender und mehr. Inklusive persönlichem Ansprechpartner.",
       "primaryCta": {
@@ -425,7 +425,7 @@
         },
         {
           "icon": "notebook",
-          "title": "Projekte & Powerbooks",
+          "title": "Projekte & Powrbooks",
           "text": "Struktur für Notizbücher/Projekte mit Seiten, Versionen, Tags und Freigaben."
         },
         {
@@ -458,10 +458,10 @@
         {
           "badge": "Arbeiten",
           "title": "Kontakte, Projekte, Aufgaben & Kalender",
-          "text": "CRM-light für Teams: Kontakte & Firmen, Powerbooks/Projekte, Aufgaben mit Verantwortlichen, Deadlines & Abhängigkeiten, Kalender (ICS-Import/Export), Notiz-Streams.",
+          "text": "CRM-light für Teams: Kontakte & Firmen, Powrbooks/Projekte, Aufgaben mit Verantwortlichen, Deadlines & Abhängigkeiten, Kalender (ICS-Import/Export), Notiz-Streams.",
           "bullets": [
             { "icon": "contact", "label": "Kontakt-/Firma-Datensätze" },
-            { "icon": "layers", "label": "Powerbooks/Projekte" },
+            { "icon": "layers", "label": "Powrbooks/Projekte" },
             { "icon": "todo", "label": "Boards & Listen" },
             { "icon": "calendar", "label": "Kalender & Termine" }
           ],
@@ -493,7 +493,7 @@
         {
           "badge": "Business",
           "title": "Team",
-          "text": "Alles für kleine bis mittlere Teams – volle Powerbook-Funktionalität mit Team-Features.",
+          "text": "Alles für kleine bis mittlere Teams – volle Powrbook-Funktionalität mit Team-Features.",
           "price": "€9",
           "priceNote": "/ Nutzer:in / Monat",
           "features": [
@@ -529,7 +529,7 @@
       "title": "Persönliche Beratung",
       "text": "Wir begleiten Sie vom Onboarding bis zum Rollout – mit Templates, Rollenmodellen und Best Practices.",
       "contacts": [
-        { "type": "mail", "value": "info@powerbook.at" },
+        { "type": "mail", "value": "info@Powrbook.at" },
         { "type": "phone", "value": "+43 (0) XXX XXX XXX" }
       ],
       "form": {
@@ -620,7 +620,7 @@
       "text": "Beispiel: TODO Neues Angebot schreiben & einkreisen → scannen → Aufgabe erstellt.",
       "button": {
         "label": "App öffnen",
-        "href": "https://my.powerbook.at/login"
+        "href": "https://my.Powrbook.at/login"
       }
     }
   },
@@ -628,13 +628,13 @@
     "hero": {
       "badge": "Vertragsbedingungen",
       "title": "Allgemeine Geschäftsbedingungen",
-      "text": "Geltend für die Nutzung der Powerbook-App und verbundener Dienste."
+      "text": "Geltend für die Nutzung der Powrbook-App und verbundener Dienste."
     },
     "intro": "Vertragspartnerin: TRO GmbH, Mötlas 47, 4273 Unterweißenbach. Abweichende Bedingungen gelten nur bei schriftlicher Bestätigung.",
     "sections": [
       {
         "title": "1. Geltung & Vertragspartner",
-        "text": "Diese AGB gelten zwischen der Anbieterin (TRO GmbH) und Nutzer:innen der Powerbook-App sowie aller zugehörigen Dienste (z. B. my.powerbook.at)."
+        "text": "Diese AGB gelten zwischen der Anbieterin (TRO GmbH) und Nutzer:innen der Powrbook-App sowie aller zugehörigen Dienste (z. B. my.Powrbook.at)."
       },
       {
         "type": "card",
@@ -695,11 +695,11 @@
     "hero": {
       "badge": "DSGVO Österreich",
       "title": "Datenschutzerklärung",
-      "text": "Gültig für Website & App unter <a href=\"https://my.powerbook.at\" class=\"underline\">my.powerbook.at</a>."
+      "text": "Gültig für Website & App unter <a href=\"https://my.Powrbook.at\" class=\"underline\">my.Powrbook.at</a>."
     },
     "controller": {
       "title": "Verantwortliche Stelle",
-      "text": "<strong>TRO GmbH</strong>, Mötlas 47, 4273 Unterweißenbach, Österreich · E-Mail: <a href=\"mailto:privacy@powerbook.at\" class=\"underline\">privacy@powerbook.at</a>."
+      "text": "<strong>TRO GmbH</strong>, Mötlas 47, 4273 Unterweißenbach, Österreich · E-Mail: <a href=\"mailto:privacy@Powrbook.at\" class=\"underline\">privacy@Powrbook.at</a>."
     },
     "sections": [
       {
@@ -729,14 +729,14 @@
       },
       {
         "title": "Deine Rechte (Art. 15–22 DSGVO)",
-        "text": "Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch gegen berechtigte Interessen. Kontakt: <a href='mailto:privacy@powerbook.at' class='underline'>privacy@powerbook.at</a> · Beschwerde: <a href='https://www.dsb.gv.at/' class='underline'>Österreichische Datenschutzbehörde</a>."
+        "text": "Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch gegen berechtigte Interessen. Kontakt: <a href='mailto:privacy@Powrbook.at' class='underline'>privacy@Powrbook.at</a> · Beschwerde: <a href='https://www.dsb.gv.at/' class='underline'>Österreichische Datenschutzbehörde</a>."
       },
       {
         "title": "Speicherdauer & Sicherheit",
         "text": "Verarbeitung während der Vertragslaufzeit; gesetzliche Pflichten bleiben unberührt. TLS, ruhende Verschlüsselung, Zugriffskontrolle, Backups. Stand: {{DATE}}."
       }
     ],
-    "contactBox": "Fragen? Schreib uns an <a class='underline' href='mailto:privacy@powerbook.at'>privacy@powerbook.at</a> – wir antworten so rasch wie möglich."
+    "contactBox": "Fragen? Schreib uns an <a class='underline' href='mailto:privacy@Powrbook.at'>privacy@Powrbook.at</a> – wir antworten so rasch wie möglich."
   },
   "impressum": {
     "hero": {
@@ -748,9 +748,9 @@
       "title": "Unternehmen",
       "name": "TRO GmbH",
       "address": "Mötlas 47, 4273 Unterweißenbach, Österreich",
-      "url": "https://my.powerbook.at",
-      "urlLabel": "my.powerbook.at",
-      "email": "hello@powerbook.at",
+      "url": "https://my.Powrbook.at",
+      "urlLabel": "my.Powrbook.at",
+      "email": "hello@Powrbook.at",
       "phone": "+43 (0) XXX XXX XXX"
     },
     "editor": {

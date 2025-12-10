@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     // Entweder kurz …
     domains: [
+      "my.powrbook.com",
+      "app.powrbook.com",
       "app.powerbook.at",
       "images.unsplash.com",
       "flaticon.com",

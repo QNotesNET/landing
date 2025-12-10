@@ -7,7 +7,7 @@ export default function DownloadMacPage() {
   // 👉 Auto-Download starten
   useEffect(() => {
     const downloadUrl =
-      "https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/Powerbook-1.0.2.dmg";
+      "https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/powerbook-1.0.2.dmg";
 
     // kleine Verzögerung, damit das UI kurz lädt
     setTimeout(() => {
@@ -27,7 +27,7 @@ export default function DownloadMacPage() {
         />
 
         <h1 className="text-3xl font-semibold text-gray-900">
-          Powerbook für macOS
+          Powrbook für macOS
         </h1>
 
         <p className="mt-4 text-gray-600 text-lg">
@@ -35,7 +35,7 @@ export default function DownloadMacPage() {
         </p>
 
         <a
-          href="https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/Powerbook-1.0.2.dmg"
+          href="https://github.com/QNotesNET/desktop-app/releases/download/v1.0.2/powerbook-1.0.2.dmg"
           className="mt-8 inline-block bg-gray-800 hover:bg-black text-white font-medium px-6 py-3 rounded-xl shadow transition"
         >
           Download erneut starten

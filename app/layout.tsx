@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Powerbook - Analog schreiben. Digital organisiert.",
-  description: "Schreibe auf Papier – Powerbook macht den Rest: scannen, sauber ordnen, durchsuchen. AI erkennt Aufgaben & Highlights, übergibt Termine an deinen Kalender und synchronisiert mit iOS, Android & Web.",
+  title: "Powrbook - Analog schreiben. Digital organisiert.",
+  description: "Schreibe auf Papier – Powrbook macht den Rest: scannen, sauber ordnen, durchsuchen. AI erkennt Aufgaben & Highlights, übergibt Termine an deinen Kalender und synchronisiert mit iOS, Android & Web.",
     icons: {
     icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png" }],
     apple: [{ url: "/apple-icon.png" }],

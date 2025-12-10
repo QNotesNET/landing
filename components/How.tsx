@@ -118,7 +118,7 @@ export default function How({ texts }: { texts: HowTexts }) {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="https://my.powerbook.at/register"
+                href="https://my.powrbook.com/register"
                 className="rounded-xl bg-white px-6 py-3 text-black shadow-lg hover:-translate-y-0.5 transition"
               >
                 {texts.ctaPrimary}

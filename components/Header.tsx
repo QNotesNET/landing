@@ -130,7 +130,7 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
               "flex items-center h-35 w-35 transition",
               scrolled && "invert"
             )}
-            alt="Powerbook Logo"
+            alt="Powrbook Logo"
             width={25}
             height={15}
             priority
@@ -179,13 +179,13 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
 
           {/* Login / CTA */}
           <Link
-            href="https://my.powerbook.at/login"
+            href="https://my.powrbook.com/login"
             className="rounded-xl px-4 py-2 text-sm font-medium hover:bg-white/10"
           >
             {texts.login}
           </Link>
           <Link
-            href="https://my.powerbook.at/register"
+            href="https://my.powrbook.com/register"
             className={cx(
               "group inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium shadow-lg shadow-black/10 hover:-translate-y-0.5 transition",
               scrolled ? "bg-black text-white" : "bg-white text-black"
@@ -229,7 +229,7 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
                 <Link href="/" onClick={() => setMobileOpen(false)}>
                   <Image
                     src="/images/logos/logo.svg"
-                    alt="Powerbook Logo"
+                    alt="Powrbook Logo"
                     width={25}
                     height={15}
                     className="h-35 w-35"
@@ -265,14 +265,14 @@ export default function Header({ texts }: { texts: HeaderTexts }) {
               {/* Bottom Buttons */}
               <div className="px-6 pb-6 grid gap-3 bg-[#2D2825] pt-6 rounded-b-lg">
                 <Link
-                  href="https://my.powerbook.at/login"
+                  href="https://my.powrbook.com/login"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl px-4 py-3 text-center text-sm font-medium text-white bg-white/10 hover:bg-white/15"
                 >
                   {texts.login}
                 </Link>
                 <Link
-                  href="https://my.powerbook.at/register"
+                  href="https://my.powrbook.com/register"
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl bg-white px-4 py-3 text-center text-sm font-medium text-black"
                 >
