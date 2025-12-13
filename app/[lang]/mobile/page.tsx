@@ -17,6 +17,8 @@ export default function MobileLandingPage(props: {
   const { lang } = use(props.params);
 
   const [platform, setPlatform] = useState<Platform>("other");
+  const [showAndroidModal, setShowAndroidModal] = useState(false);
+
   const [t, setT] = useState<any>(null);
 
   // Language load
@@ -73,7 +75,11 @@ export default function MobileLandingPage(props: {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center">
-              <StoreBadges platform={platform} labels={m.storeLabels} />
+              <StoreBadges
+                platform={platform}
+                labels={m.storeLabels}
+                onAndroidClick={() => setShowAndroidModal(true)}
+              />
             </div>
           </div>
 
@@ -141,6 +147,13 @@ export default function MobileLandingPage(props: {
       </section>
 
       <Footer texts={t.footer} />
+
+      {showAndroidModal && (
+        <AndroidTestModal
+          texts={m.androidTest}
+          onClose={() => setShowAndroidModal(false)}
+        />
+      )}
     </div>
   );
 }
@@ -149,15 +162,17 @@ export default function MobileLandingPage(props: {
 function StoreBadges({
   platform,
   labels,
+  onAndroidClick,
 }: {
   platform: Platform;
   labels: { ios: string; android: string };
+  onAndroidClick: () => void;
 }) {
   const IOS_BADGE = "/images/icons/appstore.webp";
   const ANDROID_BADGE = "/images/icons/playstore.webp";
 
-  const iosHref = "https://apps.apple.com/at/app/powrbook-papier-aber-smart/id6754575938";
-  const androidHref = "https://play.google.com/store";
+  const iosHref =
+    "https://apps.apple.com/at/app/powrbook-papier-aber-smart/id6754575938";
 
   const showIOS = platform === "ios" || platform === "other";
   const showAndroid = platform === "android" || platform === "other";
@@ -178,10 +193,11 @@ function StoreBadges({
       )}
 
       {showAndroid && (
-        <Link
-          href={androidHref}
+        <button
+          type="button"
+          onClick={onAndroidClick}
           aria-label={labels.android}
-          className="inline-flex"
+          className="inline-flex focus:outline-none"
         >
           <Image
             src={ANDROID_BADGE}
@@ -191,8 +207,106 @@ function StoreBadges({
             className="h-12 w-auto object-contain"
             priority
           />
-        </Link>
+        </button>
       )}
     </>
+  );
+}
+
+function AndroidTestModal({
+  texts,
+  onClose,
+}: {
+  texts: any;
+  onClose: () => void;
+}) {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+  const N8N_WEBHOOK_URL =
+    "https://n8n.automatedirect.net/webhook/723babdf-f2f7-4b58-af7d-f5ae0bde5504";
+
+  async function submit() {
+    if (!email) return;
+
+    setLoading(true);
+    setError(false);
+
+    try {
+      const res = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "google_play_internal_test",
+        }),
+      });
+
+      if (!res.ok) throw new Error();
+      setSuccess(true);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+        >
+          ✕
+        </button>
+
+        {!success ? (
+          <>
+            <h3 className="text-2xl font-semibold text-gray-900">
+              {texts.title}
+            </h3>
+
+            <p className="mt-2 text-gray-600">{texts.description}</p>
+
+            <input
+              type="email"
+              placeholder={texts.emailPlaceholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-6 w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-black focus:outline-none"
+            />
+
+            {error && (
+              <p className="mt-3 text-sm text-red-600">{texts.error}</p>
+            )}
+
+            <button
+              onClick={submit}
+              disabled={loading}
+              className="mt-6 w-full rounded-xl bg-black px-6 py-3 font-medium text-white hover:bg-gray-900 disabled:opacity-50"
+            >
+              {loading ? texts.loading : texts.submit}
+            </button>
+          </>
+        ) : (
+          <div className="text-center py-10">
+            <h3 className="text-2xl font-semibold text-gray-900">
+              {texts.successTitle}
+            </h3>
+            <p className="mt-2 text-gray-600">{texts.successText}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

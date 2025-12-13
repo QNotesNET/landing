@@ -392,6 +392,16 @@
       "desktopSubtitle": "Download Powrbook for macOS or Windows and start working directly from your computer.",
       "downloadWindows": "Download for Windows",
       "downloadMac": "Download for macOS"
+    },
+    "androidTest": {
+      "title": "Android Internal Test",
+      "description": "Enter your email address to get access to the internal Google Play test.",
+      "emailPlaceholder": "Email address",
+      "submit": "Request access",
+      "loading": "Sending…",
+      "error": "Something went wrong. Please try again.",
+      "successTitle": "Thank you!",
+      "successText": "We’ll notify you by email once the test is available."
     }
   },
   "business": {

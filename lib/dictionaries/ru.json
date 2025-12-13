@@ -392,6 +392,16 @@
       "desktopSubtitle": "Скачайте Powrbook для Windows или macOS и используйте приложение прямо на своем компьютере.",
       "downloadWindows": "Скачать для Windows",
       "downloadMac": "Скачать для macOS"
+    },
+    "androidTest": {
+      "title": "Внутренний тест Android",
+      "description": "Введите свой адрес электронной почты, чтобы получить доступ к внутреннему тесту Google Play.",
+      "emailPlaceholder": "Адрес электронной почты",
+      "submit": "Запросить доступ",
+      "loading": "Отправка…",
+      "error": "Произошла ошибка. Пожалуйста, попробуйте снова.",
+      "successTitle": "Спасибо!",
+      "successText": "Мы уведомим вас по электронной почте, когда тест станет доступен."
     }
   },
   "business": {

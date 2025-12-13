@@ -390,7 +390,17 @@
     "desktopTitle": "Powrbook Desktop",
     "desktopSubtitle": "Lade Powrbook für Mac oder Windows herunter und starte die Desktop-Version.",
     "downloadWindows": "Für Windows herunterladen",
-    "downloadMac": "Für macOS herunterladen"
+    "downloadMac": "Für macOS herunterladen",
+    "androidTest": {
+      "title": "Interner Android Test",
+      "description": "Trage deine E-Mail-Adresse ein, um Zugang zum internen Google Play Test zu erhalten.",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "submit": "Zugang anfordern",
+      "loading": "Wird gesendet…",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "successTitle": "Danke!",
+      "successText": "Wir melden uns per E-Mail, sobald der Test verfügbar ist."
+    }
   },
   "business": {
     "hero": {
